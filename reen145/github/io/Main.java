@@ -23,7 +23,6 @@ public class Main extends JPanel {
 	private ImageIcon iconBlank;
 	private ImageIcon iconPlayer1;
 	private ImageIcon iconPlayer2;
-
 	public Main() {
 		
 		setLayout(new GridLayout(SIZE + 1, SIZE)); // room for top row
