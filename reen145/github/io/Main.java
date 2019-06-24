@@ -21,19 +21,34 @@ import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 
 /****************************************************************.
-Class for the main jPanel to be used in the maze game
+ * Class for the main jPanel to be used in the maze game
 *****************************************************************/
 public class Main extends JPanel {
 	private static final long serialVersionUID = 1L;
+	/****************************************************************.
+	 * Determines the size of the maze
+    *****************************************************************/
 	private int size = 10;
+	/****************************************************************.
+	 * Matrix containing all game tiles
+    *****************************************************************/
 	private JLabel[][] matrix;
-	private JMenuItem gameItem;
-	private JMenuItem quitItem;
+	/****************************************************************.
+	 * Represents a wall
+    *****************************************************************/
+	private ImageIcon iconWall;
+	/****************************************************************.
+	 * Represents a player
+    *****************************************************************/
+	private ImageIcon iconPlayer;
+	/****************************************************************.
+	 * Represents a blank square
+    *****************************************************************/
 	private ImageIcon iconBlank;
 	
 	/****************************************************************.
-    Constructor creates a jPanel for the maze game
-    @param none
+	 * Constructor creates a jPanel for the maze game
+	 * @param none
     *****************************************************************/
 	public Main() {
 
@@ -41,15 +56,16 @@ public class Main extends JPanel {
 
 		matrix = new JLabel[size][size];
 		 
-		for (int row = 0; row < size; row++) {
+		/*for (int row = 0; row < size; row++) {
 			for (int col = 0; col < size; col++) {
+				
 			}
-		}
+		}*/
 	}
 	
 	/****************************************************************.
-    Main method for the maze game
-    @param args arguments that can be passed to the main method
+	 * Main method for the maze game
+	 * @param args arguments that can be passed to the main method
     *****************************************************************/
 	public static void main(final String[] args) {
 		int size = 10;
