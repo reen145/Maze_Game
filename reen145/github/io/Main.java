@@ -1,4 +1,4 @@
-/*************************************************************************************************
+/*******************************************************************************
 Title:
 Filename: 
 @author: 
@@ -6,42 +6,53 @@ Filename:
 Due Date:
 Instructor:
 Description:
-**************************************************************************************************/
+*******************************************************************************/
 package reen145.github.io;
 
 import java.applet.Applet;
-import java.awt.*;
-import java.awt.event.*;
-import javax.swing.*;
+import java.awt.GridLayout;
 
+import javax.swing.ImageIcon;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JMenu;
+import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
+import javax.swing.JPanel;
+
+/****************************************************************.
+Class for the main jPanel to be used in the maze game
+*****************************************************************/
 public class Main extends JPanel {
 	private static final long serialVersionUID = 1L;
-	private final int SIZE = 10;
+	private int size = 10;
 	private JLabel[][] matrix;
 	private JMenuItem gameItem;
 	private JMenuItem quitItem;
 	private ImageIcon iconBlank;
-	private ImageIcon iconPlayer1;
-	private ImageIcon iconPlayer2;
+	
+	/****************************************************************.
+    Constructor creates a jPanel for the maze game
+    @param none
+    *****************************************************************/
 	public Main() {
-		
-		setLayout(new GridLayout(SIZE + 1, SIZE)); // room for top row
 
 		iconBlank = new ImageIcon("");
-		iconPlayer1 = new ImageIcon("");
-		iconPlayer2 = new ImageIcon("");
 
-		matrix = new JLabel[SIZE][SIZE];
-
-		for (int row = 0; row < SIZE; row++) {
-			for (int col = 0; col < SIZE; col++) {
-				matrix[row][col] = new JLabel("", iconBlank, SwingConstants.CENTER);
-				add(matrix[row][col]);
+		matrix = new JLabel[size][size];
+		 
+		for (int row = 0; row < size; row++) {
+			for (int col = 0; col < size; col++) {
 			}
 		}
 	}
 	
-	public static void main (String[] args) {
+	/****************************************************************.
+    Main method for the maze game
+    @param args arguments that can be passed to the main method
+    *****************************************************************/
+	public static void main(final String[] args) {
+		int size = 10;
 		JMenuBar menus;
 		JMenu fileMenu;
 		JMenuItem quitItem;
@@ -49,6 +60,7 @@ public class Main extends JPanel {
 
 		JFrame frame = new JFrame("The Maze Game");
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setLayout(new GridLayout(size + 1, size));
 
 		fileMenu = new JMenu("File");
 		quitItem = new JMenuItem("quit");
@@ -61,7 +73,7 @@ public class Main extends JPanel {
 		menus.add(fileMenu);
 		
 		Main panel = new Main();
-		frame.getContentPane().add(panel);
+		frame.add(panel);
 		frame.setSize(800, 600);
 		frame.setVisible(true);
 	}
