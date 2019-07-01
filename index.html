@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <title>Project</title>
     <style>
-        body{background-color: darkgrey}
+        body{background-color: white}
         h1{color: black}
     </style>
 </head>
@@ -14,6 +14,19 @@
 <br><br>
 <p style="text-align: center"> !!! Test applet below: !!! </p>
 <br>
-<APPLET CODE="HelloWorld.class" WIDTH=150 HEIGHT=25></APPLET>
+<object CODE="HelloWorld.class" WIDTH=150 HEIGHT=25></object>
+<object width="400" height="400" data="HelloWorld.java">
+    !!! ERROR:  Java not supported !!!
+</object>
+<object type="application/x-java-applet" name="DataUpload" width="500" height="300">
+    <param name="name" value="DataUpload" />
+    <param name="archive" value="DataUpload.jar" />
+    <param name="code" value="DataUpload.applet.DataUpload" />
+    <param name="scriptable" value="true" />
+    <param name="codebase_lookup" value="false" />
+    <param name="mayscript" value="true" />
+    <param name="plugindetect" value="1" />
+</object>
 </body>
 </html>
+
