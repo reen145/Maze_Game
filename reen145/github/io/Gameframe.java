@@ -33,16 +33,21 @@ public class Gameframe extends JFrame {
 	 * size of the maze
 	 */
 	private int gameSize;
+	/**.
+	 * size of each icon
+	 */
+	private int iconSize;
 	/****************************************************************.
 	 * Constructor for the main frame for the maze game
-	 * @param size - length of each side of the maze
+	 * @param dSize - length of each side of the maze
+	 * @param dIcon - side length of each square icon
 	*****************************************************************/
-	public Gameframe(final int size) {
+	public Gameframe(final int dSize, final int dIcon) {
 
-		gameSize = size;
+		gameSize = dSize;
+		iconSize = dIcon;
 		setName("The Maze Game");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setLayout(new GridLayout(size, size));
 
 		fileMenu = new JMenu("File");
 		quitItem = new JMenuItem("quit");
@@ -57,6 +62,7 @@ public class Gameframe extends JFrame {
 		menus = new JMenuBar();
 		setJMenuBar(menus);
 		menus.add(fileMenu);
+		setSize(gameSize * iconSize, gameSize * iconSize);
 	}
 		/**.
 		Represents a listener for button push (action) events.

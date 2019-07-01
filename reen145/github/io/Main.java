@@ -9,12 +9,12 @@ Description:
 *******************************************************************************/
 package reen145.github.io;
 
-import java.applet.Applet;
+import java.awt.Dimension;
 import java.awt.Graphics2D;
+import java.awt.GridLayout;
 import java.awt.image.BufferedImage;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JPanel;
@@ -27,7 +27,11 @@ public class Main extends JPanel {
 	/**.
 	 * Determines the size of the maze
     **/
-	private int size = 10;
+	private static final int SIZE = 10;
+	/**.
+	 * Determines the size of each icon
+    **/
+	private static final int ISIZE = 64;
 	/**.
 	 * Matrix containing all game tiles
     **/
@@ -50,18 +54,19 @@ public class Main extends JPanel {
 	 * @param none
     **/
 	public Main() {
+		setLayout(new GridLayout(SIZE, SIZE));
 		Path path = Paths.get("/reen145.github.io/Icons/wall.png");
 		iconWall = new ImageIcon(path.toString());
-		matrix = new JButton[size][size];
-		matrix[0][0] = new JButton(iconWall);
-		matrix[0][0].setSize(256, 256);
-		add(matrix[0][0]);
-		 
-		/*for (int row = 0; row < size; row++) {
-			for (int col = 0; col < size; col++) {
-				
+		
+		for (int row = 0; row < SIZE; row++) {
+			for (int col = 0; col < SIZE; col++) {
+				matrix = new JButton[SIZE][SIZE];
+				matrix[row][col] = new JButton(iconWall);
+				matrix[row][col].setPreferredSize(
+						new Dimension(64, 64));
+				add(matrix[row][col]);
 			}
-		}*/
+		}
 	}
 	
 	/**.
@@ -70,10 +75,9 @@ public class Main extends JPanel {
     **/
 	public static void main(final String[] args) {
 		int size = 10;
-		Gameframe frame = new Gameframe(size);
+		Gameframe frame = new Gameframe(SIZE, ISIZE);
 		Main panel = new Main();
 		frame.add(panel);
-		frame.setSize(800, 600);
 		frame.setVisible(true);
 	}
 
