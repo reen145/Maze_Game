@@ -67,7 +67,8 @@ public class Main extends JPanel {
 		setLayout(new GridLayout(SIZE, SIZE));
 		Path path = Paths.get("Icons/wall.png");
 		try {
-			BufferedImage wall = ImageIO.read(new File(path.toString()));
+			BufferedImage wall = ImageIO.read(
+					new File(path.toString()));
 			iconWall = new ImageIcon(wall);
 		} catch (IOException e) {
 			e.printStackTrace();
