@@ -61,7 +61,6 @@ public class Gameframe extends JFrame {
 		menus = new JMenuBar();
 		setJMenuBar(menus);
 		menus.add(fileMenu);
-		setSize(gameSize * iconSize, gameSize * iconSize);
 	}
 		/**.
 		Represents a listener for button push (action) events.
