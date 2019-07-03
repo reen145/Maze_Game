@@ -148,6 +148,7 @@ public class Gamepanel extends JPanel {
 		setTile(tileMatrix[8][7], iconWall, Tile.TILETYPE.WALL);
 		setTile(tileMatrix[9][7], iconWall, Tile.TILETYPE.WALL);
 		setTile(tileMatrix[1][1], iconChest, Tile.TILETYPE.CHEST);
+		setTile(tileMatrix[8][8], iconPlayer, Tile.TILETYPE.PLAYER);
 	}
 	/**.
 	 * Sets a given tile to be a certain type
