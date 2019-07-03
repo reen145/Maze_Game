@@ -63,6 +63,10 @@ public class Gamepanel extends JPanel {
 	 * Represents a chest
     **/
 	private ImageIcon iconChest;
+	/**.
+	 * Represents a chest
+    **/
+	private ImageIcon iconKey;
 	
 	/**.
 	 * Constructor creates a jPanel for the maze game
@@ -76,6 +80,7 @@ public class Gamepanel extends JPanel {
 		iconPlayer = new ImageIcon("Icons/player.png");
 		iconPath = new ImageIcon("Icons/path.png");
 		iconChest = new ImageIcon("Icons/chest.png");
+		iconKey = new ImageIcon("Icons/key.png");
 		
 		// populate maze with icons
 		populate();
@@ -149,6 +154,7 @@ public class Gamepanel extends JPanel {
 		setTile(tileMatrix[9][7], iconWall, Tile.TILETYPE.WALL);
 		setTile(tileMatrix[1][1], iconChest, Tile.TILETYPE.CHEST);
 		setTile(tileMatrix[8][8], iconPlayer, Tile.TILETYPE.PLAYER);
+		setTile(tileMatrix[1][8], iconKey, Tile.TILETYPE.KEY);
 	}
 	/**.
 	 * Sets a given tile to be a certain type

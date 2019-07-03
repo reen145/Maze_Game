@@ -24,7 +24,7 @@ public class Tile extends JButton {
 		/**.
 		 * Tile Types
 		**/
-        PATH, WALL, PLAYER, CHEST
+        PATH, WALL, PLAYER, CHEST, KEY
     }
 	
 	/**.
