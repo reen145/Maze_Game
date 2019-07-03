@@ -61,7 +61,6 @@ public class Gameframe extends JFrame {
 		getContentPane().setPreferredSize(
 				new Dimension(dSize * dIcon, dSize * dIcon));
 		pack();
-		setVisible(true);
 	}
 		/**.
 		Represents a listener for button push (action) events.
