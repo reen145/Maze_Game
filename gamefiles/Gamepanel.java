@@ -71,7 +71,9 @@ public class Gamepanel extends JPanel {
 	 * @param none
     **/
 	public Gamepanel() {
+		// set the layout to be a grid
 		setLayout(new GridLayout(SIZE, SIZE));
+		// instantiate the icons from the 'Icons' folder
 		iconWall = new ImageIcon("Icons/wall.png");
 		iconPlayer = new ImageIcon("Icons/player.png");
 		iconPath = new ImageIcon("Icons/path.png");
@@ -87,7 +89,13 @@ public class Gamepanel extends JPanel {
 	 * @param none
     **/
 	public void populate() {
+		// instantiate the array of tiles
 		tileMatrix = new Tile[SIZE][SIZE];
+		
+		// initializes each index of the tile matrix
+		// each index is a member of the Tile class
+		// each will have the 'path' icon and TILETYPE
+		// adds a button listener for each tile
 		for (int row = 0; row < SIZE; row++) {
 			for (int col = 0; col < SIZE; col++) {
 				tileMatrix[row][col] = 
@@ -99,6 +107,7 @@ public class Gamepanel extends JPanel {
 				add(tileMatrix[row][col]);
 			}
 		}
+		// inserts wall tiles
 		setWalls();
 	}
 	/**.
@@ -106,6 +115,7 @@ public class Gamepanel extends JPanel {
 	 * @param none
     **/
 	public void setWalls() {
+		// sets each tile on the outer border with a wall
 		for (int i = 0; i < SIZE; i += (SIZE - 1)) {
 			for (int j = 0; j < SIZE; j++) {
 				setTile(tileMatrix[0][j], 
@@ -152,6 +162,7 @@ public class Gamepanel extends JPanel {
 		**/
 		public void actionPerformed(final ActionEvent event) {
 		JComponent comp = (JComponent) event.getSource();
+		// checks the grid of buttons for an event source
 		for (int row = 0; row < SIZE; row++) {
 			for (int col = 0; col < SIZE; col++) {
 				if (comp == tileMatrix[row][col]) {
