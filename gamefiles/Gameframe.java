@@ -41,7 +41,7 @@ public class Gameframe extends JFrame {
 	/**.
 	 * game panel with all buttons
 	*/
-	private Main panel;
+	private Gamepanel panel;
 	/****************************************************************.
 	 * Constructor for the main frame for the maze game
 	 * @param dSize - length of each side of the maze
@@ -65,7 +65,7 @@ public class Gameframe extends JFrame {
 		setJMenuBar(menus);
 		menus.add(fileMenu);
 		
-		panel = new Main();
+		panel = new Gamepanel();
 		add(panel);
 		getContentPane().setPreferredSize(
 				new Dimension(dSize * dIcon, dSize * dIcon));

@@ -23,10 +23,12 @@ import javax.swing.ImageIcon;
 import javax.swing.JComponent;
 import javax.swing.JPanel;
 
+import gamefiles.Tile.TILETYPE;
+
 /**.
  * Class for the main jPanel to be used in the maze game
 **/
-public class Main extends JPanel {
+public class Gamepanel extends JPanel {
 	private static final long serialVersionUID = 1L;
 	/**.
 	 * Determines the size of the maze
@@ -68,7 +70,7 @@ public class Main extends JPanel {
 	 * Constructor creates a jPanel for the maze game
 	 * @param none
     **/
-	public Main() {
+	public Gamepanel() {
 		setLayout(new GridLayout(SIZE, SIZE));
 		iconWall = new ImageIcon("Icons/wall.png");
 		iconPlayer = new ImageIcon("Icons/player.png");
@@ -97,6 +99,37 @@ public class Main extends JPanel {
 				add(tileMatrix[row][col]);
 			}
 		}
+		setWalls();
+	}
+	/**.
+	 * Populates the maze with walls
+	 * @param none
+    **/
+	public void setWalls() {
+		for (int i = 0; i < SIZE; i += (SIZE - 1)) {
+			for (int j = 0; j < SIZE; j++) {
+				setTile(tileMatrix[0][j], 
+						iconWall, TILETYPE.WALL);
+				setTile(tileMatrix[j][0], 
+						iconWall, TILETYPE.WALL);
+				setTile(tileMatrix[i][j], 
+						iconWall, TILETYPE.WALL);
+				setTile(tileMatrix[j][i], 
+						iconWall, TILETYPE.WALL);
+			}
+		}
+	}
+	/**.
+	 * Sets a given tile to be a certain type
+	 * @param ti - the tile to be changed
+	 * @param im - the image to change to
+	 * @param ty - the type of the tile
+    **/
+	public void setTile(final Tile ti, 
+			final ImageIcon im, final TILETYPE ty) {
+		ti.setIcon(iconWall);
+		ti.setIcon(im);
+		ti.setType(ty);
 	}
 	
 	/**.
