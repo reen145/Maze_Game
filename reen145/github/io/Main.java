@@ -17,6 +17,9 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComponent;
 import javax.swing.JPanel;
+import java.io.*;
+import javax.sound.sampled.*;
+import javax.swing.*;
 
 /**.
  * Class for the main jPanel to be used in the maze game
@@ -104,12 +107,7 @@ public class Main extends JPanel {
     **/
 	public static void main(final String[] args) {
 		Gameframe frame = new Gameframe(SIZE, ISIZE);
-		//Main panel = new Main();
-		//frame.add(panel);
-		//frame.getContentPane().setPreferredSize(
-		//		new Dimension(SIZE * ISIZE, SIZE * ISIZE));
-		///frame.pack();
-		//frame.setVisible(true);
+		startBGMusic();
 	}
 	
 	/**.
@@ -131,5 +129,23 @@ public class Main extends JPanel {
 		}
 		}
 
+	}
+	public static void startBGMusic() {
+		try {
+			// Open an audio input stream.
+			File soundFile = new File("Sounds/background.wav");
+			AudioInputStream audioIn = AudioSystem.getAudioInputStream(soundFile);
+			// Get a sound clip resource.
+			Clip clip = AudioSystem.getClip();
+			// Open audio clip and load samples from the audio input stream.
+			clip.open(audioIn);
+			clip.start();
+		} catch (UnsupportedAudioFileException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		} catch (LineUnavailableException e) {
+			e.printStackTrace();
+		}
 	}
 }
