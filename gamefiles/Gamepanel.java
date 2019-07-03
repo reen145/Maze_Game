@@ -23,8 +23,6 @@ import javax.swing.ImageIcon;
 import javax.swing.JComponent;
 import javax.swing.JPanel;
 
-import gamefiles.Tile.TILETYPE;
-
 /**.
  * Class for the main jPanel to be used in the maze game
 **/
@@ -119,13 +117,13 @@ public class Gamepanel extends JPanel {
 		for (int i = 0; i < SIZE; i += (SIZE - 1)) {
 			for (int j = 0; j < SIZE; j++) {
 				setTile(tileMatrix[0][j], 
-						iconWall, TILETYPE.WALL);
+						iconWall, Tile.TILETYPE.WALL);
 				setTile(tileMatrix[j][0], 
-						iconWall, TILETYPE.WALL);
+						iconWall, Tile.TILETYPE.WALL);
 				setTile(tileMatrix[i][j], 
-						iconWall, TILETYPE.WALL);
+						iconWall, Tile.TILETYPE.WALL);
 				setTile(tileMatrix[j][i], 
-						iconWall, TILETYPE.WALL);
+						iconWall, Tile.TILETYPE.WALL);
 			}
 		}
 	}
@@ -136,7 +134,7 @@ public class Gamepanel extends JPanel {
 	 * @param ty - the type of the tile
     **/
 	public void setTile(final Tile ti, 
-			final ImageIcon im, final TILETYPE ty) {
+			final ImageIcon im, final Tile.TILETYPE ty) {
 		ti.setIcon(iconWall);
 		ti.setIcon(im);
 		ti.setType(ty);

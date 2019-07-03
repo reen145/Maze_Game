@@ -52,7 +52,7 @@ public class Tile extends JButton {
      * Setter for the tile type
      * @param ti - the type of tile
     **/
-    public void setType(final TILETYPE ti) {
+    public void setType(final Tile.TILETYPE ti) {
     	type = ti;
     }
 }
