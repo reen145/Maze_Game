@@ -131,6 +131,7 @@ public class Gamepanel extends JPanel {
 						iconWall, Tile.TILETYPE.WALL);
 			}
 		}
+		// Set up static maze
 		setTile(tileMatrix[1][3], iconWall, Tile.TILETYPE.WALL);
 		setTile(tileMatrix[1][2], iconWall, Tile.TILETYPE.WALL);
 		setTile(tileMatrix[2][3], iconWall, Tile.TILETYPE.WALL);
