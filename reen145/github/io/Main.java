@@ -11,15 +11,8 @@ package reen145.github.io;
 
 import java.awt.Dimension;
 import java.awt.GridLayout;
-import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComponent;
@@ -66,21 +59,22 @@ public class Main extends JPanel {
 	private ImageIcon iconBlank;
 	
 	/**.
+	 * Represents a chest
+    **/
+	private ImageIcon iconChest;
+	
+	/**.
 	 * Constructor creates a jPanel for the maze game
 	 * @param none
     **/
 	public Main() {
 		setLayout(new GridLayout(SIZE, SIZE));
-		Path path = Paths.get("Icons/wall.png");
+		iconWall = new ImageIcon("Icons/wall.png");
+		iconPlayer = new ImageIcon("Icons/player.png");
+		iconBlank = new ImageIcon("Icons/blank.png");
+		iconChest = new ImageIcon("Icons/chest.png");
 		
-		try {
-			Image wall = ImageIO.read(
-					new File(path.toString()));
-			iconWall = new ImageIcon(wall);
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		
+		// populate maze with icons
 		populate();
 		
 	}
@@ -95,6 +89,7 @@ public class Main extends JPanel {
 		for (int row = 0; row < SIZE; row++) {
 			for (int col = 0; col < SIZE; col++) {
 				buttonMatrix[row][col] = new JButton(iconWall);
+				statusMatrix[row][col] = 1;
 				ButtonListener listener = new ButtonListener();
 				buttonMatrix[row][col]
 						.addActionListener(listener);
@@ -109,12 +104,12 @@ public class Main extends JPanel {
     **/
 	public static void main(final String[] args) {
 		Gameframe frame = new Gameframe(SIZE, ISIZE);
-		Main panel = new Main();
-		frame.add(panel);
-		frame.getContentPane().setPreferredSize(
-				new Dimension(SIZE * ISIZE, SIZE * ISIZE));
-		frame.pack();
-		frame.setVisible(true);
+		//Main panel = new Main();
+		//frame.add(panel);
+		//frame.getContentPane().setPreferredSize(
+		//		new Dimension(SIZE * ISIZE, SIZE * ISIZE));
+		///frame.pack();
+		//frame.setVisible(true);
 	}
 	
 	/**.

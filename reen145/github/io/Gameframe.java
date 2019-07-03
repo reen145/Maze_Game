@@ -1,7 +1,7 @@
 package reen145.github.io;
+import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
 import javax.swing.JComponent;
 import javax.swing.JFrame;
 import javax.swing.JMenu;
@@ -28,29 +28,23 @@ public class Gameframe extends JFrame {
 	 * new game button
 	*/
 	private JMenuItem gameItem;
+	
 	/**.
-	 * size of the maze
-	 */
-	private int gameSize;
-	/**.
-	 * size of each icon
-	 */
-	private int iconSize;
+	 * game panel with all buttons
+	*/
+	private Main panel;
 	/****************************************************************.
 	 * Constructor for the main frame for the maze game
 	 * @param dSize - length of each side of the maze
 	 * @param dIcon - side length of each square icon
 	*****************************************************************/
 	public Gameframe(final int dSize, final int dIcon) {
-
-		gameSize = dSize;
-		iconSize = dIcon;
 		setName("The Maze Game");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 		fileMenu = new JMenu("File");
-		quitItem = new JMenuItem("quit");
-		gameItem = new JMenuItem("new game");
+		quitItem = new JMenuItem("Quit");
+		gameItem = new JMenuItem("New Game");
 		
 		ButtonListener listener = new ButtonListener();
 		quitItem.addActionListener(listener);
@@ -61,6 +55,13 @@ public class Gameframe extends JFrame {
 		menus = new JMenuBar();
 		setJMenuBar(menus);
 		menus.add(fileMenu);
+		
+		panel = new Main();
+		add(panel);
+		getContentPane().setPreferredSize(
+				new Dimension(dSize * dIcon, dSize * dIcon));
+		pack();
+		setVisible(true);
 	}
 		/**.
 		Represents a listener for button push (action) events.
