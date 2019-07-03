@@ -72,23 +72,24 @@ public class Main extends JPanel {
 	public Main() {
 		setLayout(new GridLayout(SIZE, SIZE));
 		Path path = Paths.get("Icons/wall.png");
+		
 		try {
 			Image wall = ImageIO.read(
 					new File(path.toString()));
 			iconWall = new ImageIcon(wall);
-			JButton button = new JButton();
-			button.setPreferredSize(new Dimension(ISIZE, ISIZE));
-			// Set image to size of JButton
-			int offset = button.getInsets().left;
-			Image newimg = wall.getScaledInstance(
-					button.getWidth() - offset,
-					button.getHeight() - offset,  
-					java.awt.Image.SCALE_SMOOTH);  
-			iconWall = new ImageIcon(newimg);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 		
+		populate();
+		
+	}
+	
+	/**.
+	 * Populates the maze with walls, treasure, the player, etc
+	 * @param none
+    **/
+	public void populate() {
 		buttonMatrix = new JButton[SIZE][SIZE];
 		statusMatrix = new int[SIZE][SIZE];
 		for (int row = 0; row < SIZE; row++) {
