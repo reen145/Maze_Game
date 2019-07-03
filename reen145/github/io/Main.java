@@ -17,6 +17,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComponent;
 import javax.swing.JPanel;
+
 import java.io.*;
 import javax.sound.sampled.*;
 import javax.swing.*;
@@ -55,7 +56,7 @@ public class Main extends JPanel {
 	/**.
 	 * Represents a blank square
     **/
-	private ImageIcon iconBlank;
+	private ImageIcon iconPath;
 	
 	/**.
 	 * Represents a chest
@@ -70,7 +71,7 @@ public class Main extends JPanel {
 		setLayout(new GridLayout(SIZE, SIZE));
 		iconWall = new ImageIcon("Icons/wall.png");
 		iconPlayer = new ImageIcon("Icons/player.png");
-		iconBlank = new ImageIcon("Icons/blank.png");
+		iconPath = new ImageIcon("Icons/path.png");
 		iconChest = new ImageIcon("Icons/chest.png");
 		
 		// populate maze with icons
@@ -83,16 +84,16 @@ public class Main extends JPanel {
 	 * @param none
     **/
 	public void populate() {
-		buttonMatrix = new JButton[SIZE][SIZE];
-		statusMatrix = new int[SIZE][SIZE];
+		tileMatrix = new Tile[SIZE][SIZE];
 		for (int row = 0; row < SIZE; row++) {
 			for (int col = 0; col < SIZE; col++) {
-				buttonMatrix[row][col] = new JButton(iconWall);
-				statusMatrix[row][col] = 1;
+				tileMatrix[row][col] = 
+						new Tile(Tile.TILE_TYPE.PATH);
+				tileMatrix[row][col].setIcon(iconPath);
 				ButtonListener listener = new ButtonListener();
-				buttonMatrix[row][col]
+				tileMatrix[row][col]
 						.addActionListener(listener);
-				add(buttonMatrix[row][col]);
+				add(tileMatrix[row][col]);
 			}
 		}
 	}
@@ -118,7 +119,7 @@ public class Main extends JPanel {
 		JComponent comp = (JComponent) event.getSource();
 		for (int row = 0; row < SIZE; row++) {
 			for (int col = 0; col < SIZE; col++) {
-				if (comp == buttonMatrix[row][col]) {
+				if (comp == tileMatrix[row][col]) {
 					System.out.println("TEST");
 				}
 			}
