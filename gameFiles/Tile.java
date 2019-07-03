@@ -1,4 +1,4 @@
-package reen145.github.io;
+package gameFiles;
 
 import javax.swing.*;
 

@@ -7,7 +7,7 @@ Due Date:
 Instructor:
 Description:
 *******************************************************************************/
-package reen145.github.io;
+package gameFiles;
 
 import java.awt.Dimension;
 import java.awt.GridLayout;
