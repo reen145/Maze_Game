@@ -48,6 +48,7 @@ public class Main extends JPanel {
 	
 	/**.
 	 * Represents a wall
+	 * '1' in status matrix 1
     **/
 	private ImageIcon iconWall;
 	
