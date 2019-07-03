@@ -35,16 +35,11 @@ public class Main extends JPanel {
 	 * Determines the size of each icon
     **/
 	private static final int ISIZE = 64;
-	
-	/**.
+
+	/**
 	 * Matrix containing all game tiles
-    **/
-	private JButton[][] buttonMatrix;
-	
-	/**.
-	 * Matrix containing information on game tiles
-    **/
-	private int[][] statusMatrix;
+	 */
+	private Tile[][] tileMatrix;
 	
 	/**.
 	 * Represents a wall
