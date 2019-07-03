@@ -110,7 +110,7 @@ public class Gamepanel extends JPanel {
 	}
 	/**.
 	 * Populates the maze with walls
-	 * @param none
+	 * @param void
     **/
 	public void setWalls() {
 		// sets each tile on the outer border with a wall
