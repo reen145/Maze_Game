@@ -165,6 +165,7 @@ public class Gamepanel extends JPanel {
 		// checks the grid of buttons for an event source
 		for (int row = 0; row < SIZE; row++) {
 			for (int col = 0; col < SIZE; col++) {
+				// found the source
 				if (comp == tileMatrix[row][col]) {
 					System.out.println("TEST");
 				}
