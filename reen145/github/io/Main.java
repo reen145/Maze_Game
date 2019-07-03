@@ -130,6 +130,10 @@ public class Main extends JPanel {
 		}
 
 	}
+
+	/**
+	 * helper method to play music
+	 */
 	public static void startBGMusic() {
 		try {
 			// Open an audio input stream.
