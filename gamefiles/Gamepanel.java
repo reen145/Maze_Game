@@ -126,6 +126,28 @@ public class Gamepanel extends JPanel {
 						iconWall, Tile.TILETYPE.WALL);
 			}
 		}
+		setTile(tileMatrix[1][3], iconWall, Tile.TILETYPE.WALL);
+		setTile(tileMatrix[1][2], iconWall, Tile.TILETYPE.WALL);
+		setTile(tileMatrix[2][3], iconWall, Tile.TILETYPE.WALL);
+		setTile(tileMatrix[2][4], iconWall, Tile.TILETYPE.WALL);
+		setTile(tileMatrix[2][6], iconWall, Tile.TILETYPE.WALL);
+		setTile(tileMatrix[1][6], iconWall, Tile.TILETYPE.WALL);
+		setTile(tileMatrix[3][1], iconWall, Tile.TILETYPE.WALL);
+		setTile(tileMatrix[4][1], iconWall, Tile.TILETYPE.WALL);
+		setTile(tileMatrix[4][2], iconWall, Tile.TILETYPE.WALL);
+		setTile(tileMatrix[3][4], iconWall, Tile.TILETYPE.WALL);
+		setTile(tileMatrix[3][6], iconWall, Tile.TILETYPE.WALL);
+		setTile(tileMatrix[3][7], iconWall, Tile.TILETYPE.WALL);
+		setTile(tileMatrix[5][1], iconWall, Tile.TILETYPE.WALL);
+		setTile(tileMatrix[5][2], iconWall, Tile.TILETYPE.WALL);
+		setTile(tileMatrix[5][3], iconWall, Tile.TILETYPE.WALL);
+		setTile(tileMatrix[5][4], iconWall, Tile.TILETYPE.WALL);
+		setTile(tileMatrix[6][3], iconWall, Tile.TILETYPE.WALL);
+		setTile(tileMatrix[6][5], iconWall, Tile.TILETYPE.WALL);
+		setTile(tileMatrix[7][7], iconWall, Tile.TILETYPE.WALL);
+		setTile(tileMatrix[8][7], iconWall, Tile.TILETYPE.WALL);
+		setTile(tileMatrix[9][7], iconWall, Tile.TILETYPE.WALL);
+		setTile(tileMatrix[1][1], iconChest, Tile.TILETYPE.CHEST);
 	}
 	/**.
 	 * Sets a given tile to be a certain type
