@@ -7,7 +7,7 @@ Due Date:
 Instructor:
 Description:
 *******************************************************************************/
-package gameFiles;
+package gamefiles;
 
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;

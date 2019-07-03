@@ -1,4 +1,13 @@
-package gameFiles;
+/*******************************************************************************
+Title:
+Filename: 
+@author: 
+@version 1.0
+Due Date:
+Instructor:
+Description:
+*******************************************************************************/
+package gamefiles;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -73,7 +82,7 @@ public class Gameframe extends JFrame {
 			public void actionPerformed(final ActionEvent event) {
 			JComponent comp = (JComponent) event.getSource();
 				if (comp == gameItem) {
-
+					panel.populate();
 				}
 
 				if (comp == quitItem) {

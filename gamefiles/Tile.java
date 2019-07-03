@@ -1,4 +1,13 @@
-package gameFiles;
+/*******************************************************************************
+Title:
+Filename: 
+@author: 
+@version 1.0
+Due Date:
+Instructor:
+Description:
+*******************************************************************************/
+package gamefiles;
 
 import javax.swing.JButton;
 
