@@ -132,7 +132,7 @@ public class Main extends JPanel {
 	}
 
 	/**
-	 * helper method to play music
+	 * helper method to play music for real
 	 */
 	public static void startBGMusic() {
 		try {
