@@ -1,18 +1,49 @@
 package gameFiles;
 
-import javax.swing.*;
+import javax.swing.JButton;
 
+/**.
+ * Class for the tiles representing the maze
+**/
 public class Tile extends JButton {
-    public enum TILE_TYPE {
+	private static final long serialVersionUID = 1L;
+
+	/**.
+	 * Defines types of tiles
+	**/
+	public enum TILETYPE {
+		/**.
+		 * Tile Types
+		**/
         PATH, WALL, PLAYER, CHEST
     }
-    TILE_TYPE type = TILE_TYPE.PATH;
+	
+	/**.
+	 * Class for the main jPanel to be used in the maze game
+	**/
+    private TILETYPE type = TILETYPE.PATH;
     
-    public Tile(final TILE_TYPE ti) {
-    	type = TILE_TYPE.PATH;
+    /**.
+     * Constructor for creating a tile
+     * @param ti - the type of tile
+    **/
+    public Tile(final TILETYPE ti) {
+    	type = ti;
     }
 
-    public TILE_TYPE getType() {
+    /**.
+     * Getter for the tile type
+     * @return type - the type of tile
+    **/
+    public TILETYPE getType() {
         return type;
+    }
+    
+    /**.
+     * Setter for the tile type
+     * @param ti - the type of tile
+    **/
+    public void setType(final TILETYPE ti) {
+    	type = ti;
     }
 }

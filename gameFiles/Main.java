@@ -9,13 +9,11 @@ Description:
 *******************************************************************************/
 package gameFiles;
 
-import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.IOException;
-
 import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
@@ -40,9 +38,9 @@ public class Main extends JPanel {
     **/
 	private static final int ISIZE = 64;
 
-	/**
+	/**.
 	 * Matrix containing all game tiles
-	 */
+	 **/
 	private Tile[][] tileMatrix;
 	
 	/**.
@@ -91,7 +89,7 @@ public class Main extends JPanel {
 		for (int row = 0; row < SIZE; row++) {
 			for (int col = 0; col < SIZE; col++) {
 				tileMatrix[row][col] = 
-						new Tile(Tile.TILE_TYPE.PATH);
+						new Tile(Tile.TILETYPE.PATH);
 				tileMatrix[row][col].setIcon(iconPath);
 				ButtonListener listener = new ButtonListener();
 				tileMatrix[row][col]
