@@ -99,6 +99,7 @@ public class Gamepanel extends JPanel {
 
 			@Override
 			public void actionPerformed(final ActionEvent e) {
+				//model.moveUp();
 				System.out.println("presssed up");
 			}
 		});
