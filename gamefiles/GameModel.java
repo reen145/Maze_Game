@@ -14,17 +14,18 @@ package gamefiles;
 *****************************************************************/
 public class GameModel {
     private TileEnum[][]  boardMatrix;
+    private int SIZE;
 
     public GameModel() {
         setDefaultBoard();
     }
 
     private void setDefaultBoard() {
-        int size = 10;
-        boardMatrix = new TileEnum[size][size];
+        SIZE = 10;
+        boardMatrix = new TileEnum[SIZE][SIZE];
         //sets a boarder of walls
-        for (int i = 0; i < size; i += (size - 1)) {
-            for (int j = 0; j < size; j++) {
+        for (int i = 0; i < SIZE; i += (SIZE - 1)) {
+            for (int j = 0; j < SIZE; j++) {
                 boardMatrix[0][j] = TileEnum.WALL;
                 boardMatrix[j][0] = TileEnum.WALL;
                 boardMatrix[i][j] = TileEnum.WALL;
@@ -32,8 +33,8 @@ public class GameModel {
             }
         }
         //sets everything inside the border to be a path
-        for (int i = 1; i < 9; i++) {
-            for(int j = 0; j < 10; j++) {
+        for (int i = 1; i < SIZE - 1; i++) {
+            for(int j = 1; j < SIZE - 1; j++) {
                 boardMatrix[i][j] = TileEnum.PATH;
             }
         }
@@ -64,15 +65,30 @@ public class GameModel {
         boardMatrix[1][8] = TileEnum.KEY;
     }
 
-    private TileEnum checkTile(int x, int y) {
-        return boardMatrix[x][y];
+    private TileEnum checkTile(int row, int col) {
+        return boardMatrix[row][col];
     }
 
-    public boolean move(int x, int y) {
+    public boolean moveUp() {
+        for(int i = 0; i < SIZE; i++) {
+            for (int j = 0; j < SIZE; j++) {
+                if (boardMatrix[i][j] == TileEnum.PLAYER
+                        && boardMatrix[i][j + 1] == TileEnum.PATH) {
+                    boardMatrix[i][j] = TileEnum.PATH;
+                    boardMatrix[i][j + 1] = TileEnum.PLAYER;
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
+    public boolean click(int row, int col) {
         return true;
     }
 
-    public boolean click(int x, int y) {
-        return true;
+    public TileEnum getTileValue(int row, int col) {
+        return boardMatrix[row][col];
     }
+
 }

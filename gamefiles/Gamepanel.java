@@ -39,6 +39,12 @@ public class Gamepanel extends JPanel {
 	 * Matrix containing all game tiles
 	 **/
 	private Tile[][] tileMatrix;
+
+	/**.
+	 * Game Model
+	 **/
+	private GameModel myGameModel;
+
 	
 	/**.
 	 * Constructor creates a jPanel for the maze game
@@ -70,7 +76,8 @@ public class Gamepanel extends JPanel {
 
 			@Override
 			public void actionPerformed(final ActionEvent e) {
-				//model.moveUp();
+				myGameModel.moveUp();
+				updateBoard();
 				System.out.println("presssed up");
 			}
 		});
@@ -104,6 +111,9 @@ public class Gamepanel extends JPanel {
 		// allow and start input map functionality
 		setFocusable(true);
 		requestFocusInWindow();
+
+		//insitiantiates the GameModel Object
+		myGameModel = new GameModel();
 		// populate maze with icons
 		populate();
 		
@@ -123,57 +133,23 @@ public class Gamepanel extends JPanel {
 		// adds a button listener for each tile
 		for (int row = 0; row < size; row++) {
 			for (int col = 0; col < size; col++) {
-				tileMatrix[row][col] = new Tile(TileEnum.PATH);
+				tileMatrix[row][col] = new Tile(myGameModel.getTileValue(row, col));
 				ButtonListener listener = new ButtonListener();
 				tileMatrix[row][col]
 						.addActionListener(listener);
 				add(tileMatrix[row][col]);
 			}
 		}
-		// inserts wall tiles
-		setWalls();
 	}
-	/**.
-	 * Populates the maze with walls
-	 * @param void
-    **/
-	public void setWalls() {
-		// sets each tile on the outer border with a wall
-		for (int i = 0; i < size; i += (size - 1)) {
-			for (int j = 0; j < size; j++) {
-				tileMatrix[0][j].setType(TileEnum.WALL);
-				tileMatrix[j][0].setType(TileEnum.WALL);
-				tileMatrix[i][j].setType(TileEnum.WALL);
-				tileMatrix[j][i].setType(TileEnum.WALL);
+
+	private void updateBoard() {
+		for (int row = 0; row < size; row++) {
+			for (int col = 0; col < size; col++) {
+				tileMatrix[row][col].setType(myGameModel.getTileValue(row, col));
 			}
 		}
-		// Set up static maze
-		tileMatrix[1][3].setType(TileEnum.WALL);
-		tileMatrix[1][2].setType(TileEnum.WALL);
-		tileMatrix[2][3].setType(TileEnum.WALL);
-		tileMatrix[2][4].setType(TileEnum.WALL);
-		tileMatrix[2][6].setType(TileEnum.WALL);
-		tileMatrix[1][6].setType(TileEnum.WALL);
-		tileMatrix[3][1].setType(TileEnum.WALL);
-		tileMatrix[4][1].setType(TileEnum.WALL);
-		tileMatrix[4][2].setType(TileEnum.WALL);
-		tileMatrix[3][4].setType(TileEnum.WALL);
-		tileMatrix[3][6].setType(TileEnum.WALL);
-		tileMatrix[3][7].setType(TileEnum.WALL);
-		tileMatrix[5][1].setType(TileEnum.WALL);
-		tileMatrix[5][2].setType(TileEnum.WALL);
-		tileMatrix[5][3].setType(TileEnum.WALL);
-		tileMatrix[5][4].setType(TileEnum.WALL);
-		tileMatrix[6][3].setType(TileEnum.WALL);
-		tileMatrix[6][5].setType(TileEnum.WALL);
-		tileMatrix[7][7].setType(TileEnum.WALL);
-		tileMatrix[8][7].setType(TileEnum.WALL);
-		tileMatrix[9][7].setType(TileEnum.WALL);
-		tileMatrix[1][1].setType(TileEnum.CHEST);
-		tileMatrix[8][8].setType(TileEnum.PLAYER);
-		tileMatrix[1][8].setType(TileEnum.KEY);
 	}
-	
+
 	/**.
 	Represents a listener for button push (action) events.
 	**/
