@@ -1,18 +1,21 @@
 /*******************************************************************************
-Title:
-Filename: 
-@author: 
+Title: Maze Game jPanel
+Filename: Gamepanel.java
+@author: Ryan Hilbert and Tim Bomers
 @version 1.0
-Due Date:
-Instructor:
-Description:
+Due Date: July 15, 2019
+Instructor: Dr Jag Nandigam
+Description: Thie file contains the class that will represent the panel of The
+Maze Game. It has a grid of custom jButtons called Tiles that fall into
+different categories, with icons and possible actions associated with each.
+This also handles user input through the arrow keys and mouse, allowing
+movement and interaction with the maze itself.
 *******************************************************************************/
 package gamefiles;
-
+// import necessary libraries
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import javax.swing.ImageIcon;
 import javax.swing.JComponent;
 import javax.swing.JPanel;
 import java.awt.event.KeyEvent;
@@ -30,7 +33,7 @@ public class Gamepanel extends JPanel {
 	 * Determines the size of the maze
 	 * MUST AGREE WITH GAME GUI SIZE
     **/
-	private static final int SIZE = 10;
+	private int size = 10;
 
 	/**.
 	 * Matrix containing all game tiles
@@ -39,12 +42,14 @@ public class Gamepanel extends JPanel {
 	
 	/**.
 	 * Constructor creates a jPanel for the maze game
-	 * @param none
+	 * @param s - size of matrix
     **/
-	public Gamepanel() {
+	public Gamepanel(final int s) {
+		// set size variable for this instance of the game
+		size = s;
+		
 		// set the layout to be a grid
-		setLayout(new GridLayout(SIZE, SIZE));
-
+		setLayout(new GridLayout(size, size));
 
 		// uses input maps to record key strokes
 		InputMap im = getInputMap(WHEN_IN_FOCUSED_WINDOW);
@@ -59,11 +64,8 @@ public class Gamepanel extends JPanel {
 		im.put(KeyStroke.getKeyStroke(
 				KeyEvent.VK_RIGHT, 0, false), "RIGHT");
 
-		// listeners for each of the buttons
+		// these functions listen for when an arrow key is pressed
 		am.put("UP", new AbstractAction() {
-			/**
-			 * 
-			 */
 			private static final long serialVersionUID = 1L;
 
 			@Override
@@ -74,9 +76,6 @@ public class Gamepanel extends JPanel {
 		});
 
 		am.put("DOWN", new AbstractAction() {
-			/**
-			 * 
-			 */
 			private static final long serialVersionUID = 1L;
 
 			@Override
@@ -86,9 +85,6 @@ public class Gamepanel extends JPanel {
 		});
 
 		am.put("LEFT", new AbstractAction() {
-			/**
-			 * 
-			 */
 			private static final long serialVersionUID = 1L;
 
 			@Override
@@ -98,9 +94,6 @@ public class Gamepanel extends JPanel {
 		});
 		
 		am.put("RIGHT", new AbstractAction() {
-			/**
-			 * 
-			 */
 			private static final long serialVersionUID = 1L;
 
 			@Override
@@ -108,6 +101,7 @@ public class Gamepanel extends JPanel {
 				System.out.println("pressed right");
 			}
 		});
+		// allow and start input map functionality
 		setFocusable(true);
 		requestFocusInWindow();
 		// populate maze with icons
@@ -121,17 +115,18 @@ public class Gamepanel extends JPanel {
     **/
 	public void populate() {
 		// instantiate the array of tiles
-		tileMatrix = new Tile[SIZE][SIZE];
+		tileMatrix = new Tile[size][size];
 		
 		// initializes each index of the tile matrix
 		// each index is a member of the Tile class
 		// each will have the 'path' icon and TILETYPE
 		// adds a button listener for each tile
-		for (int row = 0; row < SIZE; row++) {
-			for (int col = 0; col < SIZE; col++) {
+		for (int row = 0; row < size; row++) {
+			for (int col = 0; col < size; col++) {
 				tileMatrix[row][col] = new Tile(TileEnum.PATH);
 				ButtonListener listener = new ButtonListener();
-				tileMatrix[row][col].addActionListener(listener);
+				tileMatrix[row][col]
+						.addActionListener(listener);
 				add(tileMatrix[row][col]);
 			}
 		}
@@ -144,8 +139,8 @@ public class Gamepanel extends JPanel {
     **/
 	public void setWalls() {
 		// sets each tile on the outer border with a wall
-		for (int i = 0; i < SIZE; i += (SIZE - 1)) {
-			for (int j = 0; j < SIZE; j++) {
+		for (int i = 0; i < size; i += (size - 1)) {
+			for (int j = 0; j < size; j++) {
 				tileMatrix[0][j].setType(TileEnum.WALL);
 				tileMatrix[j][0].setType(TileEnum.WALL);
 				tileMatrix[i][j].setType(TileEnum.WALL);
@@ -190,15 +185,14 @@ public class Gamepanel extends JPanel {
 		public void actionPerformed(final ActionEvent event) {
 		JComponent comp = (JComponent) event.getSource();
 		// checks the grid of buttons for an event source
-		for (int row = 0; row < SIZE; row++) {
-			for (int col = 0; col < SIZE; col++) {
-				// found the source
-				if (comp == tileMatrix[row][col]) {
-					System.out.println("TEST");
-				}
+			for (int row = 0; row < size; row++) {
+				for (int col = 0; col < size; col++) {
+					// found the source
+					if (comp == tileMatrix[row][col]) {
+						System.out.println("TEST");
+					}
+				}	
 			}
 		}
-		}
-
 	}
 }

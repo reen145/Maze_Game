@@ -83,7 +83,7 @@ public class GameGUI extends JFrame {
 		setJMenuBar(menus);
 		menus.add(fileMenu);
 
-		panel = new Gamepanel();
+		panel = new Gamepanel(SIZE);
 		add(panel);
 		getContentPane().setPreferredSize(
 				new Dimension(dSize * dIcon, dSize * dIcon));
