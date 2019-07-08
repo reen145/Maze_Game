@@ -19,7 +19,7 @@ import javax.swing.JMenuItem;
 /****************************************************************.
  * Class for the main jFrame for the maze game
 *****************************************************************/
-public class Gameframe extends JFrame{
+public class Gameframe extends JFrame {
 	private static final long serialVersionUID = 1L;
 	/**.
 	 * menu dropdown
