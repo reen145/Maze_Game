@@ -38,43 +38,12 @@ public class Gamepanel extends JPanel {
 	private Tile[][] tileMatrix;
 	
 	/**.
-	 * Represents a wall
-	 * '1' in status matrix 1
-    **/
-	private ImageIcon iconWall;
-	
-	/**.
-	 * Represents a player
-    **/
-	private ImageIcon iconPlayer;
-	
-	/**.
-	 * Represents a blank square
-    **/
-	private ImageIcon iconPath;
-	
-	/**.
-	 * Represents a chest
-    **/
-	private ImageIcon iconChest;
-	/**.
-	 * Represents a chest
-    **/
-	private ImageIcon iconKey;
-	
-	/**.
 	 * Constructor creates a jPanel for the maze game
 	 * @param none
     **/
 	public Gamepanel() {
 		// set the layout to be a grid
 		setLayout(new GridLayout(SIZE, SIZE));
-		// instantiate the icons from the 'Icons' folder
-		iconWall = new ImageIcon("Icons/wall.png");
-		iconPlayer = new ImageIcon("Icons/player.png");
-		iconPath = new ImageIcon("Icons/path.png");
-		iconChest = new ImageIcon("Icons/chest.png");
-		iconKey = new ImageIcon("Icons/key.png");
 
 
 		// uses input maps to record key strokes
@@ -160,12 +129,9 @@ public class Gamepanel extends JPanel {
 		// adds a button listener for each tile
 		for (int row = 0; row < SIZE; row++) {
 			for (int col = 0; col < SIZE; col++) {
-				tileMatrix[row][col] = 
-						new Tile(Tile.TILETYPE.PATH);
-				tileMatrix[row][col].setIcon(iconPath);
+				tileMatrix[row][col] = new Tile(TileEnum.PATH);
 				ButtonListener listener = new ButtonListener();
-				tileMatrix[row][col]
-						.addActionListener(listener);
+				tileMatrix[row][col].addActionListener(listener);
 				add(tileMatrix[row][col]);
 			}
 		}
@@ -180,53 +146,37 @@ public class Gamepanel extends JPanel {
 		// sets each tile on the outer border with a wall
 		for (int i = 0; i < SIZE; i += (SIZE - 1)) {
 			for (int j = 0; j < SIZE; j++) {
-				setTile(tileMatrix[0][j], 
-						iconWall, Tile.TILETYPE.WALL);
-				setTile(tileMatrix[j][0], 
-						iconWall, Tile.TILETYPE.WALL);
-				setTile(tileMatrix[i][j], 
-						iconWall, Tile.TILETYPE.WALL);
-				setTile(tileMatrix[j][i], 
-						iconWall, Tile.TILETYPE.WALL);
+				tileMatrix[0][j].setType(TileEnum.WALL);
+				tileMatrix[j][0].setType(TileEnum.WALL);
+				tileMatrix[i][j].setType(TileEnum.WALL);
+				tileMatrix[j][i].setType(TileEnum.WALL);
 			}
 		}
 		// Set up static maze
-		setTile(tileMatrix[1][3], iconWall, Tile.TILETYPE.WALL);
-		setTile(tileMatrix[1][2], iconWall, Tile.TILETYPE.WALL);
-		setTile(tileMatrix[2][3], iconWall, Tile.TILETYPE.WALL);
-		setTile(tileMatrix[2][4], iconWall, Tile.TILETYPE.WALL);
-		setTile(tileMatrix[2][6], iconWall, Tile.TILETYPE.WALL);
-		setTile(tileMatrix[1][6], iconWall, Tile.TILETYPE.WALL);
-		setTile(tileMatrix[3][1], iconWall, Tile.TILETYPE.WALL);
-		setTile(tileMatrix[4][1], iconWall, Tile.TILETYPE.WALL);
-		setTile(tileMatrix[4][2], iconWall, Tile.TILETYPE.WALL);
-		setTile(tileMatrix[3][4], iconWall, Tile.TILETYPE.WALL);
-		setTile(tileMatrix[3][6], iconWall, Tile.TILETYPE.WALL);
-		setTile(tileMatrix[3][7], iconWall, Tile.TILETYPE.WALL);
-		setTile(tileMatrix[5][1], iconWall, Tile.TILETYPE.WALL);
-		setTile(tileMatrix[5][2], iconWall, Tile.TILETYPE.WALL);
-		setTile(tileMatrix[5][3], iconWall, Tile.TILETYPE.WALL);
-		setTile(tileMatrix[5][4], iconWall, Tile.TILETYPE.WALL);
-		setTile(tileMatrix[6][3], iconWall, Tile.TILETYPE.WALL);
-		setTile(tileMatrix[6][5], iconWall, Tile.TILETYPE.WALL);
-		setTile(tileMatrix[7][7], iconWall, Tile.TILETYPE.WALL);
-		setTile(tileMatrix[8][7], iconWall, Tile.TILETYPE.WALL);
-		setTile(tileMatrix[9][7], iconWall, Tile.TILETYPE.WALL);
-		setTile(tileMatrix[1][1], iconChest, Tile.TILETYPE.CHEST);
-		setTile(tileMatrix[8][8], iconPlayer, Tile.TILETYPE.PLAYER);
-		setTile(tileMatrix[1][8], iconKey, Tile.TILETYPE.KEY);
-	}
-	/**.
-	 * Sets a given tile to be a certain type
-	 * @param ti - the tile to be changed
-	 * @param im - the image to change to
-	 * @param ty - the type of the tile
-    **/
-	public void setTile(final Tile ti, 
-			final ImageIcon im, final Tile.TILETYPE ty) {
-		ti.setIcon(iconWall);
-		ti.setIcon(im);
-		ti.setType(ty);
+		tileMatrix[1][3].setType(TileEnum.WALL);
+		tileMatrix[1][2].setType(TileEnum.WALL);
+		tileMatrix[2][3].setType(TileEnum.WALL);
+		tileMatrix[2][4].setType(TileEnum.WALL);
+		tileMatrix[2][6].setType(TileEnum.WALL);
+		tileMatrix[1][6].setType(TileEnum.WALL);
+		tileMatrix[3][1].setType(TileEnum.WALL);
+		tileMatrix[4][1].setType(TileEnum.WALL);
+		tileMatrix[4][2].setType(TileEnum.WALL);
+		tileMatrix[3][4].setType(TileEnum.WALL);
+		tileMatrix[3][6].setType(TileEnum.WALL);
+		tileMatrix[3][7].setType(TileEnum.WALL);
+		tileMatrix[5][1].setType(TileEnum.WALL);
+		tileMatrix[5][2].setType(TileEnum.WALL);
+		tileMatrix[5][3].setType(TileEnum.WALL);
+		tileMatrix[5][4].setType(TileEnum.WALL);
+		tileMatrix[6][3].setType(TileEnum.WALL);
+		tileMatrix[6][5].setType(TileEnum.WALL);
+		tileMatrix[7][7].setType(TileEnum.WALL);
+		tileMatrix[8][7].setType(TileEnum.WALL);
+		tileMatrix[9][7].setType(TileEnum.WALL);
+		tileMatrix[1][1].setType(TileEnum.CHEST);
+		tileMatrix[8][8].setType(TileEnum.PLAYER);
+		tileMatrix[1][8].setType(TileEnum.KEY);
 	}
 	
 	/**.
