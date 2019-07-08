@@ -19,7 +19,7 @@ import javax.swing.JMenuItem;
 /****************************************************************.
  * Class for the main jFrame for the maze game
 *****************************************************************/
-public class Gameframe extends JFrame {
+public class Gameframe extends JFrame{
 	private static final long serialVersionUID = 1L;
 	/**.
 	 * menu dropdown
@@ -37,7 +37,7 @@ public class Gameframe extends JFrame {
 	 * new game button
 	*/
 	private JMenuItem gameItem;
-	
+
 	/**.
 	 * game panel with all buttons
 	*/
@@ -54,7 +54,7 @@ public class Gameframe extends JFrame {
 		fileMenu = new JMenu("File");
 		quitItem = new JMenuItem("Quit");
 		gameItem = new JMenuItem("New Game");
-		
+
 		ButtonListener listener = new ButtonListener();
 		quitItem.addActionListener(listener);
 		gameItem.addActionListener(listener);
@@ -64,7 +64,7 @@ public class Gameframe extends JFrame {
 		menus = new JMenuBar();
 		setJMenuBar(menus);
 		menus.add(fileMenu);
-		
+
 		panel = new Gamepanel();
 		add(panel);
 		getContentPane().setPreferredSize(

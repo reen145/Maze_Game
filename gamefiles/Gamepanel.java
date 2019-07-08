@@ -22,6 +22,11 @@ import javax.sound.sampled.UnsupportedAudioFileException;
 import javax.swing.ImageIcon;
 import javax.swing.JComponent;
 import javax.swing.JPanel;
+import java.awt.event.KeyEvent;
+import javax.swing.AbstractAction;
+import javax.swing.ActionMap;
+import javax.swing.InputMap;
+import javax.swing.KeyStroke;
 
 /**.
  * Class for the main jPanel to be used in the maze game
@@ -81,7 +86,50 @@ public class Gamepanel extends JPanel {
 		iconPath = new ImageIcon("Icons/path.png");
 		iconChest = new ImageIcon("Icons/chest.png");
 		iconKey = new ImageIcon("Icons/key.png");
-		
+
+
+		InputMap im = getInputMap(WHEN_IN_FOCUSED_WINDOW);
+		ActionMap am = getActionMap();
+
+		im.put(KeyStroke.getKeyStroke(KeyEvent.VK_UP, 0, false), "UP");
+		im.put(KeyStroke.getKeyStroke(KeyEvent.VK_DOWN, 0, false), "DOWN");
+		im.put(KeyStroke.getKeyStroke(KeyEvent.VK_LEFT, 0, false), "LEFT");
+		im.put(KeyStroke.getKeyStroke(KeyEvent.VK_RIGHT, 0, false), "RIGHT");
+
+
+		am.put("UP", new AbstractAction() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				System.out.println("presssed up");
+			}
+		});
+
+		am.put("DOWN", new AbstractAction() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				System.out.println("pressed down");
+			}
+		});
+
+		am.put("LEFT", new AbstractAction() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				System.out.println("pressed left");
+			}
+		});
+
+		am.put("RIGHT", new AbstractAction() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				System.out.println("pressed right");
+			}
+		});
+
+		setFocusable(true);
+		requestFocusInWindow();
+
+
+
 		// populate maze with icons
 		populate();
 		
