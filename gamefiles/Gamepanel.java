@@ -100,6 +100,7 @@ public class Gamepanel extends JPanel {
 		am.put("UP", new AbstractAction() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				//moveUp();
 				System.out.println("presssed up");
 			}
 		});
@@ -107,6 +108,7 @@ public class Gamepanel extends JPanel {
 		am.put("DOWN", new AbstractAction() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				//moveDown();
 				System.out.println("pressed down");
 			}
 		});
@@ -114,6 +116,7 @@ public class Gamepanel extends JPanel {
 		am.put("LEFT", new AbstractAction() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				//moveLeft();
 				System.out.println("pressed left");
 			}
 		});
@@ -121,6 +124,7 @@ public class Gamepanel extends JPanel {
 		am.put("RIGHT", new AbstractAction() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				//moveRight();
 				System.out.println("pressed right");
 			}
 		});
@@ -223,7 +227,7 @@ public class Gamepanel extends JPanel {
 	 * @param args arguments that can be passed to the main method
     **/
 	public static void main(final String[] args) {
-		Gameframe frame = new Gameframe(SIZE, ISIZE);
+		GameGUI frame = new GameGUI(SIZE, ISIZE);
 		frame.setVisible(true);
 		startBGMusic();
 	}
