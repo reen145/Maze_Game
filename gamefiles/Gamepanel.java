@@ -91,40 +91,60 @@ public class Gamepanel extends JPanel {
 		InputMap im = getInputMap(WHEN_IN_FOCUSED_WINDOW);
 		ActionMap am = getActionMap();
 
-		im.put(KeyStroke.getKeyStroke(KeyEvent.VK_UP, 0, false), "UP");
-		im.put(KeyStroke.getKeyStroke(KeyEvent.VK_DOWN, 0, false), "DOWN");
-		im.put(KeyStroke.getKeyStroke(KeyEvent.VK_LEFT, 0, false), "LEFT");
-		im.put(KeyStroke.getKeyStroke(KeyEvent.VK_RIGHT, 0, false), "RIGHT");
+		im.put(KeyStroke.getKeyStroke(
+				KeyEvent.VK_UP, 0, false), "UP");
+		im.put(KeyStroke.getKeyStroke(
+				KeyEvent.VK_DOWN, 0, false), "DOWN");
+		im.put(KeyStroke.getKeyStroke(
+				KeyEvent.VK_LEFT, 0, false), "LEFT");
+		im.put(KeyStroke.getKeyStroke(
+				KeyEvent.VK_RIGHT, 0, false), "RIGHT");
 
 
 		am.put("UP", new AbstractAction() {
+			/**
+			 * 
+			 */
+			private static final long serialVersionUID = 1L;
+
 			@Override
-			public void actionPerformed(ActionEvent e) {
-				//moveUp();
+			public void actionPerformed(final ActionEvent e) {
 				System.out.println("presssed up");
 			}
 		});
 
 		am.put("DOWN", new AbstractAction() {
+			/**
+			 * 
+			 */
+			private static final long serialVersionUID = 1L;
+
 			@Override
-			public void actionPerformed(ActionEvent e) {
-				//moveDown();
+			public void actionPerformed(final ActionEvent e) {
 				System.out.println("pressed down");
 			}
 		});
 
 		am.put("LEFT", new AbstractAction() {
+			/**
+			 * 
+			 */
+			private static final long serialVersionUID = 1L;
+
 			@Override
-			public void actionPerformed(ActionEvent e) {
-				//moveLeft();
+			public void actionPerformed(final ActionEvent e) {
 				System.out.println("pressed left");
 			}
 		});
 
 		am.put("RIGHT", new AbstractAction() {
+			/**
+			 * 
+			 */
+			private static final long serialVersionUID = 1L;
+
 			@Override
-			public void actionPerformed(ActionEvent e) {
-				//moveRight();
+			public void actionPerformed(final ActionEvent e) {
 				System.out.println("pressed right");
 			}
 		});
@@ -227,7 +247,7 @@ public class Gamepanel extends JPanel {
 	 * @param args arguments that can be passed to the main method
     **/
 	public static void main(final String[] args) {
-		GameGUI frame = new GameGUI(SIZE, ISIZE);
+		Gameframe frame = new Gameframe(SIZE, ISIZE);
 		frame.setVisible(true);
 		startBGMusic();
 	}
