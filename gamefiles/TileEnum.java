@@ -16,5 +16,5 @@ public enum TileEnum {
 	/**.
 	 * enum fields
 	**/
-    PATH, WALL, PLAYER, CHEST, KEY
+    PATH, WALL, PLAYER, CHEST, KEY, PLAYERKEY, CHESTOPEN
 }

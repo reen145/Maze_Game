@@ -37,9 +37,17 @@ public class Tile extends JButton {
      **/
     private ImageIcon iconChest;
     /**.
-     * Represents a chest
+     * Represents an open chest
+     **/
+    private ImageIcon iconChestOpen;
+    /**.
+     * Represents a key
      **/
     private ImageIcon iconKey;
+    /**.
+     * Represents a player with a key
+     **/
+    private ImageIcon iconPlayerKey;
 
 
     /**.
@@ -97,6 +105,12 @@ public class Tile extends JButton {
             case WALL:
                 this.setIcon(iconWall);
                 break;
+            case PLAYERKEY:
+            	this.setIcon(iconPlayerKey);
+            	break;
+            case CHESTOPEN:
+            	this.setIcon(iconChestOpen);
+            	break;
         }
     }
 }
