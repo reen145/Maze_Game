@@ -1,11 +1,11 @@
 /*******************************************************************************
-Title:
-Filename:
-@author: 
+Filename: Title.java
+@author: Timothy Bomers and Ryan Hilbert
 @version 1.0
-Due Date:
-Instructor:
-Description:
+Due Date: 07-15-2019
+Instructor: Dr. Jag Nandigam
+Description:  A class that extends JButton that represents the tiles on the
+    game board.
 *******************************************************************************/
 package gamefiles;
 

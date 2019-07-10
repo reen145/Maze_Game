@@ -1,15 +1,15 @@
 /*******************************************************************************
 Title: Maze Game jPanel
-Filename: Gamepanel.java
+Filename: GamePanel.java
 @author: Ryan Hilbert and Tim Bomers
 @version 1.0
 Due Date: July 15, 2019
 Instructor: Dr Jag Nandigam
-Description: Thie file contains the class that will represent the panel of The
-Maze Game. It has a grid of custom jButtons called Tiles that fall into
-different categories, with icons and possible actions associated with each.
-This also handles user input through the arrow keys and mouse, allowing
-movement and interaction with the maze itself.
+Description: This file contains the class that will represent the panel of The
+    Maze Game. It has a grid of custom jButtons called Tiles that fall into
+    different categories, with icons and possible actions associated with each.
+    This also handles user input through the arrow keys and mouse, allowing
+    movement and interaction with the maze itself.
 *******************************************************************************/
 package gamefiles;
 // import necessary libraries
@@ -36,7 +36,7 @@ import javax.swing.KeyStroke;
 /**.
  * Class for the main jPanel to be used in the maze game
 **/
-public class Gamepanel extends JPanel {
+public class GamePanel extends JPanel {
 	private static final long serialVersionUID = 1L;
 	/**.
 	 * Determines the size of the maze
@@ -59,7 +59,7 @@ public class Gamepanel extends JPanel {
 	 * Constructor creates a jPanel for the maze game
 	 * @param s - size of matrix
     **/
-	public Gamepanel(final int s) {
+	public GamePanel(final int s) {
 		// set size variable for this instance of the game
 		size = s;
 		
@@ -245,11 +245,6 @@ public class Gamepanel extends JPanel {
 								updateBoard();
 								playChest();
 				JOptionPane.showMessageDialog(null, "You Won");
-						myGameModel.resetBoard();
-								updateBoard();
-						myGameModel.resetBoard();
-					JOptionPane.showMessageDialog(null, 
-								"You Won");
 						myGameModel.resetBoard();
 								updateBoard();
 							}

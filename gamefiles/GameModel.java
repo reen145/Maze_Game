@@ -1,11 +1,13 @@
 /*******************************************************************************
-Title:
-Filename: 
-@author: 
+Filename: GameModel.java
+@author: Timothy Bomers and Ryan Hilbert
 @version 1.0
-Due Date:
-Instructor:
-Description:
+Due Date: 07-15-2019
+Instructor: Dr. Jag Nandigam
+Description: This file contains a class that models the rules and mechanics
+    of the Maze Game. It contains a matrix of enums representing the current
+    state of the board, and modifies the matrix in accordance with any valid
+    moves given to it by the GamePanel.
 *******************************************************************************/
 package gamefiles;
 

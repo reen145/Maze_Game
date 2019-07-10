@@ -28,7 +28,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="4" language="java" name="gamefiles.Gamepanel.ButtonListener" project="Maze_Game" 
+  <class id="4" language="java" name="gamefiles.GamePanel.ButtonListener" project="Maze_Game"
     file="/Maze_Game/gamefiles/Gamepanel.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="739" y="226"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -37,7 +37,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="5" language="java" name="gamefiles.Gamepanel" project="Maze_Game" 
+  <class id="5" language="java" name="gamefiles.GamePanel" project="Maze_Game"
     file="/Maze_Game/gamefiles/Gamepanel.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="312" y="140"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 

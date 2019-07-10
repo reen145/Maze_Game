@@ -1,24 +1,20 @@
 /*******************************************************************************
-Title:
-Filename: 
-@author: 
+Filename: GameGUI
+@author: Timothy Bomers and Ryan Hilbert
 @version 1.0
-Due Date:
-Instructor:
-Description:
+Due Date: 07-15-2019
+Instructor: Dr. Jag Nandigam
+Description: The class that extends JFrame, to create the GUI for the game.
+ 	Contains a GamePanel object, and the executable main method.
 *******************************************************************************/
 package gamefiles;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
-import java.io.IOException;
-
 import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
-import javax.sound.sampled.LineUnavailableException;
-import javax.sound.sampled.UnsupportedAudioFileException;
 import javax.swing.JComponent;
 import javax.swing.JFrame;
 import javax.swing.JMenu;
@@ -59,7 +55,7 @@ public class GameGUI extends JFrame {
 	/**.
 	 * game panel with all buttons
 	*/
-	private Gamepanel panel;
+	private GamePanel panel;
 	/****************************************************************.
 	 * Constructor for the main frame for the maze game
 	 * @param dSize - length of each side of the maze
@@ -83,7 +79,7 @@ public class GameGUI extends JFrame {
 		setJMenuBar(menus);
 		menus.add(fileMenu);
 
-		panel = new Gamepanel(SIZE);
+		panel = new GamePanel(SIZE);
 		add(panel);
 		getContentPane().setPreferredSize(
 				new Dimension(dSize * dIcon, dSize * dIcon));
@@ -103,7 +99,7 @@ public class GameGUI extends JFrame {
 	/**.
 	 * helper method to play music for real
 	 **/
-	public static void startBGMusic() {
+	private static void startBGMusic() {
 		try {
 			// Open an audio input stream.
 			File soundFile = new File("Sounds/background.wav");
@@ -116,11 +112,7 @@ public class GameGUI extends JFrame {
 			clip.open(audioIn);
 			clip.start();
 			clip.loop(Clip.LOOP_CONTINUOUSLY);
-		} catch (UnsupportedAudioFileException e) {
-			e.printStackTrace();
-		} catch (IOException e) {
-			e.printStackTrace();
-		} catch (LineUnavailableException e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
