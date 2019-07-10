@@ -112,6 +112,15 @@ public class GameModel {
         return false;
     }
 
+    /**
+     * resets the board
+     * @param none
+     */
+    public void resetBoard() {
+        setDefaultBoard();
+    }
+
+
     /**.
      * Function to check if a move is valid
      * @param none
