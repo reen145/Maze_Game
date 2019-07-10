@@ -9,7 +9,8 @@ Description:
 *******************************************************************************/
 package gamefiles;
 
-import javax.swing.*;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
 
 /**.
  * Class for the tiles representing the maze
@@ -90,8 +91,12 @@ public class Tile extends JButton {
 
     }
 
+    /**.
+     * Function to update a tiles icon
+     * @param none
+    **/
     private void updateImage() {
-        switch(type) {
+        switch (type) {
             case KEY:
                 this.setIcon(iconKey);
                 break;
@@ -112,6 +117,8 @@ public class Tile extends JButton {
             	break;
             case CHESTOPEN:
             	this.setIcon(iconChestOpen);
+            	break;
+            	default:
             	break;
         }
     }

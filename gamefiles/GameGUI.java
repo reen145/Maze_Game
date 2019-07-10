@@ -40,7 +40,7 @@ public class GameGUI extends JFrame {
     **/
 	private static final int ISIZE = 64;
 	/**.
-	 * menu dropdown
+	 * menu drop down
 	*/
 	private JMenuBar menus;
 	/**.
