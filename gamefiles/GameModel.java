@@ -15,7 +15,6 @@ package gamefiles;
 public class GameModel {
     private TileEnum[][]  boardMatrix;
     private int SIZE;
-
     public GameModel() {
         setDefaultBoard();
     }
@@ -77,6 +76,11 @@ public class GameModel {
                     boardMatrix[i][j] = TileEnum.PATH;
                     boardMatrix[i - 1][j] = TileEnum.PLAYER;
                     return true;
+                } else if(boardMatrix[i][j] == TileEnum.PLAYERKEY
+                        && boardMatrix[i - 1][j] == TileEnum.PATH) {
+                    boardMatrix[i][j] = TileEnum.PATH;
+                    boardMatrix[i - 1][j] = TileEnum.PLAYERKEY;
+                    return true;
                 }
             }
         }
@@ -90,6 +94,11 @@ public class GameModel {
                         && boardMatrix[i + 1][j] == TileEnum.PATH) {
                     boardMatrix[i][j] = TileEnum.PATH;
                     boardMatrix[i + 1][j] = TileEnum.PLAYER;
+                    return true;
+                } else if(boardMatrix[i][j] == TileEnum.PLAYERKEY
+                        && boardMatrix[i + 1][j] == TileEnum.PATH) {
+                    boardMatrix[i][j] = TileEnum.PATH;
+                    boardMatrix[i + 1][j] = TileEnum.PLAYERKEY;
                     return true;
                 }
             }
@@ -105,6 +114,11 @@ public class GameModel {
                     boardMatrix[i][j] = TileEnum.PATH;
                     boardMatrix[i][j - 1] = TileEnum.PLAYER;
                     return true;
+                }else if(boardMatrix[i][j] == TileEnum.PLAYERKEY
+                        && boardMatrix[i][j - 1] == TileEnum.PATH) {
+                    boardMatrix[i][j] = TileEnum.PATH;
+                    boardMatrix[i][j - 1] = TileEnum.PLAYERKEY;
+                    return true;
                 }
             }
         }
@@ -119,6 +133,61 @@ public class GameModel {
                     boardMatrix[i][j] = TileEnum.PATH;
                     boardMatrix[i][j + 1] = TileEnum.PLAYER;
                     return true;
+                } else if(boardMatrix[i][j] == TileEnum.PLAYERKEY
+                        && boardMatrix[i][j + 1] == TileEnum.PATH) {
+                    boardMatrix[i][j] = TileEnum.PATH;
+                    boardMatrix[i][j + 1] = TileEnum.PLAYERKEY;
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
+    public boolean keySelected() {
+        for(int i = 0; i < SIZE; i++) {
+            for (int j = 0; j < SIZE; j++) {
+                if (boardMatrix[i][j] == TileEnum.KEY) {
+                    if (boardMatrix[i + 1][j] == TileEnum.PLAYER) {
+                        boardMatrix[i][j] = TileEnum.PATH;
+                        boardMatrix[i + 1][j] = TileEnum.PLAYERKEY;
+                    } else if (boardMatrix[i - 1][j] == TileEnum.PLAYER) {
+                        boardMatrix[i][j] = TileEnum.PATH;
+                        boardMatrix[i - 1][j] = TileEnum.PLAYERKEY;
+                    } else if (boardMatrix[i][j + 1] == TileEnum.PLAYER) {
+                        boardMatrix[i][j] = TileEnum.PATH;
+                        boardMatrix[i][j + 1] = TileEnum.PLAYERKEY;
+                    } else if (boardMatrix[i][j - 1] == TileEnum.PLAYER) {
+                        boardMatrix[i][j] = TileEnum.PATH;
+                        boardMatrix[i][j - 1] = TileEnum.PLAYERKEY;
+                    }
+                }
+            }
+        }
+        return false;
+    }
+
+    public boolean chestSelected() {
+        for(int i = 0; i < SIZE; i++) {
+            for (int j = 0; j < SIZE; j++) {
+                if (boardMatrix[i][j] == TileEnum.CHEST) {
+                    if (boardMatrix[i + 1][j] == TileEnum.PLAYERKEY) {
+                        boardMatrix[i][j] = TileEnum.CHESTOPEN;
+                        boardMatrix[i + 1][j] = TileEnum.PLAYER;
+                        return true;
+                    } else if (boardMatrix[i - 1][j] == TileEnum.PLAYERKEY) {
+                        boardMatrix[i][j] = TileEnum.CHESTOPEN;
+                        boardMatrix[i - 1][j] = TileEnum.PLAYER;
+                        return true;
+                    } else if (boardMatrix[i][j + 1] == TileEnum.PLAYERKEY) {
+                        boardMatrix[i][j] = TileEnum.CHESTOPEN;
+                        boardMatrix[i][j + 1] = TileEnum.PLAYER;
+                        return true;
+                    } else if (boardMatrix[i][j - 1] == TileEnum.PLAYERKEY) {
+                        boardMatrix[i][j] = TileEnum.CHESTOPEN;
+                        boardMatrix[i][j - 1] = TileEnum.PLAYER;
+                        return true;
+                    }
                 }
             }
         }

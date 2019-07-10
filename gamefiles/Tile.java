@@ -66,6 +66,8 @@ public class Tile extends JButton {
         iconPath = new ImageIcon("Icons/path.png");
         iconChest = new ImageIcon("Icons/chest.png");
         iconKey = new ImageIcon("Icons/key.png");
+        iconPlayerKey = new ImageIcon("Icons/player_key.png");
+        iconChestOpen = new ImageIcon("Icons/chest_open.png");
     	type = ti;
     	updateImage();
     }

@@ -18,6 +18,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JComponent;
 import javax.swing.JPanel;
+import javax.swing.JOptionPane;
 import java.awt.event.KeyEvent;
 import javax.swing.AbstractAction;
 import javax.swing.ActionMap;
@@ -78,7 +79,6 @@ public class Gamepanel extends JPanel {
 			public void actionPerformed(final ActionEvent e) {
 				myGameModel.moveUp();
 				updateBoard();
-				System.out.println("presssed up");
 			}
 		});
 		am.put("DOWN", new AbstractAction() {
@@ -88,7 +88,6 @@ public class Gamepanel extends JPanel {
 			public void actionPerformed(final ActionEvent e) {
 				myGameModel.moveDown();
 				updateBoard();
-				System.out.println("presssed down");
 			}
 		});
 
@@ -99,7 +98,6 @@ public class Gamepanel extends JPanel {
 			public void actionPerformed(final ActionEvent e) {
 				myGameModel.moveLeft();
 				updateBoard();
-				System.out.println("presssed left");
 			}
 		});
 		am.put("RIGHT", new AbstractAction() {
@@ -109,7 +107,6 @@ public class Gamepanel extends JPanel {
 			public void actionPerformed(final ActionEvent e) {
 				myGameModel.moveRight();
 				updateBoard();
-				System.out.println("presssed right");
 			}
 		});
 
@@ -171,7 +168,32 @@ public class Gamepanel extends JPanel {
 				for (int col = 0; col < size; col++) {
 					// found the source
 					if (comp == tileMatrix[row][col]) {
-						System.out.println("TEST");
+						//check for movement
+						if (tileMatrix[row + 1][col].getType() == TileEnum.PLAYER | tileMatrix[row + 1][col].getType() == TileEnum.PLAYERKEY) {
+							myGameModel.moveUp();
+							updateBoard();
+						} else if (tileMatrix[row - 1][col].getType() == TileEnum.PLAYER | tileMatrix[row - 1][col].getType() == TileEnum.PLAYERKEY) {
+							myGameModel.moveDown();
+							updateBoard();
+						} else if (tileMatrix[row][col + 1].getType() == TileEnum.PLAYER | tileMatrix[row][col + 1].getType() == TileEnum.PLAYERKEY) {
+							myGameModel.moveLeft();
+							updateBoard();
+						} else if(tileMatrix[row][col - 1].getType() == TileEnum.PLAYER | tileMatrix[row][col - 1].getType() == TileEnum.PLAYERKEY) {
+							myGameModel.moveRight();
+							updateBoard();
+						}
+						//checks to see if the key was clicked
+						if(tileMatrix[row][col].getType() == TileEnum.KEY) {
+							myGameModel.keySelected();
+							updateBoard();
+						}
+						//checks to see if the chest was clicked
+						if(tileMatrix[row][col].getType() == TileEnum.CHEST) {
+							if (myGameModel.chestSelected()) {
+								updateBoard();
+								JOptionPane.showMessageDialog(null, "You Won");
+							}
+						}
 					}
 				}	
 			}
