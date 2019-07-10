@@ -81,13 +81,14 @@ public class Gamepanel extends JPanel {
 				System.out.println("presssed up");
 			}
 		});
-
 		am.put("DOWN", new AbstractAction() {
 			private static final long serialVersionUID = 1L;
 
 			@Override
 			public void actionPerformed(final ActionEvent e) {
-				System.out.println("pressed down");
+				myGameModel.moveDown();
+				updateBoard();
+				System.out.println("presssed down");
 			}
 		});
 
@@ -96,18 +97,23 @@ public class Gamepanel extends JPanel {
 
 			@Override
 			public void actionPerformed(final ActionEvent e) {
-				System.out.println("pressed left");
+				myGameModel.moveLeft();
+				updateBoard();
+				System.out.println("presssed left");
 			}
 		});
-		
 		am.put("RIGHT", new AbstractAction() {
 			private static final long serialVersionUID = 1L;
 
 			@Override
 			public void actionPerformed(final ActionEvent e) {
-				System.out.println("pressed right");
+				myGameModel.moveRight();
+				updateBoard();
+				System.out.println("presssed right");
 			}
 		});
+
+
 		// allow and start input map functionality
 		setFocusable(true);
 		requestFocusInWindow();
