@@ -73,6 +73,48 @@ public class GameModel {
         for(int i = 0; i < SIZE; i++) {
             for (int j = 0; j < SIZE; j++) {
                 if (boardMatrix[i][j] == TileEnum.PLAYER
+                        && boardMatrix[i - 1][j] == TileEnum.PATH) {
+                    boardMatrix[i][j] = TileEnum.PATH;
+                    boardMatrix[i - 1][j] = TileEnum.PLAYER;
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
+    public boolean moveDown() {
+        for(int i = 0; i < SIZE; i++) {
+            for (int j = 0; j < SIZE; j++) {
+                if (boardMatrix[i][j] == TileEnum.PLAYER
+                        && boardMatrix[i + 1][j] == TileEnum.PATH) {
+                    boardMatrix[i][j] = TileEnum.PATH;
+                    boardMatrix[i + 1][j] = TileEnum.PLAYER;
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
+    public boolean moveLeft() {
+        for(int i = 0; i < SIZE; i++) {
+            for (int j = 0; j < SIZE; j++) {
+                if (boardMatrix[i][j] == TileEnum.PLAYER
+                        && boardMatrix[i][j - 1] == TileEnum.PATH) {
+                    boardMatrix[i][j] = TileEnum.PATH;
+                    boardMatrix[i][j - 1] = TileEnum.PLAYER;
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
+    public boolean moveRight() {
+        for(int i = 0; i < SIZE; i++) {
+            for (int j = 0; j < SIZE; j++) {
+                if (boardMatrix[i][j] == TileEnum.PLAYER
                         && boardMatrix[i][j + 1] == TileEnum.PATH) {
                     boardMatrix[i][j] = TileEnum.PATH;
                     boardMatrix[i][j + 1] = TileEnum.PLAYER;
