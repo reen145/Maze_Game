@@ -196,15 +196,19 @@ public class GameModel {
                     if (boardMatrix[i + 1][j] == TileEnum.PLAYER) {
                         boardMatrix[i][j] = TileEnum.PATH;
                         boardMatrix[i + 1][j] = TileEnum.PLAYERKEY;
+                        return true;
                     } else if (boardMatrix[i - 1][j] == TileEnum.PLAYER) {
                         boardMatrix[i][j] = TileEnum.PATH;
                         boardMatrix[i - 1][j] = TileEnum.PLAYERKEY;
+                        return true;
                     } else if (boardMatrix[i][j + 1] == TileEnum.PLAYER) {
                         boardMatrix[i][j] = TileEnum.PATH;
                         boardMatrix[i][j + 1] = TileEnum.PLAYERKEY;
+                        return true;
                     } else if (boardMatrix[i][j - 1] == TileEnum.PLAYER) {
                         boardMatrix[i][j] = TileEnum.PATH;
                         boardMatrix[i][j - 1] = TileEnum.PLAYERKEY;
+                        return true;
                     }
                 }
             }

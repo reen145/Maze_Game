@@ -16,10 +16,13 @@ package gamefiles;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import javax.sound.sampled.*;
 import javax.swing.JComponent;
 import javax.swing.JPanel;
 import javax.swing.JOptionPane;
 import java.awt.event.KeyEvent;
+import java.io.File;
+import java.io.IOException;
 import javax.swing.AbstractAction;
 import javax.swing.ActionMap;
 import javax.swing.InputMap;
@@ -77,8 +80,12 @@ public class Gamepanel extends JPanel {
 
 			@Override
 			public void actionPerformed(final ActionEvent e) {
-				myGameModel.moveUp();
-				updateBoard();
+				if (myGameModel.moveUp()) {
+					playStep();
+					updateBoard();
+				} else {
+					playError();
+				}
 			}
 		});
 		am.put("DOWN", new AbstractAction() {
@@ -86,8 +93,12 @@ public class Gamepanel extends JPanel {
 
 			@Override
 			public void actionPerformed(final ActionEvent e) {
-				myGameModel.moveDown();
-				updateBoard();
+				if (myGameModel.moveDown()) {
+					playStep();
+					updateBoard();
+				} else {
+					playError();
+				}
 			}
 		});
 
@@ -96,8 +107,12 @@ public class Gamepanel extends JPanel {
 
 			@Override
 			public void actionPerformed(final ActionEvent e) {
-				myGameModel.moveLeft();
-				updateBoard();
+				if (myGameModel.moveLeft()) {
+					playStep();
+					updateBoard();
+				} else {
+					playError();
+				}
 			}
 		});
 		am.put("RIGHT", new AbstractAction() {
@@ -105,8 +120,12 @@ public class Gamepanel extends JPanel {
 
 			@Override
 			public void actionPerformed(final ActionEvent e) {
-				myGameModel.moveRight();
-				updateBoard();
+				if (myGameModel.moveRight()) {
+					playStep();
+					updateBoard();
+				} else {
+					playError();
+				}
 			}
 		});
 
@@ -136,8 +155,7 @@ public class Gamepanel extends JPanel {
 		// adds a button listener for each tile
 		for (int row = 0; row < size; row++) {
 			for (int col = 0; col < size; col++) {
-				tileMatrix[row][col] = new Tile(myGameModel.
-						getTileValue(row, col));
+				tileMatrix[row][col] = new Tile(myGameModel.getTileValue(row, col));
 				ButtonListener listener = new ButtonListener();
 				tileMatrix[row][col]
 						.addActionListener(listener);
@@ -145,17 +163,11 @@ public class Gamepanel extends JPanel {
 			}
 		}
 	}
-	
-	/**.
-	 * Scans through the maze tiles and updates
-	 * the icon to match its current state
-	 * @param none
-    **/
+
 	private void updateBoard() {
 		for (int row = 0; row < size; row++) {
 			for (int col = 0; col < size; col++) {
-				tileMatrix[row][col].setType(myGameModel.
-						getTileValue(row, col));
+				tileMatrix[row][col].setType(myGameModel.getTileValue(row, col));
 			}
 		}
 	}
@@ -175,57 +187,145 @@ public class Gamepanel extends JPanel {
 				for (int col = 0; col < size; col++) {
 					// found the source
 					if (comp == tileMatrix[row][col]) {
-						
 						//check for movement
-	if (tileMatrix[row + 1][col].getType() == TileEnum
-			.PLAYER | tileMatrix[row + 1][col]
-			.getType() == TileEnum.PLAYERKEY) {
-		
-							myGameModel.moveUp();
-							updateBoard();
-							
-	} else if (tileMatrix[row - 1][col].getType() == TileEnum
-			.PLAYER | tileMatrix[row - 1][col]
-			.getType() == TileEnum.PLAYERKEY) {
-		
-							myGameModel.moveDown();
-							updateBoard();
-							
-	} else if (tileMatrix[row][col + 1].getType() == TileEnum
-			.PLAYER | tileMatrix[row][col + 1]
-			.getType() == TileEnum.PLAYERKEY) {
-		
-							myGameModel.moveLeft();
-							updateBoard();
-							
-	} else if (tileMatrix[row][col - 1].getType() == TileEnum
-			.PLAYER | tileMatrix[row][col - 1]
-			.getType() == TileEnum.PLAYERKEY) {
-		
-							myGameModel.moveRight();
-							updateBoard();
-							
-	}
-						//checks to see if 
-						//the key was clicked
-				if (tileMatrix[row][col]
-					.getType() == TileEnum.KEY) {
-						myGameModel.keySelected();
-						updateBoard();
-				}
-						//checks to see if
-						//the chest was clicked
-				if (tileMatrix[row][col].getType()
-						== TileEnum.CHEST) {
-				if (myGameModel.chestSelected()) {
-					updateBoard();
-					JOptionPane.showMessageDialog(null, 
-							"You Won");
+						if (tileMatrix[row][col].getType() == TileEnum.PATH && tileMatrix[row + 1][col].getType() == TileEnum.PLAYER | tileMatrix[row + 1][col].getType() == TileEnum.PLAYERKEY) {
+							if (myGameModel.moveUp()) {
+								playStep();
+								updateBoard();
 							}
+						} else if (tileMatrix[row][col].getType() == TileEnum.PATH && tileMatrix[row - 1][col].getType() == TileEnum.PLAYER | tileMatrix[row - 1][col].getType() == TileEnum.PLAYERKEY) {
+							if (myGameModel.moveDown()) {
+								playStep();
+								updateBoard();
+							}
+						} else if (tileMatrix[row][col].getType() == TileEnum.PATH && tileMatrix[row][col + 1].getType() == TileEnum.PLAYER | tileMatrix[row][col + 1].getType() == TileEnum.PLAYERKEY) {
+							if (myGameModel.moveLeft()) {
+								playStep();
+								updateBoard();
+							}
+						} else if(tileMatrix[row][col].getType() == TileEnum.PATH && tileMatrix[row][col - 1].getType() == TileEnum.PLAYER | tileMatrix[row][col - 1].getType() == TileEnum.PLAYERKEY) {
+							 if (myGameModel.moveRight()) {
+							 	playStep();
+							 	updateBoard();
+							 }
+						}
+						//checks to see if the key was clicked
+						 else if(tileMatrix[row][col].getType() == TileEnum.KEY) {
+							if (myGameModel.keySelected()) {
+								playKey();
+								updateBoard();
+							}
+						}
+						//checks to see if the chest was clicked
+						else if(tileMatrix[row][col].getType() == TileEnum.CHEST) {
+							if (myGameModel.chestSelected()) {
+								updateBoard();
+								playChest();
+								JOptionPane.showMessageDialog(null, "You Won");
+							}
+						}
+						else {
+							playError();
 						}
 					}
 				}	
 			}
+		}
+	}
+
+	/**.
+	 * helper method to play music for real
+	 **/
+	public static void playError() {
+		try {
+			// Open an audio input stream.
+			File soundFile = new File("Sounds/error.wav");
+			AudioInputStream audioIn = AudioSystem
+					.getAudioInputStream(soundFile);
+			// Get a sound clip resource.
+			Clip clip = AudioSystem.getClip();
+			// Open audio clip and load samples
+			// from the audio input stream.
+			clip.open(audioIn);
+			clip.start();
+		} catch (UnsupportedAudioFileException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		} catch (LineUnavailableException e) {
+			e.printStackTrace();
+		}
+	}
+
+	/**.
+	 * helper method to play music for real
+	 **/
+	public static void playStep() {
+		try {
+			// Open an audio input stream.
+			File soundFile = new File("Sounds/step.wav");
+			AudioInputStream audioIn = AudioSystem
+					.getAudioInputStream(soundFile);
+			// Get a sound clip resource.
+			Clip clip = AudioSystem.getClip();
+			// Open audio clip and load samples
+			// from the audio input stream.
+			clip.open(audioIn);
+			clip.start();
+		} catch (UnsupportedAudioFileException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		} catch (LineUnavailableException e) {
+			e.printStackTrace();
+		}
+	}
+
+	/**.
+	 * helper method to play music for real
+	 **/
+	public static void playKey() {
+		try {
+			// Open an audio input stream.
+			File soundFile = new File("Sounds/tada.wav");
+			AudioInputStream audioIn = AudioSystem
+					.getAudioInputStream(soundFile);
+			// Get a sound clip resource.
+			Clip clip = AudioSystem.getClip();
+			// Open audio clip and load samples
+			// from the audio input stream.
+			clip.open(audioIn);
+			clip.start();
+		} catch (UnsupportedAudioFileException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		} catch (LineUnavailableException e) {
+			e.printStackTrace();
+		}
+	}
+
+	/**.
+	 * helper method to play music for real
+	 **/
+	public static void playChest() {
+		try {
+			// Open an audio input stream.
+			File soundFile = new File("Sounds/creak.wav");
+			AudioInputStream audioIn = AudioSystem
+					.getAudioInputStream(soundFile);
+			// Get a sound clip resource.
+			Clip clip = AudioSystem.getClip();
+			// Open audio clip and load samples
+			// from the audio input stream.
+			clip.open(audioIn);
+			clip.start();
+		} catch (UnsupportedAudioFileException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		} catch (LineUnavailableException e) {
+			e.printStackTrace();
 		}
 	}
 }
