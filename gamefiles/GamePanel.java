@@ -272,11 +272,7 @@ public class GamePanel extends JPanel {
 			// from the audio input stream.
 			clip.open(audioIn);
 			clip.start();
-		} catch (UnsupportedAudioFileException e) {
-			e.printStackTrace();
-		} catch (IOException e) {
-			e.printStackTrace();
-		} catch (LineUnavailableException e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
@@ -296,11 +292,7 @@ public class GamePanel extends JPanel {
 			// from the audio input stream.
 			clip.open(audioIn);
 			clip.start();
-		} catch (UnsupportedAudioFileException e) {
-			e.printStackTrace();
-		} catch (IOException e) {
-			e.printStackTrace();
-		} catch (LineUnavailableException e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
@@ -320,11 +312,7 @@ public class GamePanel extends JPanel {
 			// from the audio input stream.
 			clip.open(audioIn);
 			clip.start();
-		} catch (UnsupportedAudioFileException e) {
-			e.printStackTrace();
-		} catch (IOException e) {
-			e.printStackTrace();
-		} catch (LineUnavailableException e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
@@ -344,11 +332,7 @@ public class GamePanel extends JPanel {
 			// from the audio input stream.
 			clip.open(audioIn);
 			clip.start();
-		} catch (UnsupportedAudioFileException e) {
-			e.printStackTrace();
-		} catch (IOException e) {
-			e.printStackTrace();
-		} catch (LineUnavailableException e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
