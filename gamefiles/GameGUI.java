@@ -9,12 +9,16 @@ Description: The class that extends JFrame, to create the GUI for the game.
 *******************************************************************************/
 package gamefiles;
 import java.awt.Dimension;
+import java.awt.GridLayout;
+import java.awt.Panel;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
 import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
 import javax.swing.JComponent;
 import javax.swing.JFrame;
 import javax.swing.JMenu;
@@ -78,7 +82,7 @@ public class GameGUI extends JFrame {
 		menus = new JMenuBar();
 		setJMenuBar(menus);
 		menus.add(fileMenu);
-
+		
 		panel = new GamePanel(SIZE);
 		add(panel);
 		getContentPane().setPreferredSize(
