@@ -61,10 +61,10 @@ public class Tile extends JButton {
      * @param ti - the type of tile
     **/
     public Tile(final TileEnum ti) {
-        // instantiate the icons from the 'Icons' folder
+        // instantiate the icons from the 'Icons' folder 
         iconWall = new ImageIcon("Icons/wall.png");
-        iconPlayer = new ImageIcon("Icons/player.png");
-        iconPath = new ImageIcon("Icons/path.png");
+        iconPlayer = new ImageIcon("Icons/knight.png");
+        iconPath = new ImageIcon("Icons/pathCobble.png");
         iconChest = new ImageIcon("Icons/chest.png");
         iconKey = new ImageIcon("Icons/key.png");
         iconPlayerKey = new ImageIcon("Icons/player_key.png");
