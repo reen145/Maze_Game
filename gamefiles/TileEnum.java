@@ -14,37 +14,90 @@ package gamefiles;
 public enum TileEnum {
 
 	/**.
-	 * enum fields
+	 * default path
 	**/
+	PATH_DEFAULT(Group.PATH),
+	/**.
+	 * brick path
+	**/
+	PATH_Brick(Group.PATH),
+	/**.
+	 * cobble path
+	**/
+	PATH_COBBLE(Group.PATH),
+	/**.
+	 * grass path
+	**/
+	PATH_GRASS(Group.PATH),
 
-	PATH_DEFAULT (Group.PATH),
-	PATH_Brick (Group.PATH),
-	PATH_COBBLE (Group.PATH),
-	PATH_GRASS (Group.PATH),
+	/**.
+	 * wall
+	**/
+	WALL_DEFAULT(Group.WALL),
 
-	WALL_DEFAULT (Group.WALL),
+	/**.
+	 * closed chest
+	**/
+	CHEST_CLOSED(Group.OBJECT),
+	/**.
+	 * open chest
+	**/
+	CHEST_OPEN(Group.OBJECT),
+	/**.
+	 * key
+	**/
+	KEY(Group.OBJECT),
 
-	CHEST_CLOSED (Group.OBJECT),
-	CHEST_OPEN (Group.OBJECT),
-	KEY (Group.OBJECT),
+	/**.
+	 * player
+	**/
+	PLAYER_DEFAULT(Group.PLAYER),
+	/**.
+	 * playe rwith key
+	**/
+	PLAYER_KEY(Group.PLAYER);
 
-	PLAYER_DEFAULT (Group.PLAYER),
-	PLAYER_KEY (Group.PLAYER);
-
+	/**.
+	 * group
+	**/
 	private Group group;
 
-	TileEnum(Group group) {
+	/**.
+	 * Constructor
+	 * @param group the type of enum this will be
+	**/
+	TileEnum(final Group group) {
 		this.group = group;
 	}
 
-	public boolean isInGroup(Group group) {
+	/**.
+	 * Checks to see which group the enum is in
+	 * @param group the group to check
+	 * @return boolean saying true or false
+	**/
+	public boolean isInGroup(final Group group) {
 		return this.group == group;
 	}
 
+	/**.
+	 * the groups
+	**/
 	public enum Group {
+		/**.
+		 * path
+		**/
 		PATH,
+		/**.
+		 * wall
+		**/
 		WALL,
+		/**.
+		 *object
+		**/
 		OBJECT,
+		/**.
+		 * player
+		**/
 		PLAYER;
 	}
 }
