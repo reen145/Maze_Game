@@ -21,34 +21,34 @@ public class Tile extends JButton {
      * Represents a wall
      * '1' in status matrix 1
      **/
-    private ImageIcon iconWall;
+    private CombineIcon iconWall;
 
     /**.
      * Represents a player
      **/
-    private ImageIcon iconPlayer;
+    private CombineIcon iconPlayer;
 
     /**.
      * Represents a blank square
      **/
-    private ImageIcon iconPath;
+    private CombineIcon iconPath;
 
     /**.
      * Represents a chest
      **/
-    private ImageIcon iconChest;
+    private CombineIcon iconChest;
     /**.
      * Represents an open chest
      **/
-    private ImageIcon iconChestOpen;
+    private CombineIcon iconChestOpen;
     /**.
      * Represents a key
      **/
-    private ImageIcon iconKey;
+    private CombineIcon iconKey;
     /**.
      * Represents a player with a key
      **/
-    private ImageIcon iconPlayerKey;
+    private CombineIcon iconPlayerKey;
 
 
     /**.
@@ -62,13 +62,20 @@ public class Tile extends JButton {
     **/
     public Tile(final TileEnum ti) {
         // instantiate the icons from the 'Icons' folder 
-        iconWall = new ImageIcon("Icons/wall.png");
-        iconPlayer = new ImageIcon("Icons/knight.png");
-        iconPath = new ImageIcon("Icons/pathCobble.png");
-        iconChest = new ImageIcon("Icons/chest.png");
-        iconKey = new ImageIcon("Icons/key.png");
-        iconPlayerKey = new ImageIcon("Icons/knight_key.png");
-        iconChestOpen = new ImageIcon("Icons/chest_open.png");
+        iconWall = new CombineIcon(new ImageIcon("Icons/wall.png"),
+        		new ImageIcon("Icons/blank.png"));
+        iconPlayer = new CombineIcon(new ImageIcon("Icons/knight.png"),
+        		new ImageIcon("Icons/blank.png"));
+        iconPath = new CombineIcon(new ImageIcon("Icons/pathCobble.png"),
+        		new ImageIcon("Icons/blank.png"));
+        iconChest = new CombineIcon(new ImageIcon("Icons/chest.png"),
+        		new ImageIcon("Icons/pathCobble.png"));
+        iconKey = new CombineIcon(new ImageIcon("Icons/key.png"),
+        		new ImageIcon("Icons/pathCobble.png"));
+        iconPlayerKey = new CombineIcon(new ImageIcon("Icons/knight_key.png"),
+        		new ImageIcon("Icons/blank.png"));
+        iconChestOpen = new CombineIcon(new ImageIcon("Icons/chest_open.png"),
+        		new ImageIcon("Icons/cobble.png"));
     	type = ti;
     	updateImage();
     }
