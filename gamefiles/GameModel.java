@@ -104,7 +104,7 @@ public class GameModel {
         for (int i = 0; i < size; i++) {
             for (int j = 0; j < size; j++) {
                 if (boardMatrix[i][j].isInGroup(TileEnum.Group.PLAYER)
-                        && boardMatrix[i - 1][j].isInGroup(TileEnum.Group.PATH)) {
+                     && boardMatrix[i - 1][j].isInGroup(TileEnum.Group.PATH)) {
                     boardMatrix[i][j] = TileEnum.PATH_DEFAULT;
                     boardMatrix[i - 1][j].setPlayer(currentPlayer);
                     return true;
@@ -131,7 +131,7 @@ public class GameModel {
         for (int i = 0; i < size; i++) {
             for (int j = 0; j < size; j++) {
                 if (boardMatrix[i][j].isInGroup(TileEnum.Group.PLAYER)
-                        && boardMatrix[i + 1][j].isInGroup(TileEnum.Group.PATH)) {
+                     && boardMatrix[i + 1][j].isInGroup(TileEnum.Group.PATH)) {
                     boardMatrix[i][j] = TileEnum.PATH_DEFAULT;
                     boardMatrix[i + 1][j].setPlayer(currentPlayer);
                     return true;
@@ -150,11 +150,12 @@ public class GameModel {
         for (int i = 0; i < size; i++) {
             for (int j = 0; j < size; j++) {
                 if (boardMatrix[i][j].isInGroup(TileEnum.Group.PLAYER)
-                        && boardMatrix[i][j - 1].isInGroup(TileEnum.Group.PATH)) {
+                     && boardMatrix[i][j - 1].isInGroup(TileEnum.Group.PATH)) {
                     boardMatrix[i][j] = TileEnum.PATH_DEFAULT;
                     boardMatrix[i][j - 1].setPlayer(currentPlayer);
                     return true;
-                }            }
+                }            
+            }
         }
         return false;
     }
@@ -168,7 +169,7 @@ public class GameModel {
         for (int i = 0; i < size; i++) {
             for (int j = 0; j < size; j++) {
                 if (boardMatrix[i][j].isInGroup(TileEnum.Group.PLAYER)
-                        && boardMatrix[i][j + 1].isInGroup(TileEnum.Group.PATH)) {
+                     && boardMatrix[i][j + 1].isInGroup(TileEnum.Group.PATH)) {
                     boardMatrix[i][j] = TileEnum.PATH_DEFAULT;
                     boardMatrix[i][j + 1].setPlayer(currentPlayer);
                     return true;
