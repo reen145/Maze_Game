@@ -195,37 +195,37 @@ public class GamePanel extends JPanel {
 					if (comp == tileMatrix[row][col]) {
 						//check for movement
 	if (tileMatrix[row][col].getType() 
-			== TileEnum.PATH && tileMatrix[row + 1][col]
-					.getType() == TileEnum.PLAYER 
+			== TileEnum.PATH_DEFAULT && tileMatrix[row + 1][col]
+					.getType() == TileEnum.PLAYER_DEFAULT
 					| tileMatrix[row + 1][col].getType() 
-					== TileEnum.PLAYERKEY) {
+					== TileEnum.PLAYER_KEY) {
 						if (myGameModel.moveUp()) {
 								playStep();
 								updateBoard();
 							}
 	} else if  (tileMatrix[row][col].getType() 
-			== TileEnum.PATH && tileMatrix[row - 1][col]
-					.getType() == TileEnum.PLAYER 
+			== TileEnum.PATH_DEFAULT && tileMatrix[row - 1][col]
+					.getType() == TileEnum.PLAYER_DEFAULT
 					| tileMatrix[row - 1][col].getType() 
-					== TileEnum.PLAYERKEY) {
+					== TileEnum.PLAYER_KEY) {
 						if (myGameModel.moveDown()) {
 								playStep();
 								updateBoard();
 							}
 	} else if  (tileMatrix[row][col].getType() 
-			== TileEnum.PATH && tileMatrix[row][col + 1]
-					.getType() == TileEnum.PLAYER 
+			== TileEnum.PATH_DEFAULT && tileMatrix[row][col + 1]
+					.getType() == TileEnum.PLAYER_DEFAULT
 					| tileMatrix[row][col + 1].getType() 
-					== TileEnum.PLAYERKEY) {
+					== TileEnum.PLAYER_KEY) {
 						if (myGameModel.moveLeft()) {
 								playStep();
 								updateBoard();
 							}
 	} else if (tileMatrix[row][col].getType() 
-			== TileEnum.PATH && tileMatrix[row][col - 1]
-					.getType() == TileEnum.PLAYER 
+			== TileEnum.PATH_DEFAULT && tileMatrix[row][col - 1]
+					.getType() == TileEnum.PLAYER_DEFAULT
 					| tileMatrix[row][col - 1].getType() 
-					== TileEnum.PLAYERKEY) {
+					== TileEnum.PLAYER_KEY) {
 						if (myGameModel.moveRight()) {
 							 	playStep();
 							 	updateBoard();
@@ -237,7 +237,7 @@ public class GamePanel extends JPanel {
 								updateBoard();
 							}
 					//checks to see if the chest was clicked
-	} else if (tileMatrix[row][col].getType() == TileEnum.CHEST) {
+	} else if (tileMatrix[row][col].getType() == TileEnum.CHEST_CLOSED) {
 					if (myGameModel.chestSelected()) {
 								updateBoard();
 								playChest();

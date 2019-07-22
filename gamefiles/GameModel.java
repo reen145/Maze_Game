@@ -41,42 +41,42 @@ public class GameModel {
         //sets a boarder of walls
         for (int i = 0; i < size; i += (size - 1)) {
             for (int j = 0; j < size; j++) {
-                boardMatrix[0][j] = TileEnum.WALL;
-                boardMatrix[j][0] = TileEnum.WALL;
-                boardMatrix[i][j] = TileEnum.WALL;
-                boardMatrix[j][i] = TileEnum.WALL;
+                boardMatrix[0][j] = TileEnum.WALL_DEFAULT;
+                boardMatrix[j][0] = TileEnum.WALL_DEFAULT;
+                boardMatrix[i][j] = TileEnum.WALL_DEFAULT;
+                boardMatrix[j][i] = TileEnum.WALL_DEFAULT;
             }
         }
         //sets everything inside the border to be a path
         for (int i = 1; i < size - 1; i++) {
             for (int j = 1; j < size - 1; j++) {
-                boardMatrix[i][j] = TileEnum.PATH;
+                boardMatrix[i][j] = TileEnum.PATH_DEFAULT;
             }
         }
         // Set up static maze
-        boardMatrix[1][3] = TileEnum.WALL;
-        boardMatrix[1][2] = TileEnum.WALL;
-        boardMatrix[2][3] = TileEnum.WALL;
-        boardMatrix[2][4] = TileEnum.WALL;
-        boardMatrix[2][6] = TileEnum.WALL;
-        boardMatrix[1][6] = TileEnum.WALL;
-        boardMatrix[3][1] = TileEnum.WALL;
-        boardMatrix[4][1] = TileEnum.WALL;
-        boardMatrix[4][2] = TileEnum.WALL;
-        boardMatrix[3][4] = TileEnum.WALL;
-        boardMatrix[3][6] = TileEnum.WALL;
-        boardMatrix[3][7] = TileEnum.WALL;
-        boardMatrix[5][1] = TileEnum.WALL;
-        boardMatrix[5][2] = TileEnum.WALL;
-        boardMatrix[5][3] = TileEnum.WALL;
-        boardMatrix[5][4] = TileEnum.WALL;
-        boardMatrix[6][3] = TileEnum.WALL;
-        boardMatrix[6][5] = TileEnum.WALL;
-        boardMatrix[7][7] = TileEnum.WALL;
-        boardMatrix[8][7] = TileEnum.WALL;
-        boardMatrix[9][7] = TileEnum.WALL;
-        boardMatrix[1][1] = TileEnum.CHEST;
-        boardMatrix[8][8] = TileEnum.PLAYER;
+        boardMatrix[1][3] = TileEnum.WALL_DEFAULT;
+        boardMatrix[1][2] = TileEnum.WALL_DEFAULT;
+        boardMatrix[2][3] = TileEnum.WALL_DEFAULT;
+        boardMatrix[2][4] = TileEnum.WALL_DEFAULT;
+        boardMatrix[2][6] = TileEnum.WALL_DEFAULT;
+        boardMatrix[1][6] = TileEnum.WALL_DEFAULT;
+        boardMatrix[3][1] = TileEnum.WALL_DEFAULT;
+        boardMatrix[4][1] = TileEnum.WALL_DEFAULT;
+        boardMatrix[4][2] = TileEnum.WALL_DEFAULT;
+        boardMatrix[3][4] = TileEnum.WALL_DEFAULT;
+        boardMatrix[3][6] = TileEnum.WALL_DEFAULT;
+        boardMatrix[3][7] = TileEnum.WALL_DEFAULT;
+        boardMatrix[5][1] = TileEnum.WALL_DEFAULT;
+        boardMatrix[5][2] = TileEnum.WALL_DEFAULT;
+        boardMatrix[5][3] = TileEnum.WALL_DEFAULT;
+        boardMatrix[5][4] = TileEnum.WALL_DEFAULT;
+        boardMatrix[6][3] = TileEnum.WALL_DEFAULT;
+        boardMatrix[6][5] = TileEnum.WALL_DEFAULT;
+        boardMatrix[7][7] = TileEnum.WALL_DEFAULT;
+        boardMatrix[8][7] = TileEnum.WALL_DEFAULT;
+        boardMatrix[9][7] = TileEnum.WALL_DEFAULT;
+        boardMatrix[1][1] = TileEnum.CHEST_CLOSED;
+        boardMatrix[8][8] = TileEnum.PLAYER_DEFAULT;
         boardMatrix[6][1] = TileEnum.KEY;
     }
 
@@ -98,15 +98,10 @@ public class GameModel {
     public boolean moveUp() {
         for (int i = 0; i < size; i++) {
             for (int j = 0; j < size; j++) {
-                if (boardMatrix[i][j] == TileEnum.PLAYER
-                        && boardMatrix[i - 1][j] == TileEnum.PATH) {
-                    boardMatrix[i][j] = TileEnum.PATH;
-                    boardMatrix[i - 1][j] = TileEnum.PLAYER;
-                    return true;
-                } else if (boardMatrix[i][j] == TileEnum.PLAYERKEY
-                        && boardMatrix[i - 1][j] == TileEnum.PATH) {
-                    boardMatrix[i][j] = TileEnum.PATH;
-                    boardMatrix[i - 1][j] = TileEnum.PLAYERKEY;
+                if (boardMatrix[i][j].isInGroup(TileEnum.Group.PLAYER)
+                        && boardMatrix[i - 1][j].isInGroup(TileEnum.Group.PATH)) {
+                    boardMatrix[i][j] = TileEnum.PATH_DEFAULT;
+                    boardMatrix[i - 1][j] = TileEnum.PLAYER_DEFAULT;
                     return true;
                 }
             }
@@ -130,15 +125,10 @@ public class GameModel {
     public boolean moveDown() {
         for (int i = 0; i < size; i++) {
             for (int j = 0; j < size; j++) {
-                if (boardMatrix[i][j] == TileEnum.PLAYER
-                        && boardMatrix[i + 1][j] == TileEnum.PATH) {
-                    boardMatrix[i][j] = TileEnum.PATH;
-                    boardMatrix[i + 1][j] = TileEnum.PLAYER;
-                    return true;
-                } else if (boardMatrix[i][j] == TileEnum.PLAYERKEY
-                        && boardMatrix[i + 1][j] == TileEnum.PATH) {
-                    boardMatrix[i][j] = TileEnum.PATH;
-                    boardMatrix[i + 1][j] = TileEnum.PLAYERKEY;
+                if (boardMatrix[i][j].isInGroup(TileEnum.Group.PLAYER)
+                        && boardMatrix[i + 1][j].isInGroup(TileEnum.Group.PATH)) {
+                    boardMatrix[i][j] = TileEnum.PATH_DEFAULT;
+                    boardMatrix[i + 1][j] = TileEnum.PLAYER_DEFAULT;
                     return true;
                 }
             }
@@ -154,18 +144,12 @@ public class GameModel {
     public boolean moveLeft() {
         for (int i = 0; i < size; i++) {
             for (int j = 0; j < size; j++) {
-                if (boardMatrix[i][j] == TileEnum.PLAYER
-                        && boardMatrix[i][j - 1] == TileEnum.PATH) {
-                    boardMatrix[i][j] = TileEnum.PATH;
-                    boardMatrix[i][j - 1] = TileEnum.PLAYER;
+                if (boardMatrix[i][j].isInGroup(TileEnum.Group.PLAYER)
+                        && boardMatrix[i][j - 1].isInGroup(TileEnum.Group.PATH)) {
+                    boardMatrix[i][j] = TileEnum.PATH_DEFAULT;
+                    boardMatrix[i][j - 1] = TileEnum.PLAYER_DEFAULT;
                     return true;
-                } else if (boardMatrix[i][j] == TileEnum.PLAYERKEY
-                        && boardMatrix[i][j - 1] == TileEnum.PATH) {
-                    boardMatrix[i][j] = TileEnum.PATH;
-                    boardMatrix[i][j - 1] = TileEnum.PLAYERKEY;
-                    return true;
-                }
-            }
+                }            }
         }
         return false;
     }
@@ -178,15 +162,10 @@ public class GameModel {
     public boolean moveRight() {
         for (int i = 0; i < size; i++) {
             for (int j = 0; j < size; j++) {
-                if (boardMatrix[i][j] == TileEnum.PLAYER
-                        && boardMatrix[i][j + 1] == TileEnum.PATH) {
-                    boardMatrix[i][j] = TileEnum.PATH;
-                    boardMatrix[i][j + 1] = TileEnum.PLAYER;
-                    return true;
-                } else if (boardMatrix[i][j] == TileEnum.PLAYERKEY
-                        && boardMatrix[i][j + 1] == TileEnum.PATH) {
-                    boardMatrix[i][j] = TileEnum.PATH;
-                    boardMatrix[i][j + 1] = TileEnum.PLAYERKEY;
+                if (boardMatrix[i][j].isInGroup(TileEnum.Group.PLAYER)
+                        && boardMatrix[i][j + 1].isInGroup(TileEnum.Group.PATH)) {
+                    boardMatrix[i][j] = TileEnum.PATH_DEFAULT;
+                    boardMatrix[i][j + 1] = TileEnum.PLAYER_DEFAULT;
                     return true;
                 }
             }
@@ -203,21 +182,21 @@ public class GameModel {
         for (int i = 0; i < size; i++) {
             for (int j = 0; j < size; j++) {
                 if (boardMatrix[i][j] == TileEnum.KEY) {
-                    if (boardMatrix[i + 1][j] == TileEnum.PLAYER) {
-                        boardMatrix[i][j] = TileEnum.PATH;
-                        boardMatrix[i + 1][j] = TileEnum.PLAYERKEY;
+                    if (boardMatrix[i + 1][j].isInGroup(TileEnum.Group.PLAYER)) {
+                        boardMatrix[i][j] = TileEnum.PATH_DEFAULT;
+                        boardMatrix[i + 1][j] = TileEnum.PLAYER_KEY;
                         return true;
-                    } else if (boardMatrix[i - 1][j] == TileEnum.PLAYER) {
-                        boardMatrix[i][j] = TileEnum.PATH;
-                        boardMatrix[i - 1][j] = TileEnum.PLAYERKEY;
+                    } else if (boardMatrix[i - 1][j].isInGroup(TileEnum.Group.PLAYER)) {
+                        boardMatrix[i][j] = TileEnum.PATH_DEFAULT;
+                        boardMatrix[i - 1][j] = TileEnum.PLAYER_KEY;
                         return true;
-                    } else if (boardMatrix[i][j + 1] == TileEnum.PLAYER) {
-                        boardMatrix[i][j] = TileEnum.PATH;
-                        boardMatrix[i][j + 1] = TileEnum.PLAYERKEY;
+                    } else if (boardMatrix[i][j + 1].isInGroup(TileEnum.Group.PLAYER)) {
+                        boardMatrix[i][j] = TileEnum.PATH_DEFAULT;
+                        boardMatrix[i][j + 1] = TileEnum.PLAYER_KEY;
                         return true;
-                    } else if (boardMatrix[i][j - 1] == TileEnum.PLAYER) {
-                        boardMatrix[i][j] = TileEnum.PATH;
-                        boardMatrix[i][j - 1] = TileEnum.PLAYERKEY;
+                    } else if (boardMatrix[i][j - 1].isInGroup(TileEnum.Group.PLAYER)) {
+                        boardMatrix[i][j] = TileEnum.PATH_DEFAULT;
+                        boardMatrix[i][j - 1] = TileEnum.PLAYER_KEY;
                         return true;
                     }
                 }
@@ -234,22 +213,18 @@ public class GameModel {
     public boolean chestSelected() {
         for (int i = 0; i < size; i++) {
             for (int j = 0; j < size; j++) {
-                if (boardMatrix[i][j] == TileEnum.CHEST) {
-                    if (boardMatrix[i + 1][j] == TileEnum.PLAYERKEY) {
-                        boardMatrix[i][j] = TileEnum.CHESTOPEN;
-                        boardMatrix[i + 1][j] = TileEnum.PLAYER;
+                if (boardMatrix[i][j] == TileEnum.CHEST_CLOSED) {
+                    if (boardMatrix[i + 1][j] == TileEnum.PLAYER_KEY) {
+                        boardMatrix[i][j] = TileEnum.CHEST_OPEN;
                         return true;
-                    } else if (boardMatrix[i - 1][j] == TileEnum.PLAYERKEY) {
-                        boardMatrix[i][j] = TileEnum.CHESTOPEN;
-                        boardMatrix[i - 1][j] = TileEnum.PLAYER;
+                    } else if (boardMatrix[i - 1][j] == TileEnum.PLAYER_KEY) {
+                        boardMatrix[i][j] = TileEnum.CHEST_OPEN;
                         return true;
-                    } else if (boardMatrix[i][j + 1] == TileEnum.PLAYERKEY) {
-                        boardMatrix[i][j] = TileEnum.CHESTOPEN;
-                        boardMatrix[i][j + 1] = TileEnum.PLAYER;
+                    } else if (boardMatrix[i][j + 1] == TileEnum.PLAYER_KEY) {
+                        boardMatrix[i][j] = TileEnum.CHEST_OPEN;
                         return true;
-                    } else if (boardMatrix[i][j - 1] == TileEnum.PLAYERKEY) {
-                        boardMatrix[i][j] = TileEnum.CHESTOPEN;
-                        boardMatrix[i][j - 1] = TileEnum.PLAYER;
+                    } else if (boardMatrix[i][j - 1] == TileEnum.PLAYER_KEY) {
+                        boardMatrix[i][j] = TileEnum.CHEST_OPEN;
                         return true;
                     }
                 }

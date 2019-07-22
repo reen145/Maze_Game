@@ -100,22 +100,22 @@ public class Tile extends JButton {
             case KEY:
                 this.setIcon(iconKey);
                 break;
-            case PATH:
+            case PATH_DEFAULT:
                 this.setIcon(iconPath);
                 break;
-            case CHEST:
+            case CHEST_CLOSED:
                 this.setIcon(iconChest);
                 break;
-            case PLAYER:
+            case PLAYER_DEFAULT:
                 this.setIcon(iconPlayer);
                 break;
-            case WALL:
+            case WALL_DEFAULT:
                 this.setIcon(iconWall);
                 break;
-            case PLAYERKEY:
+            case PLAYER_KEY:
             	this.setIcon(iconPlayerKey);
             	break;
-            case CHESTOPEN:
+            case CHEST_OPEN:
             	this.setIcon(iconChestOpen);
             	break;
             	default:
