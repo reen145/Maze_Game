@@ -15,6 +15,10 @@ package gamefiles;
  * Class for the main logic for the maze game
 *****************************************************************/
 public class GameModel {
+    /**
+     * Represents the state of the current player
+     */
+    private TileEnum.Player currentPlayer;
 	/**.
 	 * Array for the matrix representing the board
 	**/
@@ -76,8 +80,9 @@ public class GameModel {
         boardMatrix[8][7] = TileEnum.WALL_DEFAULT;
         boardMatrix[9][7] = TileEnum.WALL_DEFAULT;
         boardMatrix[1][1] = TileEnum.CHEST_CLOSED;
-        boardMatrix[8][8] = TileEnum.PLAYER_DEFAULT;
         boardMatrix[6][1] = TileEnum.KEY;
+
+        boardMatrix[8][8].setPlayer(TileEnum.Player.PLAYER);
     }
 
     /**.
@@ -101,7 +106,7 @@ public class GameModel {
                 if (boardMatrix[i][j].isInGroup(TileEnum.Group.PLAYER)
                         && boardMatrix[i - 1][j].isInGroup(TileEnum.Group.PATH)) {
                     boardMatrix[i][j] = TileEnum.PATH_DEFAULT;
-                    boardMatrix[i - 1][j] = TileEnum.PLAYER_DEFAULT;
+                    boardMatrix[i - 1][j].setPlayer(currentPlayer);
                     return true;
                 }
             }
@@ -128,7 +133,7 @@ public class GameModel {
                 if (boardMatrix[i][j].isInGroup(TileEnum.Group.PLAYER)
                         && boardMatrix[i + 1][j].isInGroup(TileEnum.Group.PATH)) {
                     boardMatrix[i][j] = TileEnum.PATH_DEFAULT;
-                    boardMatrix[i + 1][j] = TileEnum.PLAYER_DEFAULT;
+                    boardMatrix[i + 1][j].setPlayer(currentPlayer);
                     return true;
                 }
             }
@@ -147,7 +152,7 @@ public class GameModel {
                 if (boardMatrix[i][j].isInGroup(TileEnum.Group.PLAYER)
                         && boardMatrix[i][j - 1].isInGroup(TileEnum.Group.PATH)) {
                     boardMatrix[i][j] = TileEnum.PATH_DEFAULT;
-                    boardMatrix[i][j - 1] = TileEnum.PLAYER_DEFAULT;
+                    boardMatrix[i][j - 1].setPlayer(currentPlayer);
                     return true;
                 }            }
         }
@@ -165,7 +170,7 @@ public class GameModel {
                 if (boardMatrix[i][j].isInGroup(TileEnum.Group.PLAYER)
                         && boardMatrix[i][j + 1].isInGroup(TileEnum.Group.PATH)) {
                     boardMatrix[i][j] = TileEnum.PATH_DEFAULT;
-                    boardMatrix[i][j + 1] = TileEnum.PLAYER_DEFAULT;
+                    boardMatrix[i][j + 1].setPlayer(currentPlayer);
                     return true;
                 }
             }
@@ -182,21 +187,22 @@ public class GameModel {
         for (int i = 0; i < size; i++) {
             for (int j = 0; j < size; j++) {
                 if (boardMatrix[i][j] == TileEnum.KEY) {
+                    currentPlayer = TileEnum.Player.PLAYER_KEY;
                     if (boardMatrix[i + 1][j].isInGroup(TileEnum.Group.PLAYER)) {
                         boardMatrix[i][j] = TileEnum.PATH_DEFAULT;
-                        boardMatrix[i + 1][j] = TileEnum.PLAYER_KEY;
+                        boardMatrix[i + 1][j].setPlayer(currentPlayer);
                         return true;
                     } else if (boardMatrix[i - 1][j].isInGroup(TileEnum.Group.PLAYER)) {
                         boardMatrix[i][j] = TileEnum.PATH_DEFAULT;
-                        boardMatrix[i - 1][j] = TileEnum.PLAYER_KEY;
+                        boardMatrix[i - 1][j].setPlayer(currentPlayer);
                         return true;
                     } else if (boardMatrix[i][j + 1].isInGroup(TileEnum.Group.PLAYER)) {
                         boardMatrix[i][j] = TileEnum.PATH_DEFAULT;
-                        boardMatrix[i][j + 1] = TileEnum.PLAYER_KEY;
+                        boardMatrix[i][j + 1].setPlayer(currentPlayer);
                         return true;
                     } else if (boardMatrix[i][j - 1].isInGroup(TileEnum.Group.PLAYER)) {
                         boardMatrix[i][j] = TileEnum.PATH_DEFAULT;
-                        boardMatrix[i][j - 1] = TileEnum.PLAYER_KEY;
+                        boardMatrix[i][j - 1].setPlayer(currentPlayer);
                         return true;
                     }
                 }
@@ -214,16 +220,16 @@ public class GameModel {
         for (int i = 0; i < size; i++) {
             for (int j = 0; j < size; j++) {
                 if (boardMatrix[i][j] == TileEnum.CHEST_CLOSED) {
-                    if (boardMatrix[i + 1][j] == TileEnum.PLAYER_KEY) {
+                    if (boardMatrix[i + 1][j].getPlayer() == TileEnum.Player.PLAYER_KEY) {
                         boardMatrix[i][j] = TileEnum.CHEST_OPEN;
                         return true;
-                    } else if (boardMatrix[i - 1][j] == TileEnum.PLAYER_KEY) {
+                    } else if (boardMatrix[i - 1][j].getPlayer() == TileEnum.Player.PLAYER_KEY) {
                         boardMatrix[i][j] = TileEnum.CHEST_OPEN;
                         return true;
-                    } else if (boardMatrix[i][j + 1] == TileEnum.PLAYER_KEY) {
+                    } else if (boardMatrix[i][j + 1].getPlayer() == TileEnum.Player.PLAYER_KEY) {
                         boardMatrix[i][j] = TileEnum.CHEST_OPEN;
                         return true;
-                    } else if (boardMatrix[i][j - 1] == TileEnum.PLAYER_KEY) {
+                    } else if (boardMatrix[i][j - 1].getPlayer() == TileEnum.Player.PLAYER_KEY) {
                         boardMatrix[i][j] = TileEnum.CHEST_OPEN;
                         return true;
                     }
