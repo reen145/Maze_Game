@@ -42,7 +42,7 @@ public class CombineIcon implements Icon {
      * @param top the icon to go on top
      * @param bottom the icon to go on bottom
      **/
-    public CombineIcon(final Icon bottom, final Icon top) {
+    public CombineIcon(final Icon top, final Icon bottom) {
         this.top = top;
         this.bot = bottom;
     }
