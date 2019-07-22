@@ -17,15 +17,15 @@ public enum TileEnum {
 	 * enum fields
 	**/
 
-	PATH_DEFAULT (Group.PATH, Player.NONE),
-	PATH_Brick (Group.PATH, Player.NONE),
-	PATH_COBBLE (Group.PATH, Player.NONE),
-	PATH_GRASS (Group.PATH, Player.NONE),
+	PATH_DEFAULT(Group.PATH, Player.NONE),
+	PATH_Brick(Group.PATH, Player.NONE),
+	PATH_COBBLE(Group.PATH, Player.NONE),
+	PATH_GRASS(Group.PATH, Player.NONE),
 
-	WALL_DEFAULT (Group.WALL, Player.NONE),
+	WALL_DEFAULT(Group.WALL, Player.NONE),
 
-	CHEST_CLOSED (Group.OBJECT, Player.NONE),
-	CHEST_OPEN (Group.OBJECT, Player.NONE),
+	CHEST_CLOSED(Group.OBJECT, Player.NONE),
+	CHEST_OPEN(Group.OBJECT, Player.NONE),
 	KEY (Group.OBJECT, Player.NONE);
 
 	private Group group;

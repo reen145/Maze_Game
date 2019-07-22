@@ -26,12 +26,12 @@ public class Tile extends JButton {
     /**.
      * Represents a player
      **/
-    private CombineIcon iconPlayer;
+    private ImageIcon iconPlayer;
 
     /**.
      * Represents a blank square
      **/
-    private CombineIcon iconPath;
+    private ImageIcon iconPath;
 
     /**.
      * Represents a chest
@@ -48,7 +48,7 @@ public class Tile extends JButton {
     /**.
      * Represents a player with a key
      **/
-    private CombineIcon iconPlayerKey;
+    private ImageIcon iconPlayerKey;
 
 
     /**.
@@ -64,16 +64,13 @@ public class Tile extends JButton {
         // instantiate the icons from the 'Icons' folder 
         iconWall = new CombineIcon(new ImageIcon("Icons/wall.png"),
         		new ImageIcon("Icons/blank.png"));
-        iconPlayer = new CombineIcon(new ImageIcon("Icons/knight.png"),
-        		new ImageIcon("Icons/blank.png"));
-        iconPath = new CombineIcon(new ImageIcon("Icons/pathCobble.png"),
-        		new ImageIcon("Icons/blank.png"));
+        iconPlayer = new ImageIcon("Icons/knight.png");
+        iconPath = new ImageIcon("Icons/pathCobble.png");
         iconChest = new CombineIcon(new ImageIcon("Icons/chest.png"),
         		new ImageIcon("Icons/pathCobble.png"));
         iconKey = new CombineIcon(new ImageIcon("Icons/key.png"),
         		new ImageIcon("Icons/pathCobble.png"));
-        iconPlayerKey = new CombineIcon(new ImageIcon("Icons/knight_key.png"),
-        		new ImageIcon("Icons/blank.png"));
+        iconPlayerKey = new ImageIcon("Icons/knight_key.png");
         iconChestOpen = new CombineIcon(new ImageIcon("Icons/chest_open.png"),
         		new ImageIcon("Icons/cobble.png"));
     	type = ti;
@@ -103,7 +100,8 @@ public class Tile extends JButton {
      * @param none
     **/
     private void updateImage() {
-        switch (type) {
+        if (type.getPlayer() == TileEnum.Player.NONE) {
+        	switch (type) {
             case KEY:
                 this.setIcon(iconKey);
                 break;
@@ -113,21 +111,55 @@ public class Tile extends JButton {
             case CHEST_CLOSED:
                 this.setIcon(iconChest);
                 break;
-            case PLAYER_DEFAULT:
-                this.setIcon(iconPlayer);
-                break;
             case WALL_DEFAULT:
                 this.setIcon(iconWall);
                 break;
-            case PLAYER_KEY:
-            	this.setIcon(iconPlayerKey);
-            	break;
             case CHEST_OPEN:
             	this.setIcon(iconChestOpen);
             	break;
             	default:
             	break;
-            	//test TODO remove
+        	}
+        } else if (type.getPlayer() == TileEnum.Player.PLAYER) {
+        	switch (type) {
+            case KEY:
+                this.setIcon(iconKey);
+                break;
+            case PATH_DEFAULT:
+                this.setIcon(new CombineIcon(iconPath, iconPlayer));
+                break;
+            case CHEST_CLOSED:
+                this.setIcon(iconChest);
+                break;
+            case WALL_DEFAULT:
+                this.setIcon(iconWall);
+                break;
+            case CHEST_OPEN:
+            	this.setIcon(iconChestOpen);
+            	break;
+            	default:
+            	break;
+        	}
+        } else if (type.getPlayer() == TileEnum.Player.PLAYER_KEY) {
+        	switch (type) {
+            case KEY:
+                this.setIcon(iconKey);
+                break;
+            case PATH_DEFAULT:
+                this.setIcon(new CombineIcon(iconPath, iconPlayerKey));
+                break;
+            case CHEST_CLOSED:
+                this.setIcon(iconChest);
+                break;
+            case WALL_DEFAULT:
+                this.setIcon(iconWall);
+                break;
+            case CHEST_OPEN:
+            	this.setIcon(iconChestOpen);
+            	break;
+            	default:
+            	break;
+        	}
         }
     }
 }

@@ -136,7 +136,7 @@ public class GamePanel extends JPanel {
 		setFocusable(true);
 		requestFocusInWindow();
 
-		//insitiantiates the GameModel Object
+		//instantiates the GameModel Object
 		myGameModel = new GameModel();
 		// populate maze with icons
 		populate();
@@ -196,36 +196,36 @@ public class GamePanel extends JPanel {
 						//check for movement
 	if (tileMatrix[row][col].getType() 
 			== TileEnum.PATH_DEFAULT && tileMatrix[row + 1][col]
-					.getType() == TileEnum.PLAYER_DEFAULT
-					| tileMatrix[row + 1][col].getType() 
-					== TileEnum.PLAYER_KEY) {
+				.getType().getPlayer() == TileEnum.Player.PLAYER
+			   | tileMatrix[row + 1][col].getType().getPlayer() 
+					== TileEnum.Player.PLAYER_KEY) {
 						if (myGameModel.moveUp()) {
 								playStep();
 								updateBoard();
 							}
 	} else if  (tileMatrix[row][col].getType() 
 			== TileEnum.PATH_DEFAULT && tileMatrix[row - 1][col]
-					.getType() == TileEnum.PLAYER_DEFAULT
-					| tileMatrix[row - 1][col].getType() 
-					== TileEnum.PLAYER_KEY) {
+				.getType().getPlayer() == TileEnum.Player.PLAYER
+			   | tileMatrix[row - 1][col].getType().getPlayer() 
+					== TileEnum.Player.PLAYER_KEY) {
 						if (myGameModel.moveDown()) {
 								playStep();
 								updateBoard();
 							}
 	} else if  (tileMatrix[row][col].getType() 
 			== TileEnum.PATH_DEFAULT && tileMatrix[row][col + 1]
-					.getType() == TileEnum.PLAYER_DEFAULT
-					| tileMatrix[row][col + 1].getType() 
-					== TileEnum.PLAYER_KEY) {
+				.getType().getPlayer() == TileEnum.Player.PLAYER
+			   | tileMatrix[row][col + 1].getType().getPlayer() 
+					== TileEnum.Player.PLAYER_KEY) {
 						if (myGameModel.moveLeft()) {
 								playStep();
 								updateBoard();
 							}
 	} else if (tileMatrix[row][col].getType() 
 			== TileEnum.PATH_DEFAULT && tileMatrix[row][col - 1]
-					.getType() == TileEnum.PLAYER_DEFAULT
-					| tileMatrix[row][col - 1].getType() 
-					== TileEnum.PLAYER_KEY) {
+				.getType().getPlayer() == TileEnum.Player.PLAYER
+			   | tileMatrix[row][col - 1].getType().getPlayer() 
+					== TileEnum.Player.PLAYER_KEY) {
 						if (myGameModel.moveRight()) {
 							 	playStep();
 							 	updateBoard();

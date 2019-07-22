@@ -30,11 +30,19 @@ public class CombineIcon implements Icon {
 	private Icon bot;
 	
 	/**.
+     * Sets the icon to be overlaid
+     * @param bot the icon to be overlaid
+     **/
+	public void setBot(final Icon bot) {
+		this.bot = bot;
+	}
+	
+	/**.
      * Combines two given icons
      * @param top the icon to go on top
      * @param bottom the icon to go on bottom
      **/
-    public CombineIcon(final Icon top, final Icon bottom) {
+    public CombineIcon(final Icon bottom, final Icon top) {
         this.top = top;
         this.bot = bottom;
     }
