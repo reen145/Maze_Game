@@ -12,7 +12,7 @@ Description: This file contains the class that will represent the panel of The
     movement and interaction with the maze itself.
 *******************************************************************************/
 package gamefiles;
-// import necessary libraries
+// import necessary libraries 
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
