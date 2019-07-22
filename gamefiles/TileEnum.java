@@ -16,5 +16,35 @@ public enum TileEnum {
 	/**.
 	 * enum fields
 	**/
-    PATH, WALL, PLAYER, CHEST, KEY, PLAYERKEY, CHESTOPEN
+
+	PATH_DEFAULT (Group.PATH),
+	PATH_Brick (Group.PATH),
+	PATH_COBBLE (Group.PATH),
+	PATH_GRASS (Group.PATH),
+
+	WALL_DEFAULT (Group.WALL),
+
+	CHEST_CLOSED (Group.OBJECT),
+	CHEST_OPEN (Group.OBJECT),
+	KEY (Group.OBJECT),
+
+	PLAYER_DEFAULT (Group.PLAYER),
+	PLAYER_KEY (Group.PLAYER);
+
+	private Group group;
+
+	TileEnum(Group group) {
+		this.group = group;
+	}
+
+	public boolean isInGroup(Group group) {
+		return this.group == group;
+	}
+
+	public enum Group {
+		PATH,
+		WALL,
+		OBJECT,
+		PLAYER;
+	}
 }
