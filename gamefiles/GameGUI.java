@@ -128,7 +128,7 @@ public class GameGUI extends JFrame {
 			public void actionPerformed(final ActionEvent event) {
 			JComponent comp = (JComponent) event.getSource();
 				if (comp == gameItem) {
-					panel.populate();
+					
 				}
 
 				if (comp == quitItem) {

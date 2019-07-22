@@ -77,7 +77,7 @@ public class GameModel {
         boardMatrix[9][7] = TileEnum.WALL;
         boardMatrix[1][1] = TileEnum.CHEST;
         boardMatrix[8][8] = TileEnum.PLAYER;
-        boardMatrix[1][8] = TileEnum.KEY;
+        boardMatrix[6][1] = TileEnum.KEY;
     }
 
     /**.
