@@ -126,7 +126,7 @@ public class Tile extends JButton {
                 this.setIcon(iconKey);
                 break;
             case PATH_DEFAULT:
-                this.setIcon(new CombineIcon(iconPath, iconPlayer));
+                this.setIcon(new CombineIcon(iconPlayer, iconPath));
                 break;
             case CHEST_CLOSED:
                 this.setIcon(iconChest);
@@ -146,7 +146,7 @@ public class Tile extends JButton {
                 this.setIcon(iconKey);
                 break;
             case PATH_DEFAULT:
-                this.setIcon(new CombineIcon(iconPath, iconPlayerKey));
+                this.setIcon(new CombineIcon(iconPlayerKey, iconPath));
                 break;
             case CHEST_CLOSED:
                 this.setIcon(iconChest);
