@@ -127,6 +127,7 @@ public class Tile extends JButton {
             	break;
             	default:
             	break;
+            	//test TODO remove
         }
     }
 }
