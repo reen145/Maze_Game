@@ -117,27 +117,15 @@ public class Tile extends JButton {
             case CHEST_OPEN:
             	this.setIcon(iconChestOpen);
             	break;
-            	default:
+            default:
             	break;
         	}
         } else if (type.getPlayer() == TileEnum.Player.PLAYER) {
         	switch (type) {
-            case KEY:
-                this.setIcon(iconKey);
-                break;
             case PATH_DEFAULT:
                 this.setIcon(new CombineIcon(iconPath, iconPlayer));
                 break;
-            case CHEST_CLOSED:
-                this.setIcon(iconChest);
-                break;
-            case WALL_DEFAULT:
-                this.setIcon(iconWall);
-                break;
-            case CHEST_OPEN:
-            	this.setIcon(iconChestOpen);
-            	break;
-            	default:
+            default:
             	break;
         	}
         } else if (type.getPlayer() == TileEnum.Player.PLAYER_KEY) {
