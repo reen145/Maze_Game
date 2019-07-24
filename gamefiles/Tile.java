@@ -123,7 +123,7 @@ public class Tile extends JButton {
         } else if (type.getPlayer() == TileEnum.Player.PLAYER) {
         	switch (type) {
             case PATH_DEFAULT:
-                this.setIcon(new CombineIcon(iconPath, iconPlayer));
+                this.setIcon(new CombineIcon(iconPlayer, iconPath));
                 break;
             default:
             	break;
@@ -134,7 +134,7 @@ public class Tile extends JButton {
                 this.setIcon(iconKey);
                 break;
             case PATH_DEFAULT:
-                this.setIcon(new CombineIcon(iconPath, iconPlayerKey));
+                this.setIcon(new CombineIcon(iconPlayerKey, iconPath));
                 break;
             case CHEST_CLOSED:
                 this.setIcon(iconChest);
