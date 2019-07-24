@@ -2,19 +2,39 @@ package gamefiles;
 
 
 public class Board {
-
+    /**
+     * represents the size of the board
+     */
     private final int size = 10;
-
+    /**
+     * a matrix that roepresents the current board state
+     */
     private TileEnum[][] boardMatrix;
 
+    /**
+     * Getter method for the value of a given board cell
+     * @param row the row to be accessed
+     * @param col the col to be accessed
+     * @return the TileEnum of the cell accessed
+     */
     public TileEnum getValue(int row, int col) {
         return boardMatrix[row][col];
     }
 
+    /**
+     * Setter method for the value of a given board cell
+     * @param row the row to be accessed
+     * @param col the col to be accessed
+     * @param value the new TileEnum Value
+     */
     public  void setValue(int row, int col, TileEnum value) {
         boardMatrix[row][col] = value;
     }
 
+    /**
+     * Method to populate a board with values
+     * Sets level 1 board data
+     */
     public void setBoard_1() {
         boardMatrix = new TileEnum[size][size];
         //sets a boarder of walls
@@ -57,9 +77,19 @@ public class Board {
         boardMatrix[1][1] = TileEnum.CHEST_CLOSED;
         boardMatrix[6][1] = TileEnum.KEY;
     }
-
-    public void setBoard_2() {
-
+    /**
+     * Method to populate a board with values
+     * Sets level 2a board data
+     */
+    public void setBoard_2a() {
+        //TODO
+    }
+    /**
+     * Method to populate a board with values
+     * Sets level 2b board data
+     */
+    public void setBoard_2b() {
+        //TODO
     }
 
 
