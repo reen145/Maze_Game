@@ -42,6 +42,7 @@ public class Board {
     public void setBoard_1() {
         currentPlayer = TileEnum.Player.PLAYER;
         boardMatrix = new TileEnum[size][size];
+
         //sets a boarder of walls
         for (int i = 0; i < size; i += (size - 1)) {
             for (int j = 0; j < size; j++) {

@@ -22,7 +22,7 @@ public enum TileEnum {
 	/**.
 	 * brick path
 	**/
-	PATH_Brick(Group.PATH, Player.NONE),
+	PATH_BRICK(Group.PATH, Player.NONE),
 	/**.
 	 * cobble path
 	**/
@@ -63,12 +63,12 @@ public enum TileEnum {
 
 	/**.
 	 * constructor
-	 * @param group the group
-	 * @param player the player status
+	 * @param g group
+	 * @param p the player status
 	**/
-	TileEnum(final Group group, final Player player) {
-		this.group = group;
-		this.player = player;
+	TileEnum(Group g, Player p) {
+		group = g;
+		player = p;
 	}
 
 	/**.
@@ -129,9 +129,5 @@ public enum TileEnum {
 		 * object
 		**/
 		OBJECT,
-		/**.
-		 * player
-		**/
-		PLAYER;
 	}
 }
