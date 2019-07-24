@@ -47,7 +47,8 @@ public class GameModel {
     **/
     private void setDefaultBoard() {
         currentBoard = new Board();
-        currentBoard.setBoard_1();
+        //currentBoard.setBoard_1();
+        currentBoard.setBoard_2a();
     }
 
     /**.
