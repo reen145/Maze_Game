@@ -82,6 +82,7 @@ public enum TileEnum {
 	 * set the player status for a tile
 	 * @param newPlayer the player to be put on the tile
 	**/
+	//test TODO remove comment
     public void setPlayer(final Player newPlayer) {
         this.player = newPlayer;
     }
