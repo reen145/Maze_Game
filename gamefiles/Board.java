@@ -2,16 +2,20 @@ package gamefiles;
 
 
 public class Board {
-    /**.
+    /**
+     * Represents the state of the current player
+     */
+    private TileEnum.Player currentPlayer;
+    /**
      * represents the size of the board
      */
     private final int size = 10;
-    /**.
+    /**
      * a matrix that roepresents the current board state
      */
     private TileEnum[][] boardMatrix;
 
-    /**.
+    /**
      * Getter method for the value of a given board cell
      * @param row the row to be accessed
      * @param col the col to be accessed
@@ -21,7 +25,7 @@ public class Board {
         return boardMatrix[row][col];
     }
 
-    /**.
+    /**
      * Setter method for the value of a given board cell
      * @param row the row to be accessed
      * @param col the col to be accessed
@@ -31,11 +35,12 @@ public class Board {
         boardMatrix[row][col] = value;
     }
 
-    /**.
+    /**
      * Method to populate a board with values
      * Sets level 1 board data
      */
     public void setBoard_1() {
+        currentPlayer = TileEnum.Player.PLAYER;
         boardMatrix = new TileEnum[size][size];
         //sets a boarder of walls
         for (int i = 0; i < size; i += (size - 1)) {
@@ -76,15 +81,17 @@ public class Board {
         boardMatrix[9][7] = TileEnum.WALL_DEFAULT;
         boardMatrix[1][1] = TileEnum.CHEST_CLOSED;
         boardMatrix[6][1] = TileEnum.KEY;
+
+        boardMatrix[8][8].setPlayer(TileEnum.Player.PLAYER);
     }
-    /**.
+    /**
      * Method to populate a board with values
      * Sets level 2a board data
      */
     public void setBoard_2a() {
         //TODO
     }
-    /**.
+    /**
      * Method to populate a board with values
      * Sets level 2b board data
      */

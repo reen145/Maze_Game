@@ -17,10 +17,6 @@ import java.util.ArrayList;
  * Class for the main logic for the maze game
 *****************************************************************/
 public class GameModel {
-    /**
-     * Represents the state of the current player
-     */
-    private TileEnum.Player currentPlayer;
 	/**.
 	 * Board object for the matrix representing the board
 	**/
@@ -58,7 +54,7 @@ public class GameModel {
     public boolean moveUp() {
         for (int i = 0; i < size; i++) {
             for (int j = 0; j < size; j++) {
-                if (currentBoard.getValue(i, j).isInGroup(TileEnum.Group.PLAYER)
+                if ((currentBoard.getValue(i, j).getPlayer() != TileEnum.Player.NONE)
                      && currentBoard.getValue(i - 1, j).isInGroup(TileEnum.Group.PATH)) {
                     currentBoard.setValue(i, j, TileEnum.PATH_DEFAULT);
                     return true;
@@ -84,7 +80,7 @@ public class GameModel {
     public boolean moveDown() {
         for (int i = 0; i < size; i++) {
             for (int j = 0; j < size; j++) {
-                if (currentBoard.getValue(i, j).isInGroup(TileEnum.Group.PLAYER)
+                if ((currentBoard.getValue(i, j).getPlayer() != TileEnum.Player.NONE)
                      && currentBoard.getValue(i + 1, j).isInGroup(TileEnum.Group.PATH)) {
                     //boardMatrix[i][j] = TileEnum.PATH_DEFAULT;
                     //boardMatrix[i + 1][j].setPlayer(currentPlayer);
@@ -103,7 +99,7 @@ public class GameModel {
     public boolean moveLeft() {
         for (int i = 0; i < size; i++) {
             for (int j = 0; j < size; j++) {
-                if (currentBoard.getValue(i, j).isInGroup(TileEnum.Group.PLAYER)
+                if ((currentBoard.getValue(i, j).getPlayer() != TileEnum.Player.NONE)
                      && currentBoard.getValue(i, j-1).isInGroup(TileEnum.Group.PATH)) {
                     //boardMatrix[i][j] = TileEnum.PATH_DEFAULT;
                     //boardMatrix[i][j - 1].setPlayer(currentPlayer);
@@ -122,7 +118,7 @@ public class GameModel {
     public boolean moveRight() {
         for (int i = 0; i < size; i++) {
             for (int j = 0; j < size; j++) {
-                if (currentBoard.getValue(i, j).isInGroup(TileEnum.Group.PLAYER)
+                if ((currentBoard.getValue(i, j).getPlayer() != TileEnum.Player.NONE)
                      && currentBoard.getValue(i, j+1).isInGroup(TileEnum.Group.PATH)) {
                     //boardMatrix[i][j] = TileEnum.PATH_DEFAULT;
                     //boardMatrix[i][j + 1].setPlayer(currentPlayer);
@@ -142,20 +138,19 @@ public class GameModel {
         for (int i = 0; i < size; i++) {
             for (int j = 0; j < size; j++) {
                 if (currentBoard.getValue(i, j) == TileEnum.KEY) {
-                    currentPlayer = TileEnum.Player.PLAYER_KEY;
-                    if (currentBoard.getValue(i + 1, j).isInGroup(TileEnum.Group.PLAYER)) {
+                    if (currentBoard.getValue(i + 1, j).getPlayer() != TileEnum.Player.NONE) {
                         currentBoard.setValue(i, j, TileEnum.PATH_DEFAULT);
                         //boardMatrix[i + 1][j].setPlayer(currentPlayer);
                         return true;
-                    } else if (currentBoard.getValue(i - 1, j).isInGroup(TileEnum.Group.PLAYER)) {
+                    } else if (currentBoard.getValue(i - 1, j).getPlayer() != TileEnum.Player.NONE) {
                         currentBoard.setValue(i, j, TileEnum.PATH_DEFAULT);
                         //boardMatrix[i - 1][j].setPlayer(currentPlayer);
                         return true;
-                    } else if (currentBoard.getValue(i, j + 1).isInGroup(TileEnum.Group.PLAYER)) {
+                    } else if (currentBoard.getValue(i, j + 1).getPlayer() != TileEnum.Player.NONE) {
                         currentBoard.setValue(i, j, TileEnum.PATH_DEFAULT);
                         //boardMatrix[i][j + 1].setPlayer(currentPlayer);
                         return true;
-                    } else if (currentBoard.getValue(i, j - 1).isInGroup(TileEnum.Group.PLAYER)) {
+                    } else if (currentBoard.getValue(i, j - 1).getPlayer() != TileEnum.Player.NONE) {
                         currentBoard.setValue(i, j, TileEnum.PATH_DEFAULT);
                         //boardMatrix[i][j - 1].setPlayer(currentPlayer);
                         return true;
