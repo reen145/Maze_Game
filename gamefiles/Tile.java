@@ -115,7 +115,7 @@ public class Tile extends JButton {
                 this.setIcon(iconWall);
                 break;
             case CHEST_OPEN:
-            	this.setIcon(iconChestOpen);
+            	this.setIcon(new CombineIcon(iconChestOpen, iconPath));
             	break;
             default:
             	break;
@@ -143,7 +143,7 @@ public class Tile extends JButton {
                 this.setIcon(iconWall);
                 break;
             case CHEST_OPEN:
-            	this.setIcon(iconChestOpen);
+            	this.setIcon(new CombineIcon(iconChestOpen, iconPath));
             	break;
             	default:
             	break;

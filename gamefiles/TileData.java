@@ -7,7 +7,10 @@ public class TileData {
          * enum fields
          **/
         //Fields for group path
-        PATH_DEFAULT(Group.PATH), PATH_BRICK(Group.PATH), PATH_COBBLE(Group.PATH), PATH_GRASS(Group.PATH),
+        PATH_DEFAULT(Group.PATH), 
+        PATH_BRICK(Group.PATH), 
+        PATH_COBBLE(Group.PATH), 
+        PATH_GRASS(Group.PATH),
         //fields for the walls
         WALL_DEFAULT(Group.WALL),
         //fields for the
