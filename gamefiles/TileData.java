@@ -12,19 +12,7 @@ public class TileData {
         /**.
          * default tile is a path
          **/
-        PATH_DEFAULT(Group.PATH), 
-        /**.
-         * brick
-         **/
-        PATH_BRICK(Group.PATH), 
-        /**.
-         * cobblestone
-         **/
-        PATH_COBBLE(Group.PATH), 
-        /**.
-         * grass
-         **/
-        PATH_GRASS(Group.PATH),
+        PATH_DEFAULT(Group.PATH), PATH_BRICK(Group.PATH), PATH_COBBLE(Group.PATH), PATH_GRASS(Group.PATH),
         //fields for the walls
         /**.
          * wall
@@ -34,7 +22,7 @@ public class TileData {
         /**.
          * chest states and key
          **/
-        CHEST_CLOSED(Group.OBJECT), CHEST_OPEN(Group.OBJECT), KEY(Group.OBJECT);
+        CHEST_CLOSED(Group.OBJECT), CHEST_OPEN(Group.OBJECT), KEY(Group.OBJECT), DOOR(Group.OBJECT);
 
         /**.
          * type of tile

@@ -19,9 +19,13 @@ public class Tile extends JButton {
 	private static final long serialVersionUID = 1L;
     /**.
      * Represents a wall
-     * '1' in status matrix 1
      **/
     private CombineIcon iconWall;
+    
+    /**.
+     * Represents a door
+     **/
+    private CombineIcon iconDoor;
 
     /**.
      * Represents a player
@@ -62,17 +66,14 @@ public class Tile extends JButton {
     **/
     public Tile(final TileData ti) {
         // instantiate the icons from the 'Icons' folder 
-        iconWall = new CombineIcon(new ImageIcon("Icons/wall.png"),
-        		new ImageIcon("Icons/blank.png"));
+        iconWall = new CombineIcon(new ImageIcon("Icons/wall.png"), new ImageIcon("Icons/blank.png"));
         iconPlayer = new ImageIcon("Icons/knight.png");
         iconPath = new ImageIcon("Icons/pathCobble.png");
-        iconChest = new CombineIcon(new ImageIcon("Icons/chest.png"),
-        		new ImageIcon("Icons/pathCobble.png"));
-        iconKey = new CombineIcon(new ImageIcon("Icons/key.png"),
-        		new ImageIcon("Icons/pathCobble.png"));
+        iconChest = new CombineIcon(new ImageIcon("Icons/chest.png"), new ImageIcon("Icons/pathCobble.png"));
+        iconKey = new CombineIcon(new ImageIcon("Icons/key.png"), new ImageIcon("Icons/pathCobble.png"));
         iconPlayerKey = new ImageIcon("Icons/knight_key.png");
-        iconChestOpen = new CombineIcon(new ImageIcon("Icons/chest_open.png"),
-        		new ImageIcon("Icons/cobble.png"));
+        iconChestOpen = new CombineIcon(new ImageIcon("Icons/chest_open.png"), new ImageIcon("Icons/cobble.png"));
+        iconDoor = new CombineIcon(new ImageIcon("Icons/door.png"), new ImageIcon("Icons/pathCobble.png"));
     	type = ti;
     	updateImage();
     }
@@ -117,6 +118,9 @@ public class Tile extends JButton {
             case CHEST_OPEN:
             	this.setIcon(new CombineIcon(iconChestOpen, iconPath));
             	break;
+            case DOOR:
+            	this.setIcon(iconDoor);
+            	break;
             default:
             	break;
         	}
@@ -144,6 +148,9 @@ public class Tile extends JButton {
                 break;
             case CHEST_OPEN:
             	this.setIcon(new CombineIcon(iconChestOpen, iconPath));
+            	break;
+            case DOOR:
+            	this.setIcon(iconDoor);
             	break;
             	default:
             	break;

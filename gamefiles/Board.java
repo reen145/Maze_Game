@@ -108,10 +108,10 @@ public class Board {
         boardMatrix[4][7].setTileEnum(TileData.TileEnum.WALL_DEFAULT);
         boardMatrix[5][6].setTileEnum(TileData.TileEnum.WALL_DEFAULT);
         boardMatrix[5][7].setTileEnum(TileData.TileEnum.WALL_DEFAULT);
-        
         boardMatrix[1][1].setTileEnum(TileData.TileEnum.WALL_DEFAULT);
-        
         boardMatrix[5][8].setPlayer(TileData.Player.PLAYER);
+        boardMatrix[4][5].setTileEnum(TileData.TileEnum.KEY);
+        boardMatrix[7][0].setTileEnum(TileData.TileEnum.DOOR);
         currentPlayer = TileData.Player.PLAYER;
     }
     /**
@@ -146,7 +146,8 @@ public class Board {
         boardMatrix[7][2].setTileEnum(TileData.TileEnum.WALL_DEFAULT);
         boardMatrix[6][3].setTileEnum(TileData.TileEnum.WALL_DEFAULT);
         boardMatrix[7][3].setTileEnum(TileData.TileEnum.WALL_DEFAULT);
-        
+        boardMatrix[7][9].setTileEnum(TileData.TileEnum.DOOR);
+        boardMatrix[1][1].setTileEnum(TileData.TileEnum.CHEST_CLOSED);
         boardMatrix[5][8].setPlayer(TileData.Player.PLAYER);
         currentPlayer = TileData.Player.PLAYER;
     }
