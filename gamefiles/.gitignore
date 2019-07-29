@@ -19,3 +19,7 @@
 /CombineIcon.class
 /TileEnum$Player.class
 /Board.class
+/TileData$Group.class
+/TileData$Player.class
+/TileData$TileEnum.class
+/TileData.class

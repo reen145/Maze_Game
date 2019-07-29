@@ -99,15 +99,94 @@ public class Board {
      * Sets level 2a board data
      */
     public void setBoard_2a() {
-
+    	boardMatrix = new TileData[size][size];
+        //sets a boarder of walls
+        for (int i = 0; i < size; i += (size - 1)) {
+            for (int j = 0; j < size; j++) {
+            	boardMatrix[0][j].setTileEnum(TileData.TileEnum.WALL_DEFAULT);
+                boardMatrix[j][0].setTileEnum(TileData.TileEnum.WALL_DEFAULT);
+                boardMatrix[i][j].setTileEnum(TileData.TileEnum.WALL_DEFAULT);
+                boardMatrix[j][i].setTileEnum(TileData.TileEnum.WALL_DEFAULT);
+            }
+        }
+        //sets everything inside the border to be a path
+        for (int i = 1; i < size - 1; i++) {
+            for (int j = 1; j < size - 1; j++) {
+                boardMatrix[i][j].setTileEnum(TileData.TileEnum.PATH_DEFAULT);
+            }
+        }
+        // Set up static maze
+        boardMatrix[2][2].setTileEnum(TileData.TileEnum.WALL_DEFAULT);
+        boardMatrix[2][3].setTileEnum(TileData.TileEnum.WALL_DEFAULT);
+        boardMatrix[3][2].setTileEnum(TileData.TileEnum.WALL_DEFAULT);
+        boardMatrix[3][3].setTileEnum(TileData.TileEnum.WALL_DEFAULT);
+        boardMatrix[5][4].setTileEnum(TileData.TileEnum.WALL_DEFAULT);
+        boardMatrix[5][5].setTileEnum(TileData.TileEnum.WALL_DEFAULT);
+        boardMatrix[6][4].setTileEnum(TileData.TileEnum.WALL_DEFAULT);
+        boardMatrix[6][5].setTileEnum(TileData.TileEnum.WALL_DEFAULT);
+        boardMatrix[3][6].setTileEnum(TileData.TileEnum.WALL_DEFAULT);
+        boardMatrix[3][7].setTileEnum(TileData.TileEnum.WALL_DEFAULT);
+        boardMatrix[4][6].setTileEnum(TileData.TileEnum.WALL_DEFAULT);
+        boardMatrix[4][7].setTileEnum(TileData.TileEnum.WALL_DEFAULT);
+        boardMatrix[5][6].setTileEnum(TileData.TileEnum.WALL_DEFAULT);
+        boardMatrix[5][7].setTileEnum(TileData.TileEnum.WALL_DEFAULT);
+        
+        boardMatrix[1][1].setTileEnum(TileData.TileEnum.WALL_DEFAULT);
+        
+        boardMatrix[5][8].setPlayer(TileData.Player.PLAYER);
+        currentPlayer = TileData.Player.PLAYER;
     }
     /**
      * Method to populate a board with values
      * Sets level 2b board data
      */
     public void setBoard_2b() {
-
+    	boardMatrix = new TileData[size][size];
+        //sets a boarder of walls
+        for (int i = 0; i < size; i += (size - 1)) {
+            for (int j = 0; j < size; j++) {
+            	boardMatrix[0][j].setTileEnum(TileData.TileEnum.WALL_DEFAULT);
+                boardMatrix[j][0].setTileEnum(TileData.TileEnum.WALL_DEFAULT);
+                boardMatrix[i][j].setTileEnum(TileData.TileEnum.WALL_DEFAULT);
+                boardMatrix[j][i].setTileEnum(TileData.TileEnum.WALL_DEFAULT);
+            }
+        }
+        //sets everything inside the border to be a path
+        for (int i = 1; i < size - 1; i++) {
+            for (int j = 1; j < size - 1; j++) {
+                boardMatrix[i][j].setTileEnum(TileData.TileEnum.PATH_DEFAULT);
+            }
+        }
+        // Set up static maze
+        boardMatrix[2][1].setTileEnum(TileData.TileEnum.WALL_DEFAULT);
+        boardMatrix[2][2].setTileEnum(TileData.TileEnum.WALL_DEFAULT);
+        boardMatrix[2][3].setTileEnum(TileData.TileEnum.WALL_DEFAULT);
+        boardMatrix[2][4].setTileEnum(TileData.TileEnum.WALL_DEFAULT);
+        boardMatrix[2][5].setTileEnum(TileData.TileEnum.WALL_DEFAULT);
+        boardMatrix[2][6].setTileEnum(TileData.TileEnum.WALL_DEFAULT);
+        boardMatrix[2][7].setTileEnum(TileData.TileEnum.WALL_DEFAULT);
+        boardMatrix[4][2].setTileEnum(TileData.TileEnum.WALL_DEFAULT);
+        boardMatrix[4][3].setTileEnum(TileData.TileEnum.WALL_DEFAULT);
+        boardMatrix[4][4].setTileEnum(TileData.TileEnum.WALL_DEFAULT);
+        boardMatrix[4][5].setTileEnum(TileData.TileEnum.WALL_DEFAULT);
+        boardMatrix[4][6].setTileEnum(TileData.TileEnum.WALL_DEFAULT);
+        boardMatrix[4][7].setTileEnum(TileData.TileEnum.WALL_DEFAULT);
+        boardMatrix[4][8].setTileEnum(TileData.TileEnum.WALL_DEFAULT);
+        boardMatrix[5][6].setTileEnum(TileData.TileEnum.WALL_DEFAULT);
+        boardMatrix[6][6].setTileEnum(TileData.TileEnum.WALL_DEFAULT);
+        boardMatrix[7][6].setTileEnum(TileData.TileEnum.WALL_DEFAULT);
+        boardMatrix[6][4].setTileEnum(TileData.TileEnum.WALL_DEFAULT);
+        boardMatrix[7][4].setTileEnum(TileData.TileEnum.WALL_DEFAULT);
+        boardMatrix[8][4].setTileEnum(TileData.TileEnum.WALL_DEFAULT);
+        boardMatrix[6][2].setTileEnum(TileData.TileEnum.WALL_DEFAULT);
+        boardMatrix[7][2].setTileEnum(TileData.TileEnum.WALL_DEFAULT);
+        boardMatrix[6][3].setTileEnum(TileData.TileEnum.WALL_DEFAULT);
+        boardMatrix[7][3].setTileEnum(TileData.TileEnum.WALL_DEFAULT);
+        
+        boardMatrix[5][8].setPlayer(TileData.Player.PLAYER);
+        currentPlayer = TileData.Player.PLAYER;
     }
+
 
 
 }
