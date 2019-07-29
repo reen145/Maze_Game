@@ -50,25 +50,7 @@ public class Board {
      * Sets level 1 board data
      */
     public void setBoard_1() {
-        currentPlayer = TileData.Player.PLAYER;
-        boardMatrix = new TileData[size][size];
-
-        //sets everything inside the border to be a path
-        for (int i = 0; i < size; i++) {
-            for (int j = 0; j < size; j++) {
-                boardMatrix[i][j] = new TileData();
-            }
-        }
-
-        //sets a boarder of walls
-        for (int i = 0; i < size; i += (size - 1)) {
-            for (int j = 0; j < size; j++) {
-                boardMatrix[0][j].setTileEnum(TileData.TileEnum.WALL_DEFAULT);
-                boardMatrix[j][0].setTileEnum(TileData.TileEnum.WALL_DEFAULT);
-                boardMatrix[i][j].setTileEnum(TileData.TileEnum.WALL_DEFAULT);
-                boardMatrix[j][i].setTileEnum(TileData.TileEnum.WALL_DEFAULT);
-            }
-        }
+        initializeBoard(TileData.Player.PLAYER);
 
         // Set up static maze
         boardMatrix[1][3].setTileEnum(TileData.TileEnum.WALL_DEFAULT);
@@ -101,24 +83,7 @@ public class Board {
      * Sets level 2a board data
      */
     public void setBoard_2a(TileData.Player theCurrentPlayer) {
-        currentPlayer = theCurrentPlayer;
-        boardMatrix = new TileData[size][size];
-
-        //sets everything inside the border to be a path
-        for (int i = 0; i < size; i++) {
-            for (int j = 0; j < size; j++) {
-                boardMatrix[i][j] = new TileData();
-            }
-        }
-        //sets a boarder of walls
-        for (int i = 0; i < size; i += (size - 1)) {
-            for (int j = 0; j < size; j++) {
-            	boardMatrix[0][j].setTileEnum(TileData.TileEnum.WALL_DEFAULT);
-                boardMatrix[j][0].setTileEnum(TileData.TileEnum.WALL_DEFAULT);
-                boardMatrix[i][j].setTileEnum(TileData.TileEnum.WALL_DEFAULT);
-                boardMatrix[j][i].setTileEnum(TileData.TileEnum.WALL_DEFAULT);
-            }
-        }
+        initializeBoard(theCurrentPlayer);
         // Set up static maze
         boardMatrix[2][2].setTileEnum(TileData.TileEnum.WALL_DEFAULT);
         boardMatrix[2][3].setTileEnum(TileData.TileEnum.WALL_DEFAULT);
@@ -144,25 +109,8 @@ public class Board {
      * Method to populate a board with values
      * Sets level 2b board data
      */
-    public void setBoard_2b(TileData.Player theCrrentPlayer) {
-        currentPlayer =theCrrentPlayer;
-        boardMatrix = new TileData[size][size];
-
-        //sets everything inside the border to be a path
-        for (int i = 0; i < size; i++) {
-            for (int j = 0; j < size; j++) {
-                boardMatrix[i][j] = new TileData();
-            }
-        }
-        //sets wall border
-        for (int i = 0; i < size; i += (size - 1)) {
-            for (int j = 0; j < size; j++) {
-            	boardMatrix[0][j].setTileEnum(TileData.TileEnum.WALL_DEFAULT);
-                boardMatrix[j][0].setTileEnum(TileData.TileEnum.WALL_DEFAULT);
-                boardMatrix[i][j].setTileEnum(TileData.TileEnum.WALL_DEFAULT);
-                boardMatrix[j][i].setTileEnum(TileData.TileEnum.WALL_DEFAULT);
-            }
-        }
+    public void setBoard_2b(TileData.Player theCurentPlayer) {
+        initializeBoard(theCurentPlayer);
         // Set up static maze
         boardMatrix[2][1].setTileEnum(TileData.TileEnum.WALL_DEFAULT);
         boardMatrix[2][2].setTileEnum(TileData.TileEnum.WALL_DEFAULT);
@@ -193,6 +141,29 @@ public class Board {
         currentPlayer = TileData.Player.PLAYER;
     }
 
+    /**
+     * Helper method to initialize boards
+     * @param theCurentPlayer current player state
+     */
+    private void initializeBoard(TileData.Player theCurentPlayer) {
+        currentPlayer =theCurentPlayer;
+        boardMatrix = new TileData[size][size];
 
+        //sets everything inside the border to be a path
+        for (int i = 0; i < size; i++) {
+            for (int j = 0; j < size; j++) {
+                boardMatrix[i][j] = new TileData();
+            }
+        }
+        //sets wall border
+        for (int i = 0; i < size; i += (size - 1)) {
+            for (int j = 0; j < size; j++) {
+                boardMatrix[0][j].setTileEnum(TileData.TileEnum.WALL_DEFAULT);
+                boardMatrix[j][0].setTileEnum(TileData.TileEnum.WALL_DEFAULT);
+                boardMatrix[i][j].setTileEnum(TileData.TileEnum.WALL_DEFAULT);
+                boardMatrix[j][i].setTileEnum(TileData.TileEnum.WALL_DEFAULT);
+            }
+        }
+    }
 
 }
