@@ -46,6 +46,13 @@ public class GameModel {
         currentBoard.setBoard_1();
     }
 
+    /**
+     * Function to set the board to level 2a
+     */
+    public void setLevel2a() {
+        currentBoard.setBoard_2a();
+    }
+
     /**.
      * Function to check if a move is valid
      * @param none
