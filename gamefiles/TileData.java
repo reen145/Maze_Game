@@ -71,12 +71,12 @@ public class TileData {
     /**.
      * tile type
      **/
-    TileEnum myTileEnum;
+    private TileEnum myTileEnum;
 
     /**.
      * player status
      **/
-    Player myPlayer;
+    private Player myPlayer;
 
     /**.
      * constructor for the TileData class with parameters

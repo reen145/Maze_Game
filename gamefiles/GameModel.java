@@ -28,7 +28,7 @@ public class GameModel {
     /**.
      * Variable for the size of the board
     **/
-    private final int size = 10;
+    private int size = 10;
     /**.
      * Constructor for the game board
      * @param none
@@ -43,14 +43,14 @@ public class GameModel {
     **/
     private void setDefaultBoard() {
         currentBoard = new Board();
-        currentBoard.setBoard_1();
+        currentBoard.setBoard1();
     }
 
     /**.
      * Function to set the board to level 2a
      */
     public void setLevel2() {
-        currentBoard.setBoard_2a(TileData.Player.PLAYER);
+        currentBoard.setBoard2a(TileData.Player.PLAYER);
     }
 
     /**.

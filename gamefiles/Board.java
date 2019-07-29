@@ -1,26 +1,29 @@
 package gamefiles;
 
+/**
+ * Class representing the board the player will navigate around
+ */
 public class Board {
-    /**
+    /**.
      * Represents the state of the current player
      */
     private TileData.Player currentPlayer;
-    /**
+    /**.
      * represents the size of the board
      */
-    private final int size = 10;
-    /**
+    private int size = 10;
+    /**.
      * a matrix that roepresents the current board state
      */
     private TileData[][] boardMatrix;
 
-    /**
+    /**.
      * Getter method for the value of a given board cell
      * @param row the row to be accessed
      * @param col the col to be accessed
      * @return the TileEnum of the cell accessed
      */
-    public TileData getValue(int row, int col) {
+    public TileData getValue(final int row, final int col) {
         return boardMatrix[row][col];
     }
 
@@ -30,23 +33,31 @@ public class Board {
      * @param col the col to be accessed
      * @param value the new TileEnum Value
      */
-    public  void setValue(int row, int col, TileData value) {
+    public  void setValue(final int row, final int col, final TileData value) {
         boardMatrix[row][col] = value;
     }
 
-    public void setCurrentPlayer(TileData.Player newPlayer) {
+    /**
+     * method to set current player
+     * @param newPlayer the player to be set
+     */
+    public void setCurrentPlayer(final TileData.Player newPlayer) {
         this.currentPlayer = newPlayer;
     }
 
-    public TileData.Player getCurrentPlayer(){
+    /**
+     * Method to retrieve player of current tile
+     * @return the player status of the selected tile
+     */
+    public TileData.Player getCurrentPlayer() {
         return currentPlayer;
     }
 
-    /**
+    /**.
      * Method to populate a board with values
      * Sets level 1 board data
      */
-    public void setBoard_1() {
+    public void setBoard1() {
         initializeBoard(TileData.Player.PLAYER);
 
         // Set up static maze
@@ -78,8 +89,9 @@ public class Board {
     /**
      * Method to populate a board with values
      * Sets level 2a board data
+     * @param theCurrentPlayer the status of the player
      */
-    public void setBoard_2a(TileData.Player theCurrentPlayer) {
+    public void setBoard2a(final TileData.Player theCurrentPlayer) {
         initializeBoard(theCurrentPlayer);
         // Set up static maze
         boardMatrix[2][2].setTileEnum(TileData.TileEnum.WALL_DEFAULT);
@@ -105,8 +117,9 @@ public class Board {
     /**
      * Method to populate a board with values
      * Sets level 2b board data
+     * @param theCurrentPlayer the status of the player
      */
-    public void setBoard_2b(TileData.Player theCurrentPlayer) {
+    public void setBoard2b(final TileData.Player theCurrentPlayer) {
         initializeBoard(theCurrentPlayer);
         // Set up static maze
         boardMatrix[2][1].setTileEnum(TileData.TileEnum.WALL_DEFAULT);
@@ -142,8 +155,8 @@ public class Board {
      * Helper method to initialize boards
      * @param theCurentPlayer current player state
      */
-    private void initializeBoard(TileData.Player theCurentPlayer) {
-        currentPlayer =theCurentPlayer;
+    private void initializeBoard(final TileData.Player theCurentPlayer) {
+        currentPlayer = theCurentPlayer;
         boardMatrix = new TileData[size][size];
 
         //sets everything inside the border to be a path
