@@ -55,9 +55,10 @@ public class GameModel {
     public boolean moveUp() {
         for (int i = 0; i < size; i++) {
             for (int j = 0; j < size; j++) {
-                if ((currentBoard.getValue(i, j).getPlayer() != TileEnum.Player.NONE)
-                     && currentBoard.getValue(i - 1, j).isInGroup(TileEnum.Group.PATH)) {
-                    currentBoard.setValue(i, j, TileEnum.PATH_DEFAULT);
+                if ((currentBoard.getValue(i, j).getPlayer() != TileData.Player.NONE)
+                     && currentBoard.getValue(i - 1, j).getType() == TileData.Group.PATH) {
+                    currentBoard.getValue(i, j).setPlayer(TileData.Player.NONE);
+                    currentBoard.getValue(i - 1, j).setPlayer(currentBoard.getCurrentPlayer());
                     return true;
                 }
             }
@@ -81,10 +82,10 @@ public class GameModel {
     public boolean moveDown() {
         for (int i = 0; i < size; i++) {
             for (int j = 0; j < size; j++) {
-                if ((currentBoard.getValue(i, j).getPlayer() != TileEnum.Player.NONE)
-                     && currentBoard.getValue(i + 1, j).isInGroup(TileEnum.Group.PATH)) {
-                    //boardMatrix[i][j] = TileEnum.PATH_DEFAULT;
-                    //boardMatrix[i + 1][j].setPlayer(currentPlayer);
+                if ((currentBoard.getValue(i, j).getPlayer() != TileData.Player.NONE)
+                        && currentBoard.getValue(i + 1, j).getType() == TileData.Group.PATH) {
+                    currentBoard.getValue(i, j).setPlayer(TileData.Player.NONE);
+                    currentBoard.getValue(i + 1, j).setPlayer(currentBoard.getCurrentPlayer());
                     return true;
                 }
             }
@@ -100,12 +101,12 @@ public class GameModel {
     public boolean moveLeft() {
         for (int i = 0; i < size; i++) {
             for (int j = 0; j < size; j++) {
-                if ((currentBoard.getValue(i, j).getPlayer() != TileEnum.Player.NONE)
-                     && currentBoard.getValue(i, j-1).isInGroup(TileEnum.Group.PATH)) {
-                    //boardMatrix[i][j] = TileEnum.PATH_DEFAULT;
-                    //boardMatrix[i][j - 1].setPlayer(currentPlayer);
+                if ((currentBoard.getValue(i, j).getPlayer() != TileData.Player.NONE)
+                        && currentBoard.getValue(i, j - 1).getType() == TileData.Group.PATH) {
+                    currentBoard.getValue(i, j).setPlayer(TileData.Player.NONE);
+                    currentBoard.getValue(i, j - 1).setPlayer(currentBoard.getCurrentPlayer());
                     return true;
-                }            
+                }
             }
         }
         return false;
@@ -119,10 +120,10 @@ public class GameModel {
     public boolean moveRight() {
         for (int i = 0; i < size; i++) {
             for (int j = 0; j < size; j++) {
-                if ((currentBoard.getValue(i, j).getPlayer() != TileEnum.Player.NONE)
-                     && currentBoard.getValue(i, j+1).isInGroup(TileEnum.Group.PATH)) {
-                    //boardMatrix[i][j] = TileEnum.PATH_DEFAULT;
-                    //boardMatrix[i][j + 1].setPlayer(currentPlayer);
+                if ((currentBoard.getValue(i, j).getPlayer() != TileData.Player.NONE)
+                        && currentBoard.getValue(i, j + 1).getType() == TileData.Group.PATH) {
+                    currentBoard.getValue(i, j).setPlayer(TileData.Player.NONE);
+                    currentBoard.getValue(i, j + 1).setPlayer(currentBoard.getCurrentPlayer());
                     return true;
                 }
             }
@@ -136,6 +137,7 @@ public class GameModel {
      * @return boolean saying if the move is valid
     **/
     public boolean keySelected() {
+        /*
         for (int i = 0; i < size; i++) {
             for (int j = 0; j < size; j++) {
                 if (currentBoard.getValue(i, j) == TileEnum.KEY) {
@@ -159,7 +161,9 @@ public class GameModel {
                 }
             }
         }
+        */
         return false;
+
     }
 
     /**.
@@ -208,7 +212,7 @@ public class GameModel {
      * @param col the column selected
      * @return tile type of the tile in question
     **/
-    public TileEnum getTileValue(final int row, final int col) {
+    public TileData getTileValue(final int row, final int col) {
         return currentBoard.getValue(row, col);
     }
 

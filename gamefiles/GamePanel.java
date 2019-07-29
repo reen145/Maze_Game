@@ -194,50 +194,34 @@ public class GamePanel extends JPanel {
 					// found the source
 					if (comp == tileMatrix[row][col]) {
 						//check for movement
-	if (tileMatrix[row][col].getType() 
-			== TileEnum.PATH_DEFAULT && tileMatrix[row + 1][col]
-				.getType().getPlayer() == TileEnum.Player.PLAYER
-			   | tileMatrix[row + 1][col].getType().getPlayer() 
-					== TileEnum.Player.PLAYER_KEY) {
+	if (tileMatrix[row][col].getType().checkType(TileData.Group.WALL) && tileMatrix[row + 1][col].getType().getPlayer() != TileData.Player.NONE) {
 						if (myGameModel.moveUp()) {
 								playStep();
 								updateBoard();
 							}
-	} else if  (tileMatrix[row][col].getType() 
-			== TileEnum.PATH_DEFAULT && tileMatrix[row - 1][col]
-				.getType().getPlayer() == TileEnum.Player.PLAYER
-			   | tileMatrix[row - 1][col].getType().getPlayer() 
-					== TileEnum.Player.PLAYER_KEY) {
+	} else if  (tileMatrix[row][col].getType().checkType(TileData.Group.WALL) && tileMatrix[row - 1][col].getType().getPlayer() != TileData.Player.NONE) {
 						if (myGameModel.moveDown()) {
 								playStep();
 								updateBoard();
 							}
-	} else if  (tileMatrix[row][col].getType() 
-			== TileEnum.PATH_DEFAULT && tileMatrix[row][col + 1]
-				.getType().getPlayer() == TileEnum.Player.PLAYER
-			   | tileMatrix[row][col + 1].getType().getPlayer() 
-					== TileEnum.Player.PLAYER_KEY) {
+	} else if  (tileMatrix[row][col].getType().checkType(TileData.Group.WALL) && tileMatrix[row][col + 1].getType().getPlayer() != TileData.Player.NONE) {
 						if (myGameModel.moveLeft()) {
 								playStep();
 								updateBoard();
 							}
-	} else if (tileMatrix[row][col].getType() 
-			== TileEnum.PATH_DEFAULT && tileMatrix[row][col - 1]
-				.getType().getPlayer() == TileEnum.Player.PLAYER
-			   | tileMatrix[row][col - 1].getType().getPlayer() 
-					== TileEnum.Player.PLAYER_KEY) {
+	} else if (tileMatrix[row][col].getType().checkType(TileData.Group.WALL) && tileMatrix[row][col - 1].getType().getPlayer() != TileData.Player.NONE) {
 						if (myGameModel.moveRight()) {
 							 	playStep();
 							 	updateBoard();
 							 }
 					//checks to see if the key was clicked
-	} else if (tileMatrix[row][col].getType() == TileEnum.KEY) {
+	} else if (tileMatrix[row][col].getType().getTileEnum() == TileData.TileEnum.KEY) {
 					if (myGameModel.keySelected()) {
 								playKey();
 								updateBoard();
 							}
 					//checks to see if the chest was clicked
-	} else if (tileMatrix[row][col].getType() == TileEnum.CHEST_CLOSED) {
+	} else if (tileMatrix[row][col].getType().getTileEnum() == TileData.TileEnum.CHEST_CLOSED) {
 					if (myGameModel.chestSelected()) {
 								updateBoard();
 								playChest();

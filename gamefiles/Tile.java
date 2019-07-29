@@ -54,13 +54,13 @@ public class Tile extends JButton {
     /**.
      * Class for the main jPanel to be used in the maze game
      **/
-	private TileEnum type;
+	private TileData type;
 
     /**.
      * Constructor for creating a tile
      * @param ti - the type of tile
     **/
-    public Tile(final TileEnum ti) {
+    public Tile(final TileData ti) {
         // instantiate the icons from the 'Icons' folder 
         iconWall = new CombineIcon(new ImageIcon("Icons/wall.png"),
         		new ImageIcon("Icons/blank.png"));
@@ -81,7 +81,7 @@ public class Tile extends JButton {
      * Getter for the tile type
      * @return type - the type of tile
     **/
-    public TileEnum getType() {
+    public TileData getType() {
         return type;
     }
     
@@ -89,7 +89,7 @@ public class Tile extends JButton {
      * Setter for the tile type
      * @param ti - the type of tile
     **/
-    public void setType(final TileEnum ti) {
+    public void setType(final TileData ti) {
     	type = ti;
     	updateImage();
 
@@ -100,8 +100,8 @@ public class Tile extends JButton {
      * @param none
     **/
     private void updateImage() {
-        if (type.getPlayer() == TileEnum.Player.NONE) {
-        	switch (type) {
+        if (type.getPlayer() == TileData.Player.NONE) {
+        	switch (type.getTileEnum()) {
             case KEY:
                 this.setIcon(iconKey);
                 break;
@@ -120,16 +120,16 @@ public class Tile extends JButton {
             default:
             	break;
         	}
-        } else if (type.getPlayer() == TileEnum.Player.PLAYER) {
-        	switch (type) {
+        } else if (type.getPlayer() == TileData.Player.PLAYER) {
+        	switch (type.getTileEnum()) {
             case PATH_DEFAULT:
                 this.setIcon(new CombineIcon(iconPlayer, iconPath));
                 break;
             default:
             	break;
         	}
-        } else if (type.getPlayer() == TileEnum.Player.PLAYER_KEY) {
-        	switch (type) {
+        } else if (type.getPlayer() == TileData.Player.PLAYER_KEY) {
+        	switch (type.getTileEnum()) {
             case KEY:
                 this.setIcon(iconKey);
                 break;
