@@ -33,9 +33,17 @@ public class Tile extends JButton {
     private ImageIcon iconPlayer;
 
     /**.
-     * Represents a blank square
+     * Represents a cobblestone path
      **/
     private ImageIcon iconPath;
+    /**.
+     * Represents a brick path
+     **/
+    private ImageIcon iconBrick;
+    /**.
+     * Represents a grass path
+     **/
+    private ImageIcon iconGrass;
 
     /**.
      * Represents a chest
@@ -54,7 +62,6 @@ public class Tile extends JButton {
      **/
     private ImageIcon iconPlayerKey;
 
-
     /**.
      * Class for the main jPanel to be used in the maze game
      **/
@@ -66,9 +73,11 @@ public class Tile extends JButton {
     **/
     public Tile(final TileData ti) {
         // instantiate the icons from the 'Icons' folder 
-        iconWall = new CombineIcon(new ImageIcon("Icons/wall.png"), new ImageIcon("Icons/blank.png"));
+        iconWall = new CombineIcon(new ImageIcon("Icons/pathLava.png"), new ImageIcon("Icons/blank.png"));
         iconPlayer = new ImageIcon("Icons/knight.png");
         iconPath = new ImageIcon("Icons/pathCobble.png");
+        iconBrick = new ImageIcon("Icons/pathBrick.png");
+        iconGrass = new ImageIcon("Icons/pathGrass.png");
         iconChest = new CombineIcon(new ImageIcon("Icons/chest.png"), new ImageIcon("Icons/pathCobble.png"));
         iconKey = new CombineIcon(new ImageIcon("Icons/key.png"), new ImageIcon("Icons/pathCobble.png"));
         iconPlayerKey = new ImageIcon("Icons/knight_key.png");
@@ -109,6 +118,12 @@ public class Tile extends JButton {
             case PATH_DEFAULT:
                 this.setIcon(iconPath);
                 break;
+            case PATH_BRICK:
+            	this.setIcon(iconBrick);
+            	break;
+            case PATH_GRASS:
+            	this.setIcon(iconGrass);
+            	break;
             case CHEST_CLOSED:
                 this.setIcon(iconChest);
                 break;
@@ -129,6 +144,12 @@ public class Tile extends JButton {
             case PATH_DEFAULT:
                 this.setIcon(new CombineIcon(iconPlayer, iconPath));
                 break;
+            case PATH_BRICK:
+            	this.setIcon(new CombineIcon(iconPlayer, iconBrick));
+            	break;
+            case PATH_GRASS:
+            	this.setIcon(new CombineIcon(iconPlayer, iconGrass));
+            	break;
             default:
             	break;
         	}
@@ -140,6 +161,12 @@ public class Tile extends JButton {
             case PATH_DEFAULT:
                 this.setIcon(new CombineIcon(iconPlayerKey, iconPath));
                 break;
+            case PATH_BRICK:
+            	this.setIcon(new CombineIcon(iconPlayerKey, iconBrick));
+            	break;
+            case PATH_GRASS:
+            	this.setIcon(new CombineIcon(iconPlayerKey, iconGrass));
+            	break;
             case CHEST_CLOSED:
                 this.setIcon(iconChest);
                 break;

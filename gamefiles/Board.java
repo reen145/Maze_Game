@@ -58,30 +58,30 @@ public class Board {
      * Sets level 1 board data
      */
     public void setBoard1() {
-        initializeBoard(TileData.Player.PLAYER);
+        initializeBoard(TileData.Player.PLAYER, TileData.TileEnum.PATH_GRASS);
 
         // Set up static maze
-        boardMatrix[1][3].setTileEnum(TileData.TileEnum.WALL_DEFAULT);
-        boardMatrix[1][2].setTileEnum(TileData.TileEnum.WALL_DEFAULT);
-        boardMatrix[2][3].setTileEnum(TileData.TileEnum.WALL_DEFAULT);
-        boardMatrix[2][4].setTileEnum(TileData.TileEnum.WALL_DEFAULT);
-        boardMatrix[2][6].setTileEnum(TileData.TileEnum.WALL_DEFAULT);
-        boardMatrix[1][6].setTileEnum(TileData.TileEnum.WALL_DEFAULT);
-        boardMatrix[3][1].setTileEnum(TileData.TileEnum.WALL_DEFAULT);
-        boardMatrix[4][1].setTileEnum(TileData.TileEnum.WALL_DEFAULT);
-        boardMatrix[4][2].setTileEnum(TileData.TileEnum.WALL_DEFAULT);
-        boardMatrix[3][4].setTileEnum(TileData.TileEnum.WALL_DEFAULT);
-        boardMatrix[3][6].setTileEnum(TileData.TileEnum.WALL_DEFAULT);
-        boardMatrix[3][7].setTileEnum(TileData.TileEnum.WALL_DEFAULT);
-        boardMatrix[5][1].setTileEnum(TileData.TileEnum.WALL_DEFAULT);
-        boardMatrix[5][2].setTileEnum(TileData.TileEnum.WALL_DEFAULT);
-        boardMatrix[5][3].setTileEnum(TileData.TileEnum.WALL_DEFAULT);
-        boardMatrix[5][4].setTileEnum(TileData.TileEnum.WALL_DEFAULT);
-        boardMatrix[6][3].setTileEnum(TileData.TileEnum.WALL_DEFAULT);
-        boardMatrix[6][5].setTileEnum(TileData.TileEnum.WALL_DEFAULT);
-        boardMatrix[7][7].setTileEnum(TileData.TileEnum.WALL_DEFAULT);
-        boardMatrix[8][7].setTileEnum(TileData.TileEnum.WALL_DEFAULT);
-        boardMatrix[9][7].setTileEnum(TileData.TileEnum.WALL_DEFAULT);
+        boardMatrix[1][3].setTileEnum(TileData.TileEnum.PATH_GRASS);
+        boardMatrix[1][2].setTileEnum(TileData.TileEnum.PATH_GRASS);
+        boardMatrix[2][3].setTileEnum(TileData.TileEnum.PATH_GRASS);
+        boardMatrix[2][4].setTileEnum(TileData.TileEnum.PATH_GRASS);
+        boardMatrix[2][6].setTileEnum(TileData.TileEnum.PATH_GRASS);
+        boardMatrix[1][6].setTileEnum(TileData.TileEnum.PATH_GRASS);
+        boardMatrix[3][1].setTileEnum(TileData.TileEnum.PATH_GRASS);
+        boardMatrix[4][1].setTileEnum(TileData.TileEnum.PATH_GRASS);
+        boardMatrix[4][2].setTileEnum(TileData.TileEnum.PATH_GRASS);
+        boardMatrix[3][4].setTileEnum(TileData.TileEnum.PATH_GRASS);
+        boardMatrix[3][6].setTileEnum(TileData.TileEnum.PATH_GRASS);
+        boardMatrix[3][7].setTileEnum(TileData.TileEnum.PATH_GRASS);
+        boardMatrix[5][1].setTileEnum(TileData.TileEnum.PATH_GRASS);
+        boardMatrix[5][2].setTileEnum(TileData.TileEnum.PATH_GRASS);
+        boardMatrix[5][3].setTileEnum(TileData.TileEnum.PATH_GRASS);
+        boardMatrix[5][4].setTileEnum(TileData.TileEnum.PATH_GRASS);
+        boardMatrix[6][3].setTileEnum(TileData.TileEnum.PATH_GRASS);
+        boardMatrix[6][5].setTileEnum(TileData.TileEnum.PATH_GRASS);
+        boardMatrix[7][7].setTileEnum(TileData.TileEnum.PATH_GRASS);
+        boardMatrix[8][7].setTileEnum(TileData.TileEnum.PATH_GRASS);
+        boardMatrix[9][7].setTileEnum(TileData.TileEnum.PATH_GRASS);
         boardMatrix[1][1].setTileEnum(TileData.TileEnum.CHEST_CLOSED);
         boardMatrix[6][1].setTileEnum(TileData.TileEnum.KEY);
         boardMatrix[8][8].setPlayer(TileData.Player.PLAYER);
@@ -92,7 +92,12 @@ public class Board {
      * @param theCurrentPlayer the status of the player
      */
     public void setBoard2a(final TileData.Player theCurrentPlayer) {
-        initializeBoard(theCurrentPlayer);
+        initializeBoard(theCurrentPlayer, TileData.TileEnum.WALL_DEFAULT);
+        for (int i = 1; i < size - 1; i++) {
+        	for (int j = 1; j < size - 1; j++) {
+        		boardMatrix[i][j].setTileEnum(TileData.TileEnum.PATH_BRICK);
+        	}
+        }
         // Set up static maze
         boardMatrix[2][2].setTileEnum(TileData.TileEnum.WALL_DEFAULT);
         boardMatrix[2][3].setTileEnum(TileData.TileEnum.WALL_DEFAULT);
@@ -120,7 +125,12 @@ public class Board {
      * @param theCurrentPlayer the status of the player
      */
     public void setBoard2b(final TileData.Player theCurrentPlayer) {
-        initializeBoard(theCurrentPlayer);
+        initializeBoard(theCurrentPlayer, TileData.TileEnum.WALL_DEFAULT);
+        for (int i = 1; i < size - 1; i++) {
+        	for (int j = 1; j < size - 1; j++) {
+        		boardMatrix[i][j].setTileEnum(TileData.TileEnum.PATH_BRICK);
+        	}
+        }
         // Set up static maze
         boardMatrix[2][1].setTileEnum(TileData.TileEnum.WALL_DEFAULT);
         boardMatrix[2][2].setTileEnum(TileData.TileEnum.WALL_DEFAULT);
@@ -155,8 +165,9 @@ public class Board {
     /**
      * Helper method to initialize boards
      * @param theCurentPlayer current player state
+     * @param wall the texture for walls in the level
      */
-    private void initializeBoard(final TileData.Player theCurentPlayer) {
+    private void initializeBoard(final TileData.Player theCurentPlayer, final TileData.TileEnum wall) {
         currentPlayer = theCurentPlayer;
         boardMatrix = new TileData[size][size];
 
@@ -169,10 +180,10 @@ public class Board {
         //sets wall border
         for (int i = 0; i < size; i += (size - 1)) {
             for (int j = 0; j < size; j++) {
-                boardMatrix[0][j].setTileEnum(TileData.TileEnum.WALL_DEFAULT);
-                boardMatrix[j][0].setTileEnum(TileData.TileEnum.WALL_DEFAULT);
-                boardMatrix[i][j].setTileEnum(TileData.TileEnum.WALL_DEFAULT);
-                boardMatrix[j][i].setTileEnum(TileData.TileEnum.WALL_DEFAULT);
+                boardMatrix[0][j].setTileEnum(wall);
+                boardMatrix[j][0].setTileEnum(wall);
+                boardMatrix[i][j].setTileEnum(wall);
+                boardMatrix[j][i].setTileEnum(wall);
             }
         }
     }
