@@ -21,7 +21,7 @@ public class GameModel {
 	 * Board object for the matrix representing the board
 	**/
 	private Board currentBoard;
-    /**
+    /**.
      * ArrayList representing the different boards in a level
      */
     private ArrayList<Board> gameBoards;
@@ -46,10 +46,10 @@ public class GameModel {
         currentBoard.setBoard_1();
     }
 
-    /**
+    /**.
      * Function to set the board to level 2a
      */
-    public void setLevel2a() {
+    public void setLevel2() {
         currentBoard.setBoard_2a();
     }
 
@@ -61,10 +61,13 @@ public class GameModel {
     public boolean moveUp() {
         for (int i = 0; i < size; i++) {
             for (int j = 0; j < size; j++) {
-                if ((currentBoard.getValue(i, j).getPlayer() != TileData.Player.NONE)
-                     && currentBoard.getValue(i - 1, j).getType() == TileData.Group.PATH) {
+                if ((currentBoard.getValue(i, j).getPlayer() 
+                		!= TileData.Player.NONE)
+                		&& currentBoard.getValue(i - 1, j).getType()
+                		== TileData.Group.PATH) {
                     currentBoard.getValue(i, j).setPlayer(TileData.Player.NONE);
-                    currentBoard.getValue(i - 1, j).setPlayer(currentBoard.getCurrentPlayer());
+                    currentBoard.getValue(i - 1, j)
+                    .setPlayer(currentBoard.getCurrentPlayer());
                     return true;
                 }
             }
@@ -88,10 +91,13 @@ public class GameModel {
     public boolean moveDown() {
         for (int i = 0; i < size; i++) {
             for (int j = 0; j < size; j++) {
-                if ((currentBoard.getValue(i, j).getPlayer() != TileData.Player.NONE)
-                        && currentBoard.getValue(i + 1, j).getType() == TileData.Group.PATH) {
+                if ((currentBoard.getValue(i, j).getPlayer()
+                		!= TileData.Player.NONE)
+                        && currentBoard.getValue(i + 1, j).getType()
+                        == TileData.Group.PATH) {
                     currentBoard.getValue(i, j).setPlayer(TileData.Player.NONE);
-                    currentBoard.getValue(i + 1, j).setPlayer(currentBoard.getCurrentPlayer());
+                    currentBoard.getValue(i + 1, j)
+                    .setPlayer(currentBoard.getCurrentPlayer());
                     return true;
                 }
             }
@@ -107,10 +113,13 @@ public class GameModel {
     public boolean moveLeft() {
         for (int i = 0; i < size; i++) {
             for (int j = 0; j < size; j++) {
-                if ((currentBoard.getValue(i, j).getPlayer() != TileData.Player.NONE)
-                        && currentBoard.getValue(i, j - 1).getType() == TileData.Group.PATH) {
+                if ((currentBoard.getValue(i, j).getPlayer()
+                		!= TileData.Player.NONE)
+                        && currentBoard.getValue(i, j - 1).getType()
+                        == TileData.Group.PATH) {
                     currentBoard.getValue(i, j).setPlayer(TileData.Player.NONE);
-                    currentBoard.getValue(i, j - 1).setPlayer(currentBoard.getCurrentPlayer());
+                    currentBoard.getValue(i, j - 1)
+                    .setPlayer(currentBoard.getCurrentPlayer());
                     return true;
                 }
             }
@@ -126,10 +135,13 @@ public class GameModel {
     public boolean moveRight() {
         for (int i = 0; i < size; i++) {
             for (int j = 0; j < size; j++) {
-                if ((currentBoard.getValue(i, j).getPlayer() != TileData.Player.NONE)
-                        && currentBoard.getValue(i, j + 1).getType() == TileData.Group.PATH) {
+                if ((currentBoard.getValue(i, j).getPlayer()
+                		!= TileData.Player.NONE)
+                        && currentBoard.getValue(i, j + 1).getType()
+                        == TileData.Group.PATH) {
                     currentBoard.getValue(i, j).setPlayer(TileData.Player.NONE);
-                    currentBoard.getValue(i, j + 1).setPlayer(currentBoard.getCurrentPlayer());
+                    currentBoard.getValue(i, j + 1)
+                    .setPlayer(currentBoard.getCurrentPlayer());
                     return true;
                 }
             }
@@ -145,14 +157,19 @@ public class GameModel {
     public boolean keySelected() {
         for (int i = 0; i < size; i++) {
             for (int j = 0; j < size; j++) {
-                if (currentBoard.getValue(i, j).getTileEnum() == TileData.TileEnum.KEY) {
-                    if (currentBoard.getValue(i + 1, j).getPlayer() != TileData.Player.NONE) {
-                        currentBoard.getValue(i, j).setTileEnum(TileData.TileEnum.PATH_DEFAULT);
-                        currentBoard.setCurrentPlayer(TileData.Player.PLAYER_KEY);
+                if (currentBoard.getValue(i, j).getTileEnum() 
+                		== TileData.TileEnum.KEY) {
+                    if (currentBoard.getValue(i + 1, j).getPlayer() 
+                    		!= TileData.Player.NONE) {
+                        currentBoard.getValue(i, j)
+                        .setTileEnum(TileData.TileEnum.PATH_DEFAULT);
+                      currentBoard.setCurrentPlayer(TileData.Player.PLAYER_KEY);
                         return true;
-                    } else if (currentBoard.getValue(i - 1, j).getPlayer() != TileData.Player.NONE) {
-                        currentBoard.getValue(i, j).setTileEnum(TileData.TileEnum.PATH_DEFAULT);
-                        currentBoard.setCurrentPlayer(TileData.Player.PLAYER_KEY);
+                    } else if (currentBoard.getValue(i - 1, j).getPlayer() 
+                    		!= TileData.Player.NONE) {
+                        currentBoard.getValue(i, j)
+                        .setTileEnum(TileData.TileEnum.PATH_DEFAULT);
+                      currentBoard.setCurrentPlayer(TileData.Player.PLAYER_KEY);
                         return true;
                     } else if (currentBoard.getValue(i, j + 1).getPlayer() != TileData.Player.NONE) {
                         currentBoard.getValue(i, j).setTileEnum(TileData.TileEnum.PATH_DEFAULT);

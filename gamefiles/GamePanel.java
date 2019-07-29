@@ -194,39 +194,49 @@ public class GamePanel extends JPanel {
 					// found the source
 					if (comp == tileMatrix[row][col]) {
 						//check for movement
-	if (tileMatrix[row][col].getType().checkType(TileData.Group.PATH) && tileMatrix[row + 1][col].getType().getPlayer() != TileData.Player.NONE) {
+	if (tileMatrix[row][col].getType().checkType(TileData.Group.PATH) 
+			&& tileMatrix[row + 1][col].getType().getPlayer()
+					!= TileData.Player.NONE) {
 						if (myGameModel.moveUp()) {
 								playStep();
 								updateBoard();
 							}
-	} else if  (tileMatrix[row][col].getType().checkType(TileData.Group.PATH) && tileMatrix[row - 1][col].getType().getPlayer() != TileData.Player.NONE) {
+	} else if (tileMatrix[row][col].getType().checkType(TileData.Group.PATH)
+			&& tileMatrix[row - 1][col].getType().getPlayer()
+			!= TileData.Player.NONE) {
 						if (myGameModel.moveDown()) {
 								playStep();
 								updateBoard();
 							}
-	} else if  (tileMatrix[row][col].getType().checkType(TileData.Group.PATH) && tileMatrix[row][col + 1].getType().getPlayer() != TileData.Player.NONE) {
+	} else if (tileMatrix[row][col].getType().checkType(TileData.Group.PATH)
+			&& tileMatrix[row][col + 1].getType().getPlayer()
+			!= TileData.Player.NONE) {
 						if (myGameModel.moveLeft()) {
 								playStep();
 								updateBoard();
 							}
-	} else if (tileMatrix[row][col].getType().checkType(TileData.Group.PATH) && tileMatrix[row][col - 1].getType().getPlayer() != TileData.Player.NONE) {
+	} else if (tileMatrix[row][col].getType().checkType(TileData.Group.PATH)
+			&& tileMatrix[row][col - 1].getType().getPlayer()
+			!= TileData.Player.NONE) {
 						if (myGameModel.moveRight()) {
 							 	playStep();
 							 	updateBoard();
-							 }
+							}
 					//checks to see if the key was clicked
-	} else if (tileMatrix[row][col].getType().getTileEnum() == TileData.TileEnum.KEY) {
+	} else if (tileMatrix[row][col].getType().getTileEnum()
+			== TileData.TileEnum.KEY) {
 					if (myGameModel.keySelected()) {
 								playKey();
 								updateBoard();
 							}
 					//checks to see if the chest was clicked
-	} else if (tileMatrix[row][col].getType().getTileEnum() == TileData.TileEnum.CHEST_CLOSED) {
+	} else if (tileMatrix[row][col].getType().getTileEnum()
+			== TileData.TileEnum.CHEST_CLOSED) {
 					if (myGameModel.chestSelected()) {
 								updateBoard();
 								playChest();
 				JOptionPane.showMessageDialog(null, "You Won");
-						myGameModel.setLevel2a();
+						myGameModel.setLevel2();
 								updateBoard();
 							}
 					} else {
