@@ -43,8 +43,7 @@ public class GameModel {
     **/
     private void setDefaultBoard() {
         currentBoard = new Board();
-        //currentBoard.setBoard_1();
-        currentBoard.setBoard_2a();
+        currentBoard.setBoard_1();
     }
 
     /**.
@@ -137,31 +136,29 @@ public class GameModel {
      * @return boolean saying if the move is valid
     **/
     public boolean keySelected() {
-        /*
         for (int i = 0; i < size; i++) {
             for (int j = 0; j < size; j++) {
-                if (currentBoard.getValue(i, j) == TileEnum.KEY) {
-                    if (currentBoard.getValue(i + 1, j).getPlayer() != TileEnum.Player.NONE) {
-                        currentBoard.setValue(i, j, TileEnum.PATH_DEFAULT);
-                        //boardMatrix[i + 1][j].setPlayer(currentPlayer);
+                if (currentBoard.getValue(i, j).getTileEnum() == TileData.TileEnum.KEY) {
+                    if (currentBoard.getValue(i + 1, j).getPlayer() != TileData.Player.NONE) {
+                        currentBoard.getValue(i, j).setTileEnum(TileData.TileEnum.PATH_DEFAULT);
+                        currentBoard.setCurrentPlayer(TileData.Player.PLAYER_KEY);
                         return true;
-                    } else if (currentBoard.getValue(i - 1, j).getPlayer() != TileEnum.Player.NONE) {
-                        currentBoard.setValue(i, j, TileEnum.PATH_DEFAULT);
-                        //boardMatrix[i - 1][j].setPlayer(currentPlayer);
+                    } else if (currentBoard.getValue(i - 1, j).getPlayer() != TileData.Player.NONE) {
+                        currentBoard.getValue(i, j).setTileEnum(TileData.TileEnum.PATH_DEFAULT);
+                        currentBoard.setCurrentPlayer(TileData.Player.PLAYER_KEY);
                         return true;
-                    } else if (currentBoard.getValue(i, j + 1).getPlayer() != TileEnum.Player.NONE) {
-                        currentBoard.setValue(i, j, TileEnum.PATH_DEFAULT);
-                        //boardMatrix[i][j + 1].setPlayer(currentPlayer);
+                    } else if (currentBoard.getValue(i, j + 1).getPlayer() != TileData.Player.NONE) {
+                        currentBoard.getValue(i, j).setTileEnum(TileData.TileEnum.PATH_DEFAULT);
+                        currentBoard.setCurrentPlayer(TileData.Player.PLAYER_KEY);
                         return true;
-                    } else if (currentBoard.getValue(i, j - 1).getPlayer() != TileEnum.Player.NONE) {
-                        currentBoard.setValue(i, j, TileEnum.PATH_DEFAULT);
-                        //boardMatrix[i][j - 1].setPlayer(currentPlayer);
+                    } else if (currentBoard.getValue(i, j - 1).getPlayer() != TileData.Player.NONE) {
+                        currentBoard.getValue(i, j).setTileEnum(TileData.TileEnum.PATH_DEFAULT);
+                        currentBoard.setCurrentPlayer(TileData.Player.PLAYER_KEY);
                         return true;
                     }
                 }
             }
         }
-        */
         return false;
 
     }

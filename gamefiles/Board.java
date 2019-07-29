@@ -51,6 +51,13 @@ public class Board {
         currentPlayer = TileData.Player.PLAYER;
         boardMatrix = new TileData[size][size];
 
+        //sets everything inside the border to be a path
+        for (int i = 0; i < size; i++) {
+            for (int j = 0; j < size; j++) {
+                boardMatrix[i][j] = new TileData();
+            }
+        }
+
         //sets a boarder of walls
         for (int i = 0; i < size; i += (size - 1)) {
             for (int j = 0; j < size; j++) {
@@ -60,12 +67,6 @@ public class Board {
                 boardMatrix[j][i].setTileEnum(TileData.TileEnum.WALL_DEFAULT);
             }
         }
-        //sets everything inside the border to be a path
-        //for (int i = 1; i < size - 1; i++) {
-        //    for (int j = 1; j < size - 1; j++) {
-        //        boardMatrix[i][j] = TileEnum.PATH_DEFAULT;
-        //    }
-        //}
 
         // Set up static maze
         boardMatrix[1][3].setTileEnum(TileData.TileEnum.WALL_DEFAULT);

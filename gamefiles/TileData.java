@@ -11,7 +11,7 @@ public class TileData {
         //fields for the walls
         WALL_DEFAULT(Group.WALL),
         //fields for the
-        CHEST_CLOSED(Group.OBJECT), CHEST_OPEN(Group.OBJECT), KEY(Group.PATH);
+        CHEST_CLOSED(Group.OBJECT), CHEST_OPEN(Group.OBJECT), KEY(Group.OBJECT);
 
         /**.
          * type of tile

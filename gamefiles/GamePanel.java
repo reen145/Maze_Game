@@ -194,22 +194,22 @@ public class GamePanel extends JPanel {
 					// found the source
 					if (comp == tileMatrix[row][col]) {
 						//check for movement
-	if (tileMatrix[row][col].getType().checkType(TileData.Group.WALL) && tileMatrix[row + 1][col].getType().getPlayer() != TileData.Player.NONE) {
+	if (tileMatrix[row][col].getType().checkType(TileData.Group.PATH) && tileMatrix[row + 1][col].getType().getPlayer() != TileData.Player.NONE) {
 						if (myGameModel.moveUp()) {
 								playStep();
 								updateBoard();
 							}
-	} else if  (tileMatrix[row][col].getType().checkType(TileData.Group.WALL) && tileMatrix[row - 1][col].getType().getPlayer() != TileData.Player.NONE) {
+	} else if  (tileMatrix[row][col].getType().checkType(TileData.Group.PATH) && tileMatrix[row - 1][col].getType().getPlayer() != TileData.Player.NONE) {
 						if (myGameModel.moveDown()) {
 								playStep();
 								updateBoard();
 							}
-	} else if  (tileMatrix[row][col].getType().checkType(TileData.Group.WALL) && tileMatrix[row][col + 1].getType().getPlayer() != TileData.Player.NONE) {
+	} else if  (tileMatrix[row][col].getType().checkType(TileData.Group.PATH) && tileMatrix[row][col + 1].getType().getPlayer() != TileData.Player.NONE) {
 						if (myGameModel.moveLeft()) {
 								playStep();
 								updateBoard();
 							}
-	} else if (tileMatrix[row][col].getType().checkType(TileData.Group.WALL) && tileMatrix[row][col - 1].getType().getPlayer() != TileData.Player.NONE) {
+	} else if (tileMatrix[row][col].getType().checkType(TileData.Group.PATH) && tileMatrix[row][col - 1].getType().getPlayer() != TileData.Player.NONE) {
 						if (myGameModel.moveRight()) {
 							 	playStep();
 							 	updateBoard();
