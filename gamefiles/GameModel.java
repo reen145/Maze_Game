@@ -50,7 +50,7 @@ public class GameModel {
      * Function to set the board to level 2a
      */
     public void setLevel2() {
-        currentBoard.setBoard_2a();
+        currentBoard.setBoard_2a(TileData.Player.PLAYER);
     }
 
     /**.
@@ -171,13 +171,17 @@ public class GameModel {
                         .setTileEnum(TileData.TileEnum.PATH_DEFAULT);
                       currentBoard.setCurrentPlayer(TileData.Player.PLAYER_KEY);
                         return true;
-                    } else if (currentBoard.getValue(i, j + 1).getPlayer() != TileData.Player.NONE) {
-                        currentBoard.getValue(i, j).setTileEnum(TileData.TileEnum.PATH_DEFAULT);
-                        currentBoard.setCurrentPlayer(TileData.Player.PLAYER_KEY);
+                    } else if (currentBoard.getValue(i, j + 1).getPlayer()
+                    		!= TileData.Player.NONE) {
+                        currentBoard.getValue(i, j)
+                        .setTileEnum(TileData.TileEnum.PATH_DEFAULT);
+                      currentBoard.setCurrentPlayer(TileData.Player.PLAYER_KEY);
                         return true;
-                    } else if (currentBoard.getValue(i, j - 1).getPlayer() != TileData.Player.NONE) {
-                        currentBoard.getValue(i, j).setTileEnum(TileData.TileEnum.PATH_DEFAULT);
-                        currentBoard.setCurrentPlayer(TileData.Player.PLAYER_KEY);
+                    } else if (currentBoard.getValue(i, j - 1).getPlayer()
+                    		!= TileData.Player.NONE) {
+                        currentBoard.getValue(i, j)
+                        .setTileEnum(TileData.TileEnum.PATH_DEFAULT);
+                      currentBoard.setCurrentPlayer(TileData.Player.PLAYER_KEY);
                         return true;
                     }
                 }
