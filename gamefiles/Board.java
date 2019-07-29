@@ -1,6 +1,8 @@
 package gamefiles;
 
 
+import javax.swing.text.PlainDocument;
+
 public class Board {
     /**
      * Represents the state of the current player
@@ -98,8 +100,16 @@ public class Board {
      * Method to populate a board with values
      * Sets level 2a board data
      */
-    public void setBoard_2a() {
-    	boardMatrix = new TileData[size][size];
+    public void setBoard_2a(TileData.Player theCurrentPlayer) {
+        currentPlayer = theCurrentPlayer;
+        boardMatrix = new TileData[size][size];
+
+        //sets everything inside the border to be a path
+        for (int i = 0; i < size; i++) {
+            for (int j = 0; j < size; j++) {
+                boardMatrix[i][j] = new TileData();
+            }
+        }
         //sets a boarder of walls
         for (int i = 0; i < size; i += (size - 1)) {
             for (int j = 0; j < size; j++) {
@@ -107,12 +117,6 @@ public class Board {
                 boardMatrix[j][0].setTileEnum(TileData.TileEnum.WALL_DEFAULT);
                 boardMatrix[i][j].setTileEnum(TileData.TileEnum.WALL_DEFAULT);
                 boardMatrix[j][i].setTileEnum(TileData.TileEnum.WALL_DEFAULT);
-            }
-        }
-        //sets everything inside the border to be a path
-        for (int i = 1; i < size - 1; i++) {
-            for (int j = 1; j < size - 1; j++) {
-                boardMatrix[i][j].setTileEnum(TileData.TileEnum.PATH_DEFAULT);
             }
         }
         // Set up static maze
@@ -140,21 +144,23 @@ public class Board {
      * Method to populate a board with values
      * Sets level 2b board data
      */
-    public void setBoard_2b() {
-    	boardMatrix = new TileData[size][size];
-        //sets a boarder of walls
+    public void setBoard_2b(TileData.Player theCrrentPlayer) {
+        currentPlayer =theCrrentPlayer;
+        boardMatrix = new TileData[size][size];
+
+        //sets everything inside the border to be a path
+        for (int i = 0; i < size; i++) {
+            for (int j = 0; j < size; j++) {
+                boardMatrix[i][j] = new TileData();
+            }
+        }
+        //sets wall border
         for (int i = 0; i < size; i += (size - 1)) {
             for (int j = 0; j < size; j++) {
             	boardMatrix[0][j].setTileEnum(TileData.TileEnum.WALL_DEFAULT);
                 boardMatrix[j][0].setTileEnum(TileData.TileEnum.WALL_DEFAULT);
                 boardMatrix[i][j].setTileEnum(TileData.TileEnum.WALL_DEFAULT);
                 boardMatrix[j][i].setTileEnum(TileData.TileEnum.WALL_DEFAULT);
-            }
-        }
-        //sets everything inside the border to be a path
-        for (int i = 1; i < size - 1; i++) {
-            for (int j = 1; j < size - 1; j++) {
-                boardMatrix[i][j].setTileEnum(TileData.TileEnum.PATH_DEFAULT);
             }
         }
         // Set up static maze

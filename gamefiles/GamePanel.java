@@ -226,7 +226,7 @@ public class GamePanel extends JPanel {
 								updateBoard();
 								playChest();
 				JOptionPane.showMessageDialog(null, "You Won");
-						myGameModel.setLevel2a();
+						myGameModel.setLevel2();
 								updateBoard();
 							}
 					} else {

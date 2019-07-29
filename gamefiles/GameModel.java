@@ -49,8 +49,8 @@ public class GameModel {
     /**
      * Function to set the board to level 2a
      */
-    public void setLevel2a() {
-        currentBoard.setBoard_2a();
+    public void setLevel2() {
+        currentBoard.setBoard_2a(TileData.Player.PLAYER);
     }
 
     /**.
