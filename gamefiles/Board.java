@@ -1,8 +1,5 @@
 package gamefiles;
 
-
-import javax.swing.text.PlainDocument;
-
 public class Board {
     /**
      * Represents the state of the current player
