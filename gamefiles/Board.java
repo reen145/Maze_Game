@@ -106,8 +106,8 @@ public class Board {
      * Method to populate a board with values
      * Sets level 2b board data
      */
-    public void setBoard_2b(TileData.Player theCurentPlayer) {
-        initializeBoard(theCurentPlayer);
+    public void setBoard_2b(TileData.Player theCurrentPlayer) {
+        initializeBoard(theCurrentPlayer);
         // Set up static maze
         boardMatrix[2][1].setTileEnum(TileData.TileEnum.WALL_DEFAULT);
         boardMatrix[2][2].setTileEnum(TileData.TileEnum.WALL_DEFAULT);
