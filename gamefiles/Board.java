@@ -5,10 +5,9 @@
  Due Date: 07-30-2019
  Instructor: Dr. Jag Nandigam
  Description: This file contains a class that models the board of any given
- level of the Maze Game. It contains a matrix of rules and mechanics
- of the Maze Game. It contains a matrix of enums representing the current
- state of the board, and modifies the matrix in accordance with any valid
- moves given to it by the GamePanel.
+    level of the Maze Game. It is represented by a matrix of TileData objects,
+    and contains all the data needed to construct and modify any level in the
+    Maze Game
  *******************************************************************************/
 
 package gamefiles;
@@ -40,12 +39,12 @@ public class Board {
     }
 
     /**
-     * Stores data about what level is next
+     * Stores data about what level postcedes the current level
      */
     private lvlEnum nextLvl;
 
     /**
-     * Stores data about where door lead
+     * Stores data about where door in a level leads
      */
     private lvlEnum doorLvl;
 
@@ -54,7 +53,7 @@ public class Board {
      */
     private int size = 10;
     /**
-     * a matrix that roepresents the current board state
+     * a matrix that represents the current board state
      */
     private TileData[][] boardMatrix;
 
@@ -74,9 +73,9 @@ public class Board {
      * @param col the col to be accessed
      * @param value the new TileEnum Value
      */
-    public  void setValue(final int row, final int col, final TileData value) {
-        boardMatrix[row][col] = value;
-    }
+    //public  void setValue(final int row, final int col, final TileData value) {
+     //   boardMatrix[row][col] = value;
+    //}
 
     /**
      * method to set current player
