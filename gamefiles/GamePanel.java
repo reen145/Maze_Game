@@ -258,6 +258,7 @@ public class GamePanel extends JPanel {
 	 */
 	public void resetGame() {
 		myGameModel.resetBoard();
+		updateBoard();
 	}
 
 	/**
