@@ -256,7 +256,7 @@ public class GamePanel extends JPanel {
 	/**
 	 * public method to reset the game
 	 */
-	public void resetGame() {
+	protected void resetGame() {
 		myGameModel.resetBoard();
 		updateBoard();
 	}
