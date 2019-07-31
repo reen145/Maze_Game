@@ -24,7 +24,7 @@ public class Board {
     /**
      * Enum representing the levels present in the game.
      */
-    protected enum lvlEnum {
+    protected enum LvlEnum {
         /**
          * Represents the first level
          **/
@@ -42,12 +42,12 @@ public class Board {
     /**
      * Stores data about what level is next
      */
-    private lvlEnum nextLvl;
+    private LvlEnum nextLvl;
 
     /**
      * Stores data about where door lead
      */
-    private lvlEnum doorLvl;
+    private LvlEnum doorLvl;
 
     /**
      * represents the size of the board
@@ -100,7 +100,7 @@ public class Board {
      */
     public void setBoard1() {
         initializeBoard(TileData.Player.PLAYER, TileData.TileEnum.WALL_GRASS);
-        this.nextLvl = lvlEnum.LVL2a;
+        this.nextLvl = LvlEnum.LVL2a;
 
         // Set up static maze
         boardMatrix[1][3].setTileEnum(TileData.TileEnum.PATH_GRASS);
@@ -136,8 +136,8 @@ public class Board {
      */
     public void setBoard2a(final TileData.Player theCurrentPlayer, final int pRow, final int pCol) {
         initializeBoard(theCurrentPlayer, TileData.TileEnum.WALL_DEFAULT);
-        this.nextLvl = lvlEnum.LVL2a;
-        this.doorLvl = lvlEnum.LVL2b;
+        this.nextLvl = LvlEnum.LVL2a;
+        this.doorLvl = LvlEnum.LVL2b;
 
         // Set up static maze
         boardMatrix[2][2].setTileEnum(TileData.TileEnum.WALL_DEFAULT);
@@ -168,7 +168,7 @@ public class Board {
      */
     public void setBoard2b(final TileData.Player theCurrentPlayer, final int pRow, final int pCol) {
         initializeBoard(theCurrentPlayer, TileData.TileEnum.WALL_DEFAULT);
-        this.doorLvl = lvlEnum.LVL2a;
+        this.doorLvl = LvlEnum.LVL2a;
 
         // Set up static maze
         boardMatrix[2][1].setTileEnum(TileData.TileEnum.WALL_DEFAULT);
@@ -204,7 +204,7 @@ public class Board {
      * getter for where the door leads
      * @return where the door leads
      */
-    public lvlEnum getDoorLvl() {
+    public LvlEnum getDoorLvl() {
         return doorLvl;
     }
 
@@ -212,7 +212,7 @@ public class Board {
      * getter for what the next level is
      * @return  next level
      */
-    public lvlEnum getNextLvl() {
+    public LvlEnum getNextLvl() {
         return nextLvl;
     }
 
