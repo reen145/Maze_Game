@@ -103,19 +103,19 @@ public class Board {
         boardMatrix[6][5].setTileEnum(TileData.TileEnum.PATH_GRASS);
         boardMatrix[7][7].setTileEnum(TileData.TileEnum.PATH_GRASS);
         boardMatrix[8][7].setTileEnum(TileData.TileEnum.PATH_GRASS);
-        boardMatrix[9][7].setTileEnum(TileData.TileEnum.PATH_GRASS);
         boardMatrix[1][1].setTileEnum(TileData.TileEnum.CHEST_CLOSED);
         boardMatrix[6][1].setTileEnum(TileData.TileEnum.KEY);
-        boardMatrix[8][8].setPlayer(TileData.Player.PLAYER);
+        boardMatrix[7][7].setPlayer(TileData.Player.PLAYER);
     }
     /**
      * Method to populate a board with values
      * Sets level 2a board data
      * @param theCurrentPlayer the status of the player
      */
-    public void setBoard2a(final TileData.Player theCurrentPlayer) {
+    public void setBoard2a(final TileData.Player theCurrentPlayer, int pRow, int pCol) {
         initializeBoard(theCurrentPlayer, TileData.TileEnum.WALL_DEFAULT);
         this.nextLvl = lvlEnum.LVL2a;
+        this.doorLvl = lvlEnum.LVL2b;
 
         // Set up static maze
         boardMatrix[2][2].setTileEnum(TileData.TileEnum.WALL_DEFAULT);
@@ -133,18 +133,18 @@ public class Board {
         boardMatrix[5][6].setTileEnum(TileData.TileEnum.WALL_DEFAULT);
         boardMatrix[5][7].setTileEnum(TileData.TileEnum.WALL_DEFAULT);
         boardMatrix[1][1].setTileEnum(TileData.TileEnum.WALL_DEFAULT);
-        boardMatrix[5][8].setPlayer(TileData.Player.PLAYER);
-        boardMatrix[4][5].setTileEnum(TileData.TileEnum.KEY);
+        boardMatrix[pRow][pCol].setPlayer(TileData.Player.PLAYER);
+        boardMatrix[4][5].setTileEnum(TileData.TileEnum.CHEST_CLOSED);
         boardMatrix[7][0].setTileEnum(TileData.TileEnum.DOOR);
-        currentPlayer = TileData.Player.PLAYER;
     }
     /**
      * Method to populate a board with values
      * Sets level 2b board data
      * @param theCurrentPlayer the status of the player
      */
-    public void setBoard2b(final TileData.Player theCurrentPlayer) {
+    public void setBoard2b(final TileData.Player theCurrentPlayer, int pRow, int pCol) {
         initializeBoard(theCurrentPlayer, TileData.TileEnum.WALL_DEFAULT);
+        this.doorLvl = lvlEnum.LVL2a;
 
         // Set up static maze
         boardMatrix[2][1].setTileEnum(TileData.TileEnum.WALL_DEFAULT);
@@ -172,9 +172,8 @@ public class Board {
         boardMatrix[6][3].setTileEnum(TileData.TileEnum.WALL_DEFAULT);
         boardMatrix[7][3].setTileEnum(TileData.TileEnum.WALL_DEFAULT);
         boardMatrix[7][9].setTileEnum(TileData.TileEnum.DOOR);
-        boardMatrix[1][1].setTileEnum(TileData.TileEnum.CHEST_CLOSED);
-        boardMatrix[5][8].setPlayer(TileData.Player.PLAYER);
-        currentPlayer = TileData.Player.PLAYER;
+        boardMatrix[1][1].setTileEnum(TileData.TileEnum.KEY);
+        boardMatrix[pRow][pCol].setPlayer(currentPlayer);
     }
 
     /**
@@ -195,11 +194,11 @@ public class Board {
 
     /**
      * Helper method to initialize boards
-     * @param theCurentPlayer current player state
+     * @param theCurrentPlayer current player state
      * @param wall the texture for walls in the level
      */
-    private void initializeBoard(TileData.Player theCurentPlayer, final TileData.TileEnum wall) {
-        currentPlayer = theCurentPlayer;
+    private void initializeBoard(TileData.Player theCurrentPlayer, final TileData.TileEnum wall) {
+        currentPlayer = theCurrentPlayer;
         boardMatrix = new TileData[size][size];
 
         //sets everything inside the border to be a path
@@ -209,7 +208,6 @@ public class Board {
             }
         }
         //sets wall border
-        //Test TODO remove
         for (int i = 0; i < size; i += (size - 1)) {
             for (int j = 0; j < size; j++) {
                 boardMatrix[0][j].setTileEnum(wall);

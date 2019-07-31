@@ -53,7 +53,7 @@ public class GameModel {
             case LVL1:
                 break;
             case LVL2a:
-                currentBoard.setBoard2a(TileData.Player.PLAYER);
+                currentBoard.setBoard2a(TileData.Player.PLAYER, 7, 7);
                 break;
             case LVL2b:
                 break;
@@ -201,27 +201,41 @@ public class GameModel {
             for (int j = 0; j < size; j++) {
                 if (currentBoard.getValue(i, j).getTileEnum()
                         == TileData.TileEnum.DOOR) {
-                    if (currentBoard.getValue(i + 1, j).getPlayer()
-                            != TileData.Player.NONE) {
-                       //do door things
+                    if (i < 9 && currentBoard.getValue(i + 1, j)
+                            .getPlayer() != TileData.Player.NONE) {
+                        openDoor();
                         return true;
-                    } else if (currentBoard.getValue(i - 1, j).getPlayer()
-                            != TileData.Player.NONE) {
-                        //do door things
+                    } else if (i > 0 && currentBoard.getValue(i - 1, j)
+                            .getPlayer() != TileData.Player.NONE) {
+                        openDoor();
                         return true;
-                    } else if (currentBoard.getValue(i, j + 1).getPlayer()
-                            != TileData.Player.NONE) {
-                        //do door things
+                    } else if (j < 9 && currentBoard.getValue(i, j + 1)
+                            .getPlayer() != TileData.Player.NONE) {
+                        openDoor();
                         return true;
-                    } else if (currentBoard.getValue(i, j - 1).getPlayer()
-                            != TileData.Player.NONE) {
-                        //do door things
+                    } else if (j > 0 && currentBoard.getValue(i, j - 1)
+                            .getPlayer() != TileData.Player.NONE) {
+                        openDoor();
                         return true;
                     }
                 }
             }
         }
         return false;
+    }
+
+    /**
+     * helper method to handle swithcing levels when using a door
+     */
+    private void openDoor() {
+        switch(currentBoard.getDoorLvl()) {
+            case LVL2a:
+                currentBoard.setBoard2a(currentBoard.getCurrentPlayer(), 7, 1);
+                break;
+            case LVL2b:
+                currentBoard.setBoard2b(currentBoard.getCurrentPlayer(), 7, 8);
+                break;
+        }
     }
 
     /**.
