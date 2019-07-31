@@ -5,8 +5,8 @@ Filename: GameModel.java
 Due Date: 07-15-2019
 Instructor: Dr. Jag Nandigam
 Description: This file contains a class that models the rules and mechanics
-    of the Maze Game. It contains a matrix of enums representing the current
-    state of the board, and modifies the matrix in accordance with any valid
+    of the Maze Game. It contains a Board that models the current state of
+    game, and modifies the board in accordance with any valid
     moves given to it by the GamePanel.
 *******************************************************************************/
 package gamefiles;
@@ -18,26 +18,25 @@ import java.util.ArrayList;
 *****************************************************************/
 public class GameModel {
 	/**
-	 * Board object for the matrix representing the board
+	 * Board object for the matrix representing the game board
 	**/
 	private Board currentBoard;
     /**
-     * ArrayList representing the different boards in a level
-     */
-    private ArrayList<Board> gameBoards;
-    /**
-     * Variable for the size of the board
+     * Variable declaring the size of the board
     **/
-    private int size = 10;
+    private final int size = 10;
+
     /**
-     * Constructor for the game board
+     * Default Constructor for the game model
     **/
     public GameModel() {
         setDefaultBoard();
     }
 
      /**
-     * Function to set the board to the default setup
+     * Function to set the board to the default state
+      *     Erases any previous data and sets the level
+      *     to level 1.
     **/
     private void setDefaultBoard() {
         currentBoard = new Board();
@@ -45,7 +44,7 @@ public class GameModel {
     }
 
     /**
-     * helper method for winning a level
+     * Helper method that handles when a level is won
      */
     public void levelWon() {
         switch (currentBoard.getNextLvl())
@@ -62,7 +61,7 @@ public class GameModel {
 
 
     /**
-     * Function to check if a move is valid
+     * Function to execute a move to the tile above
      * @return boolean saying if the move is valid
     **/
     public boolean moveUp() {
@@ -83,14 +82,14 @@ public class GameModel {
     }
     
     /**
-     * resets the board
+     * Resets the board to the default state
      */
     public void resetBoard() {
         setDefaultBoard();
     }
 
     /**
-     * Function to check if a move is valid
+     * Function to move the player to the tile below
      * @return boolean saying if the move is valid
     **/
     public boolean moveDown() {
@@ -111,7 +110,7 @@ public class GameModel {
     }
 
     /**
-     * Function to check if a move is valid
+     * Function to move the player to the tile to the left
      * @return boolean saying if the move is valid
     **/
     public boolean moveLeft() {
@@ -132,7 +131,7 @@ public class GameModel {
     }
 
     /**
-     * Function to check if a move is valid
+     * Function to move the player to the tile to the right
      * @return boolean saying if the move is valid
     **/
     public boolean moveRight() {
@@ -153,7 +152,7 @@ public class GameModel {
     }
 
     /**
-     * Function to check if a key was selected
+     * Function to handle the Key being selected, if valid
      * @return boolean saying if the move is valid
     **/
     public boolean keySelected() {
@@ -193,7 +192,7 @@ public class GameModel {
     }
 
     /**
-     * Function to check if a key was selected
+     * Function to handle if the door was selected
      * @return boolean saying if the move is valid
      **/
     public boolean doorSelected() {
@@ -225,7 +224,7 @@ public class GameModel {
     }
 
     /**
-     * helper method to handle swithcing levels when using a door
+     * helper method to handle switching levels when using a door
      */
     private void openDoor() {
         switch(currentBoard.getDoorLvl()) {
@@ -239,7 +238,7 @@ public class GameModel {
     }
 
     /**
-     * Function to check if a chest is selected
+     * Function to handle a chest being selected
      * @return boolean saying if the move is valid
     **/
     public boolean chestSelected() {
@@ -270,20 +269,10 @@ public class GameModel {
     }
 
     /**
-     * Function to check if a move is valid
+     * Function to return the data held in a given tile
      * @param row the row selected
      * @param col the column selected
-     * @return boolean saying if the move is valid
-    **/
-    public boolean click(final int row, final int col) {
-        return true;
-    }
-
-    /**
-     * Function to check if a move is valid
-     * @param row the row selected
-     * @param col the column selected
-     * @return tile type of the tile in question
+     * @return a TileData object representing the data of the tile
     **/
     public TileData getTileValue(final int row, final int col) {
         return currentBoard.getValue(row, col);

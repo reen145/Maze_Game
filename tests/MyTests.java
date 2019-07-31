@@ -73,7 +73,6 @@ class MyTests {
 		Assertions.assertThrows(ArrayIndexOutOfBoundsException.class, () -> {
 			model.getTileValue(0, -1);
 		});
-		assertTrue(model.click(0, 0));
 		assertTrue(model.moveUp());
 		assertTrue(model.moveDown());
 		assertTrue(model.moveRight());
