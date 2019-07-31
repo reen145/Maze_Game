@@ -30,29 +30,29 @@ import javax.swing.ActionMap;
 import javax.swing.InputMap;
 import javax.swing.KeyStroke;
 
-/**.
+/**
  * Class for the main jPanel to be used in the maze game
 **/
 public class GamePanel extends JPanel {
 	private static final long serialVersionUID = 1L;
-	/**.
+	/**
 	 * Determines the size of the maze
 	 * MUST AGREE WITH GAME GUI SIZE
     **/
-	private int size = 10;
+	private int size;
 
-	/**.
+	/**
 	 * Matrix containing all game tiles
 	 **/
 	private Tile[][] tileMatrix;
 
-	/**.
+	/**
 	 * Game Model
 	 **/
 	private GameModel myGameModel;
 
 	
-	/**.
+	/**
 	 * Constructor creates a jPanel for the maze game
 	 * @param s - size of matrix
     **/
@@ -143,7 +143,7 @@ public class GamePanel extends JPanel {
 		
 	}
 	
-	/**.
+	/**
 	 * Populates the maze with walls, treasure, the player, etc
     **/
 	public void populate() {
@@ -165,7 +165,7 @@ public class GamePanel extends JPanel {
 			}
 		}
 	}
-	/**.
+	/**
 	* Updates the board
 	**/
 	private void updateBoard() {
@@ -177,11 +177,11 @@ public class GamePanel extends JPanel {
 		}
 	}
 
-	/**.
+	/**
 	Represents a listener for button push (action) events.
 	**/
 	private class ButtonListener implements ActionListener {
-		/**.
+		/**
 		Updates the game when a button is pressed
 		@param event - the button that got pressed
 		**/
@@ -253,8 +253,14 @@ public class GamePanel extends JPanel {
 			}
 		}
 	}
+	/**
+	 * public method to reset the game
+	 */
+	public void resetGame() {
+		myGameModel.resetBoard();
+	}
 
-	/**.
+	/**
 	 * helper method to play music for real
 	 **/
 	public static void playError() {
@@ -274,7 +280,7 @@ public class GamePanel extends JPanel {
 		}
 	}
 
-	/**.
+	/**
 	 * helper method to play music for real
 	 **/
 	public static void playStep() {
@@ -294,7 +300,7 @@ public class GamePanel extends JPanel {
 		}
 	}
 
-	/**.
+	/**
 	 * helper method to play music for real
 	 **/
 	public static void playKey() {
@@ -314,7 +320,7 @@ public class GamePanel extends JPanel {
 		}
 	}
 
-	/**.
+	/**
 	 * helper method to play music for real
 	 **/
 	public static void playChest() {

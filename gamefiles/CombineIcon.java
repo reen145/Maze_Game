@@ -15,21 +15,21 @@ import java.awt.Graphics;
 
 import javax.swing.Icon;
 
-/****************************************************************.
+/***************************************************************
  * Class for combining icons for the game
 *****************************************************************/
 public class CombineIcon implements Icon {
 
-	/**.
+	/**
      * The top icon
      **/
 	private Icon top;
-	/**.
+	/**
      * The bottom icon
      **/
 	private Icon bot;
 	
-	/**.
+	/**
      * Sets the icon to be overlaid
      * @param bot the icon to be overlaid
      **/
@@ -37,7 +37,7 @@ public class CombineIcon implements Icon {
 		this.bot = bot;
 	}
 	
-	/**.
+	/**
      * Combines two given icons
      * @param top the icon to go on top
      * @param bottom the icon to go on bottom
@@ -47,25 +47,23 @@ public class CombineIcon implements Icon {
         this.bot = bottom;
     }
 
-    /**.
+    /**
      * Combines two given icons
-     * @param none
      * @return the max height
      **/
     public int getIconHeight() {
         return Math.max(top.getIconHeight(), bot.getIconHeight());
     }
 
-    /**.
+    /**
      * Combines two given icons
-     * @param none
      * @return the max width
      **/
     public int getIconWidth() {
         return Math.max(top.getIconWidth(), bot.getIconWidth());
     }
 
-    /**.
+    /**
      * Combines two given icons
      * @param c the component to be used as the observer
      * @param g the graphics context

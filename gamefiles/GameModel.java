@@ -13,30 +13,30 @@ package gamefiles;
 
 import java.util.ArrayList;
 
-/****************************************************************.
+/****************************************************************
  * Class for the main logic for the maze game
 *****************************************************************/
 public class GameModel {
-	/**.
+	/**
 	 * Board object for the matrix representing the board
 	**/
 	private Board currentBoard;
-    /**.
+    /**
      * ArrayList representing the different boards in a level
      */
     private ArrayList<Board> gameBoards;
-    /**.
+    /**
      * Variable for the size of the board
     **/
     private int size = 10;
-    /**.
+    /**
      * Constructor for the game board
     **/
     public GameModel() {
         setDefaultBoard();
     }
 
-    /**.
+     /**
      * Function to set the board to the default setup
     **/
     private void setDefaultBoard() {
@@ -61,7 +61,7 @@ public class GameModel {
     }
 
 
-    /**.
+    /**
      * Function to check if a move is valid
      * @return boolean saying if the move is valid
     **/
@@ -82,14 +82,14 @@ public class GameModel {
         return false;
     }
     
-    /**.
+    /**
      * resets the board
      */
     public void resetBoard() {
         setDefaultBoard();
     }
 
-    /**.
+    /**
      * Function to check if a move is valid
      * @return boolean saying if the move is valid
     **/
@@ -110,7 +110,7 @@ public class GameModel {
         return false;
     }
 
-    /**.
+    /**
      * Function to check if a move is valid
      * @return boolean saying if the move is valid
     **/
@@ -131,7 +131,7 @@ public class GameModel {
         return false;
     }
 
-    /**.
+    /**
      * Function to check if a move is valid
      * @return boolean saying if the move is valid
     **/
@@ -152,7 +152,7 @@ public class GameModel {
         return false;
     }
 
-    /**.
+    /**
      * Function to check if a key was selected
      * @return boolean saying if the move is valid
     **/
@@ -192,7 +192,7 @@ public class GameModel {
         return false;
     }
 
-    /**.
+    /**
      * Function to check if a key was selected
      * @return boolean saying if the move is valid
      **/
@@ -238,7 +238,7 @@ public class GameModel {
         }
     }
 
-    /**.
+    /**
      * Function to check if a chest is selected
      * @return boolean saying if the move is valid
     **/
@@ -269,7 +269,7 @@ public class GameModel {
         return false;
     }
 
-    /**.
+    /**
      * Function to check if a move is valid
      * @param row the row selected
      * @param col the column selected
@@ -279,7 +279,7 @@ public class GameModel {
         return true;
     }
 
-    /**.
+    /**
      * Function to check if a move is valid
      * @param row the row selected
      * @param col the column selected

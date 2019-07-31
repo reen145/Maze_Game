@@ -20,43 +20,42 @@ import javax.swing.JFrame;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
-/****************************************************************.
+/****************************************************************
  * Class for the main jFrame for the maze game
 *****************************************************************/
 public class GameGUI extends JFrame {
 	private static final long serialVersionUID = 1L;
-	/**.
+	/**
 	 * Determines the size of the maze
 	 * MUST AGREE WITH GAME PANEL SIZE
     **/
 	private static final int SIZE = 10;
 	
-	/**.
+	/**
 	 * Determines the size of each icon
     **/
 	private static final int ISIZE = 64;
-	/**.
+	/**
 	 * menu drop down
 	*/
 	private JMenuBar menus;
-	/**.
+	/**
 	 * file button
 	*/
 	private JMenu fileMenu;
-	/**.
+	/**
 	 * quit button
 	*/
 	private JMenuItem quitItem;
-	/**.
+	/**
 	 * new game button
 	*/
 	private JMenuItem gameItem;
-
-	/**.
+	/**
 	 * game panel with all buttons
 	*/
 	private GamePanel panel;
-	/****************************************************************.
+	/****************************************************************
 	 * Constructor for the main frame for the maze game
 	 * @param dSize - length of each side of the maze
 	 * @param dIcon - side length of each square icon
@@ -86,7 +85,7 @@ public class GameGUI extends JFrame {
 		pack();
 	}
 	
-	/**.
+	/**
 	 * Main method for the maze game
 	 * @param args arguments that can be passed to the main method
     **/
@@ -95,8 +94,8 @@ public class GameGUI extends JFrame {
 		frame.setVisible(true);
 		startBGMusic();
 	}
-	
-	/**.
+
+	/**
 	 * helper method to play music for real
 	 **/
 	private static void startBGMusic() {
@@ -117,18 +116,18 @@ public class GameGUI extends JFrame {
 		}
 	}
 	
-		/**.
+		/**
 		Represents a listener for button push (action) events.
 		**/
 		private class ButtonListener implements ActionListener {
-			/**.
+			/**
 			Updates the game when a button is pressed
 			@param event - the button that got pressed
 			**/
 			public void actionPerformed(final ActionEvent event) {
 			JComponent comp = (JComponent) event.getSource();
 				if (comp == gameItem) {
-					
+					panel.resetGame();
 				}
 
 				if (comp == quitItem) {

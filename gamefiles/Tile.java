@@ -12,67 +12,60 @@ package gamefiles;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 
-/**.
+/**
  * Class for the tiles representing the maze
 **/
 public class Tile extends JButton {
 	private static final long serialVersionUID = 1L;
-    /**.
+    /**
      * Represents a wall
      **/
     private CombineIcon iconWall;
-
-    /**.
+    /**
      * Represents a grassy wall
      **/
     private CombineIcon iconGrassWall;
-    
-    /**.
+    /**
      * Represents a door
      **/
     private CombineIcon iconDoor;
-
-    /**.
+    /**
      * Represents a player
      **/
     private ImageIcon iconPlayer;
-
-    /**.
+    /**
      * Represents a cobblestone path
      **/
     private ImageIcon iconPath;
-    /**.
+    /**
      * Represents a brick path
      **/
     private ImageIcon iconBrick;
-    /**.
+    /**
      * Represents a grass path
      **/
     private ImageIcon iconGrass;
-
-    /**.
+    /**
      * Represents a chest
      **/
     private CombineIcon iconChest;
-    /**.
+    /**
      * Represents an open chest
      **/
     private CombineIcon iconChestOpen;
-    /**.
+    /**
      * Represents a key
      **/
     private CombineIcon iconKey;
-    /**.
+    /**
      * Represents a player with a key
      **/
     private ImageIcon iconPlayerKey;
-
-    /**.
+    /**
      * Class for the main jPanel to be used in the maze game
      **/
 	private TileData type;
-
-    /**.
+    /**
      * Constructor for creating a tile
      * @param ti - the type of tile
     **/
@@ -93,7 +86,7 @@ public class Tile extends JButton {
     	updateImage();
     }
 
-    /**.
+    /**
      * Getter for the tile type
      * @return type - the type of tile
     **/
@@ -101,7 +94,7 @@ public class Tile extends JButton {
         return type;
     }
     
-    /**.
+    /**
      * Setter for the tile type
      * @param ti - the type of tile
     **/
@@ -111,7 +104,7 @@ public class Tile extends JButton {
 
     }
 
-    /**.
+    /**
      * Function to update a tiles icon
     **/
     private void updateImage() {

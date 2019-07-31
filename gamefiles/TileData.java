@@ -1,35 +1,33 @@
 package gamefiles;
 
-/**.
+/**
  * class containing info on what a tile represents
  **/
 public class TileData {
-	/**.
+	/**
      * enum with fields for different tile types
      **/
     protected enum TileEnum {
     	//Fields for group path
-        /**.
+        /**
          * default tile is a path
          **/
         PATH_DEFAULT(Group.PATH), PATH_BRICK(Group.PATH), PATH_COBBLE(Group.PATH), PATH_GRASS(Group.PATH),
         //fields for the walls
-        /**.
+        /**
          * wall
          **/
         WALL_DEFAULT(Group.WALL), WALL_GRASS(Group.WALL),
         //fields for the
-        /**.
+        /**
          * chest states and key
          **/
         CHEST_CLOSED(Group.OBJECT), CHEST_OPEN(Group.OBJECT), KEY(Group.OBJECT), DOOR(Group.OBJECT);
-
-        /**.
+        /**
          * type of tile
          **/
         private Group group;
-
-        /**.
+        /**
          * constructor
          * @param g group
          **/
@@ -37,36 +35,34 @@ public class TileData {
             group = g;
         }
     }
-    /**.
+    /**
      * group status for a tile
      **/
     protected enum Group {
-        /**.
+        /**
          * entry fields
          **/
         PATH, WALL, OBJECT,
     }
-    /**.
+    /**
      * group status for the player
      **/
     protected enum Player  {
-        /**.
+        /**
          * entry fields
          **/
         NONE, PLAYER, PLAYER_KEY
     }
 
-    /**.
+    /**
      * tile type
      **/
     private TileEnum myTileEnum;
-
-    /**.
+    /**
      * player status
      **/
     private Player myPlayer;
-
-    /**.
+    /**
      * constructor for the TileData class with parameters
      * @param theTileEnum type of tile
      * @param thePlayer player status
@@ -75,36 +71,30 @@ public class TileData {
         this.myPlayer = thePlayer;
         this.myTileEnum = theTileEnum;
     }
-
-    /**.
+    /**
      * default constructor
      **/
     TileData() {
         this.myPlayer = Player.NONE;
         this.myTileEnum = TileEnum.PATH_DEFAULT;
     }
-
-    /**.
+    /**
      * get the type of selected tile
      * @return the group
      **/
     public Group getType() {
         return myTileEnum.group;
     }
-
-    /**.
+    /**
      * check to see if the tile is of the given group
      * @param checkGroup the group to compare to
      * @return boolean true or false
      **/
     public boolean checkType(final Group checkGroup) {
-        if (checkGroup == myTileEnum.group) {
-            return true;
-        }
-        return false;
+        return checkGroup == myTileEnum.group;
     }
 
-    /**.
+    /**
      * getter for the tile enum type
      * @return tile enum for selected tile
      **/
@@ -112,7 +102,7 @@ public class TileData {
         return myTileEnum;
     }
 
-    /**.
+    /**
      * set selected tile to given state
      * @param theTileEnum state to be set
      **/
@@ -120,7 +110,7 @@ public class TileData {
         this.myTileEnum = theTileEnum;
     }
 
-    /**.
+    /**
      * get player for selected tile
      * @return player status
      **/
@@ -128,7 +118,7 @@ public class TileData {
         return myPlayer;
     }
 
-    /**.
+    /**
      * set player for selected tile
      * @param thePlayer player status to set
      **/

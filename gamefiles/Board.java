@@ -4,7 +4,7 @@ package gamefiles;
  * Class representing the board the player will navigate around
  */
 public class Board {
-    /**.
+    /**
      * Represents the state of the current player
      */
     private TileData.Player currentPlayer;
@@ -13,7 +13,6 @@ public class Board {
      */
     protected enum lvlEnum {
         /**
-         * .
          * list of current levels
          **/
         LVL1, LVL2a, LVL2b
@@ -29,16 +28,16 @@ public class Board {
      */
     private lvlEnum doorLvl;
 
-    /**.
+    /**
      * represents the size of the board
      */
     private int size = 10;
-    /**.
+    /**
      * a matrix that roepresents the current board state
      */
     private TileData[][] boardMatrix;
 
-    /**.
+    /**
      * Getter method for the value of a given board cell
      * @param row the row to be accessed
      * @param col the col to be accessed
@@ -74,7 +73,7 @@ public class Board {
         return currentPlayer;
     }
 
-    /**.
+    /**
      * Method to populate a board with values
      * Sets level 1 board data
      */
