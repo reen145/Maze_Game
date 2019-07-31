@@ -1,3 +1,16 @@
+/*******************************************************************************
+ Filename: Board.java
+ @author: Timothy Bomers and Ryan Hilbert
+ @version 1.0
+ Due Date: 07-30-2019
+ Instructor: Dr. Jag Nandigam
+ Description: This file contains a class that models the board of any given
+ level of the Maze Game. It contains a matrix of rules and mechanics
+ of the Maze Game. It contains a matrix of enums representing the current
+ state of the board, and modifies the matrix in accordance with any valid
+ moves given to it by the GamePanel.
+ *******************************************************************************/
+
 package gamefiles;
 
 /**
@@ -9,13 +22,21 @@ public class Board {
      */
     private TileData.Player currentPlayer;
     /**
-     * level storage
+     * Enum representing the levels present in the game.
      */
     protected enum lvlEnum {
         /**
-         * list of current levels
+         * Represents the first level
          **/
-        LVL1, LVL2a, LVL2b
+        LVL1,
+        /**
+         * Represents the first zone of the second level
+         **/
+        LVL2a,
+        /**
+         * Represents the second zone of the second level
+         **/
+        LVL2b
     }
 
     /**
@@ -110,6 +131,8 @@ public class Board {
      * Method to populate a board with values
      * Sets level 2a board data
      * @param theCurrentPlayer the status of the player
+     * @param pRow the row the player will be placed at
+     * @param pCol the col the player will be placed at
      */
     public void setBoard2a(final TileData.Player theCurrentPlayer, int pRow, int pCol) {
         initializeBoard(theCurrentPlayer, TileData.TileEnum.WALL_DEFAULT);
@@ -140,6 +163,8 @@ public class Board {
      * Method to populate a board with values
      * Sets level 2b board data
      * @param theCurrentPlayer the status of the player
+     * @param pRow the row the player will be placed at
+     * @param pCol the col the player will be placed at
      */
     public void setBoard2b(final TileData.Player theCurrentPlayer, int pRow, int pCol) {
         initializeBoard(theCurrentPlayer, TileData.TileEnum.WALL_DEFAULT);
