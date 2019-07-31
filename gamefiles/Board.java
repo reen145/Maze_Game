@@ -16,7 +16,7 @@ public class Board {
          * .
          * list of current levels
          **/
-        LVL1, LVL2a, LVL2b;
+        LVL1, LVL2a, LVL2b
     }
 
     /**
@@ -79,7 +79,7 @@ public class Board {
      * Sets level 1 board data
      */
     public void setBoard1() {
-        initializeBoard(TileData.Player.PLAYER, TileData.TileEnum.WALL_DEFAULT);
+        initializeBoard(TileData.Player.PLAYER, TileData.TileEnum.WALL_GRASS);
         this.nextLvl = lvlEnum.LVL2a;
 
         // Set up static maze

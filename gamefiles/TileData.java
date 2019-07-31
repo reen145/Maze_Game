@@ -17,7 +17,7 @@ public class TileData {
         /**.
          * wall
          **/
-        WALL_DEFAULT(Group.WALL),
+        WALL_DEFAULT(Group.WALL), WALL_GRASS(Group.WALL),
         //fields for the
         /**.
          * chest states and key

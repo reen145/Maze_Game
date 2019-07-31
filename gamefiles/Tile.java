@@ -21,6 +21,11 @@ public class Tile extends JButton {
      * Represents a wall
      **/
     private CombineIcon iconWall;
+
+    /**.
+     * Represents a grassy wall
+     **/
+    private CombineIcon iconGrassWall;
     
     /**.
      * Represents a door
@@ -74,6 +79,7 @@ public class Tile extends JButton {
     public Tile(final TileData ti) {
         // instantiate the icons from the 'Icons' folder 
         iconWall = new CombineIcon(new ImageIcon("Icons/pathLava.png"), new ImageIcon("Icons/blank.png"));
+        iconGrassWall = new CombineIcon(new ImageIcon("Icons/grassWall.png"), new ImageIcon("Icons/blank.png"));
         iconPlayer = new ImageIcon("Icons/knight.png");
         iconPath = new ImageIcon("Icons/pathCobble.png");
         iconBrick = new ImageIcon("Icons/pathBrick.png");
@@ -128,6 +134,9 @@ public class Tile extends JButton {
                 break;
             case WALL_DEFAULT:
                 this.setIcon(iconWall);
+                break;
+            case WALL_GRASS:
+                this.setIcon(iconGrassWall);
                 break;
             case CHEST_OPEN:
             	this.setIcon(new CombineIcon(iconChestOpen, iconPath));
