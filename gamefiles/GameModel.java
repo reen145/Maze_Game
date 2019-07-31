@@ -11,8 +11,6 @@ Description: This file contains a class that models the rules and mechanics
 *******************************************************************************/
 package gamefiles;
 
-import java.util.ArrayList;
-
 /****************************************************************
  * Class for the main logic for the maze game
 *****************************************************************/
