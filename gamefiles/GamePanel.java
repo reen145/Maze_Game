@@ -236,7 +236,7 @@ public class GamePanel extends JPanel {
 			updateBoard();
 		}
 		//checks to see if the chest was clicked
-	}else if (tileMatrix[row][col].getType().getTileEnum()
+	} else if (tileMatrix[row][col].getType().getTileEnum()
 			== TileData.TileEnum.CHEST_CLOSED) {
 					if (myGameModel.chestSelected()) {
 								updateBoard();

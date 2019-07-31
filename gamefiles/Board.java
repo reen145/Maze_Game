@@ -134,7 +134,7 @@ public class Board {
      * @param pRow the row the player will be placed at
      * @param pCol the col the player will be placed at
      */
-    public void setBoard2a(final TileData.Player theCurrentPlayer, int pRow, int pCol) {
+    public void setBoard2a(final TileData.Player theCurrentPlayer, final int pRow, final int pCol) {
         initializeBoard(theCurrentPlayer, TileData.TileEnum.WALL_DEFAULT);
         this.nextLvl = lvlEnum.LVL2a;
         this.doorLvl = lvlEnum.LVL2b;
@@ -166,7 +166,7 @@ public class Board {
      * @param pRow the row the player will be placed at
      * @param pCol the col the player will be placed at
      */
-    public void setBoard2b(final TileData.Player theCurrentPlayer, int pRow, int pCol) {
+    public void setBoard2b(final TileData.Player theCurrentPlayer, final int pRow, final int pCol) {
         initializeBoard(theCurrentPlayer, TileData.TileEnum.WALL_DEFAULT);
         this.doorLvl = lvlEnum.LVL2a;
 
@@ -221,7 +221,7 @@ public class Board {
      * @param theCurrentPlayer current player state
      * @param wall the texture for walls in the level
      */
-    private void initializeBoard(TileData.Player theCurrentPlayer, final TileData.TileEnum wall) {
+    private void initializeBoard(final TileData.Player theCurrentPlayer, final TileData.TileEnum wall) {
         currentPlayer = theCurrentPlayer;
         boardMatrix = new TileData[size][size];
 

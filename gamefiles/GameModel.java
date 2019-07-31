@@ -22,7 +22,7 @@ public class GameModel {
     /**
      * Variable declaring the size of the board
     **/
-    private final int size = 10;
+    private int size = 10;
 
     /**
      * Default Constructor for the game model
@@ -45,14 +45,15 @@ public class GameModel {
      * Helper method that handles when a level is won
      */
     public void levelWon() {
-        switch (currentBoard.getNextLvl())
-        {
+        switch (currentBoard.getNextLvl()) {
             case LVL1:
                 break;
             case LVL2a:
                 currentBoard.setBoard2a(TileData.Player.PLAYER, 7, 7);
                 break;
             case LVL2b:
+                break;
+            default:
                 break;
         }
     }
@@ -225,13 +226,17 @@ public class GameModel {
      * helper method to handle switching levels when using a door
      */
     private void openDoor() {
-        switch(currentBoard.getDoorLvl()) {
+        switch (currentBoard.getDoorLvl()) {
+        	case LVL1:
+        		break;
             case LVL2a:
                 currentBoard.setBoard2a(currentBoard.getCurrentPlayer(), 7, 1);
                 break;
             case LVL2b:
                 currentBoard.setBoard2b(currentBoard.getCurrentPlayer(), 7, 8);
                 break;
+            default:
+            	break;
         }
     }
 

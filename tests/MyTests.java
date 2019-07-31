@@ -7,12 +7,8 @@ import static org.junit.Assert.assertTrue;
 
 import javax.swing.ActionMap;
 import javax.swing.InputMap;
-
-import org.junit.Rule;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-import org.junit.rules.ExpectedException;
-
 import gamefiles.Board;
 import gamefiles.GameGUI;
 import gamefiles.GameModel;
@@ -22,12 +18,6 @@ import gamefiles.GamePanel;
  * Class for testing the game logic of Maze Game
  **/
 class MyTests {
-	/**
-	 * No tests should throw exceptions unless specified
-	 **/
-	@Rule
-	public ExpectedException exception = ExpectedException.none();
-	
 	/**
 	 * Class for testing that the Maze Game GUI can properly initialize
 	 * Will fail if the game GUI constructor fails at any point
