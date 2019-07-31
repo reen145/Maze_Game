@@ -61,7 +61,7 @@ public class GameGUI extends JFrame {
 	 * @param dIcon - side length of each square icon
 	*****************************************************************/
 	public GameGUI(final int dSize, final int dIcon) {
-		setName("The Maze Game");
+		setTitle("The Maze Game");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 		fileMenu = new JMenu("File");
