@@ -8,6 +8,27 @@ public class Board {
      * Represents the state of the current player
      */
     private TileData.Player currentPlayer;
+    /**
+     * level storage
+     */
+    protected enum lvlEnum {
+        /**
+         * .
+         * list of current levels
+         **/
+        LVL1, LVL2a, LVL2b;
+    }
+
+    /**
+     * Stores data about what level is next
+     */
+    private lvlEnum nextLvl;
+
+    /**
+     * Stores data about where door lead
+     */
+    private lvlEnum doorLvl;
+
     /**.
      * represents the size of the board
      */
@@ -58,7 +79,8 @@ public class Board {
      * Sets level 1 board data
      */
     public void setBoard1() {
-        initializeBoard(TileData.Player.PLAYER, TileData.TileEnum.PATH_GRASS);
+        initializeBoard(TileData.Player.PLAYER, TileData.TileEnum.WALL_DEFAULT);
+        this.nextLvl = lvlEnum.LVL2a;
 
         // Set up static maze
         boardMatrix[1][3].setTileEnum(TileData.TileEnum.PATH_GRASS);
@@ -93,11 +115,8 @@ public class Board {
      */
     public void setBoard2a(final TileData.Player theCurrentPlayer) {
         initializeBoard(theCurrentPlayer, TileData.TileEnum.WALL_DEFAULT);
-        for (int i = 1; i < size - 1; i++) {
-        	for (int j = 1; j < size - 1; j++) {
-        		boardMatrix[i][j].setTileEnum(TileData.TileEnum.PATH_BRICK);
-        	}
-        }
+        this.nextLvl = lvlEnum.LVL2a;
+
         // Set up static maze
         boardMatrix[2][2].setTileEnum(TileData.TileEnum.WALL_DEFAULT);
         boardMatrix[2][3].setTileEnum(TileData.TileEnum.WALL_DEFAULT);
@@ -126,11 +145,7 @@ public class Board {
      */
     public void setBoard2b(final TileData.Player theCurrentPlayer) {
         initializeBoard(theCurrentPlayer, TileData.TileEnum.WALL_DEFAULT);
-        for (int i = 1; i < size - 1; i++) {
-        	for (int j = 1; j < size - 1; j++) {
-        		boardMatrix[i][j].setTileEnum(TileData.TileEnum.PATH_BRICK);
-        	}
-        }
+
         // Set up static maze
         boardMatrix[2][1].setTileEnum(TileData.TileEnum.WALL_DEFAULT);
         boardMatrix[2][2].setTileEnum(TileData.TileEnum.WALL_DEFAULT);
@@ -163,11 +178,27 @@ public class Board {
     }
 
     /**
+     * getter for where the door leads
+     * @return where the door leads
+     */
+    public lvlEnum getDoorLvl() {
+        return doorLvl;
+    }
+
+    /**
+     * getter for what the next level is
+     * @return  next level
+     */
+    public lvlEnum getNextLvl() {
+        return nextLvl;
+    }
+
+    /**
      * Helper method to initialize boards
      * @param theCurentPlayer current player state
      * @param wall the texture for walls in the level
      */
-    private void initializeBoard(final TileData.Player theCurentPlayer, final TileData.TileEnum wall) {
+    private void initializeBoard(TileData.Player theCurentPlayer, final TileData.TileEnum wall) {
         currentPlayer = theCurentPlayer;
         boardMatrix = new TileData[size][size];
 

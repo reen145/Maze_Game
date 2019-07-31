@@ -145,7 +145,6 @@ public class GamePanel extends JPanel {
 	
 	/**.
 	 * Populates the maze with walls, treasure, the player, etc
-	 * @param none
     **/
 	public void populate() {
 		// instantiate the array of tiles
@@ -231,12 +230,19 @@ public class GamePanel extends JPanel {
 							}
 					//checks to see if the chest was clicked
 	} else if (tileMatrix[row][col].getType().getTileEnum()
+			== TileData.TileEnum.DOOR) {
+		if (myGameModel.doorSelected()) {
+				playKey();
+			updateBoard();
+		}
+		//checks to see if the chest was clicked
+	}else if (tileMatrix[row][col].getType().getTileEnum()
 			== TileData.TileEnum.CHEST_CLOSED) {
 					if (myGameModel.chestSelected()) {
 								updateBoard();
 								playChest();
 				JOptionPane.showMessageDialog(null, "You Won");
-						myGameModel.setLevel2();
+						myGameModel.levelWon();
 								updateBoard();
 							}
 					} else {

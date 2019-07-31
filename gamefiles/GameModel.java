@@ -31,7 +31,6 @@ public class GameModel {
     private int size = 10;
     /**.
      * Constructor for the game board
-     * @param none
     **/
     public GameModel() {
         setDefaultBoard();
@@ -39,23 +38,31 @@ public class GameModel {
 
     /**.
      * Function to set the board to the default setup
-     * @param none
     **/
     private void setDefaultBoard() {
         currentBoard = new Board();
         currentBoard.setBoard1();
     }
 
-    /**.
-     * Function to set the board to level 2a
+    /**
+     * helper method for winning a level
      */
-    public void setLevel2() {
-        currentBoard.setBoard2a(TileData.Player.PLAYER);
+    public void levelWon() {
+        switch (currentBoard.getNextLvl())
+        {
+            case LVL1:
+                break;
+            case LVL2a:
+                currentBoard.setBoard2a(TileData.Player.PLAYER);
+                break;
+            case LVL2b:
+                break;
+        }
     }
+
 
     /**.
      * Function to check if a move is valid
-     * @param none
      * @return boolean saying if the move is valid
     **/
     public boolean moveUp() {
@@ -77,7 +84,6 @@ public class GameModel {
     
     /**.
      * resets the board
-     * @param none
      */
     public void resetBoard() {
         setDefaultBoard();
@@ -85,7 +91,6 @@ public class GameModel {
 
     /**.
      * Function to check if a move is valid
-     * @param none
      * @return boolean saying if the move is valid
     **/
     public boolean moveDown() {
@@ -107,7 +112,6 @@ public class GameModel {
 
     /**.
      * Function to check if a move is valid
-     * @param none
      * @return boolean saying if the move is valid
     **/
     public boolean moveLeft() {
@@ -129,7 +133,6 @@ public class GameModel {
 
     /**.
      * Function to check if a move is valid
-     * @param none
      * @return boolean saying if the move is valid
     **/
     public boolean moveRight() {
@@ -151,49 +154,78 @@ public class GameModel {
 
     /**.
      * Function to check if a key was selected
-     * @param none
      * @return boolean saying if the move is valid
     **/
     public boolean keySelected() {
         for (int i = 0; i < size; i++) {
             for (int j = 0; j < size; j++) {
-                if (currentBoard.getValue(i, j).getTileEnum() 
-                		== TileData.TileEnum.KEY) {
-                    if (currentBoard.getValue(i + 1, j).getPlayer() 
-                    		!= TileData.Player.NONE) {
+                if (currentBoard.getValue(i, j).getTileEnum()
+                        == TileData.TileEnum.KEY) {
+                    if (currentBoard.getValue(i + 1, j).getPlayer()
+                            != TileData.Player.NONE) {
                         currentBoard.getValue(i, j)
-                        .setTileEnum(TileData.TileEnum.PATH_DEFAULT);
-                      currentBoard.setCurrentPlayer(TileData.Player.PLAYER_KEY);
+                                .setTileEnum(TileData.TileEnum.PATH_DEFAULT);
+                        currentBoard.setCurrentPlayer(TileData.Player.PLAYER_KEY);
                         return true;
-                    } else if (currentBoard.getValue(i - 1, j).getPlayer() 
-                    		!= TileData.Player.NONE) {
+                    } else if (currentBoard.getValue(i - 1, j).getPlayer()
+                            != TileData.Player.NONE) {
                         currentBoard.getValue(i, j)
-                        .setTileEnum(TileData.TileEnum.PATH_DEFAULT);
-                      currentBoard.setCurrentPlayer(TileData.Player.PLAYER_KEY);
+                                .setTileEnum(TileData.TileEnum.PATH_DEFAULT);
+                        currentBoard.setCurrentPlayer(TileData.Player.PLAYER_KEY);
                         return true;
                     } else if (currentBoard.getValue(i, j + 1).getPlayer()
-                    		!= TileData.Player.NONE) {
+                            != TileData.Player.NONE) {
                         currentBoard.getValue(i, j)
-                        .setTileEnum(TileData.TileEnum.PATH_DEFAULT);
-                      currentBoard.setCurrentPlayer(TileData.Player.PLAYER_KEY);
+                                .setTileEnum(TileData.TileEnum.PATH_DEFAULT);
+                        currentBoard.setCurrentPlayer(TileData.Player.PLAYER_KEY);
                         return true;
                     } else if (currentBoard.getValue(i, j - 1).getPlayer()
-                    		!= TileData.Player.NONE) {
+                            != TileData.Player.NONE) {
                         currentBoard.getValue(i, j)
-                        .setTileEnum(TileData.TileEnum.PATH_DEFAULT);
-                      currentBoard.setCurrentPlayer(TileData.Player.PLAYER_KEY);
+                                .setTileEnum(TileData.TileEnum.PATH_DEFAULT);
+                        currentBoard.setCurrentPlayer(TileData.Player.PLAYER_KEY);
                         return true;
                     }
                 }
             }
         }
         return false;
+    }
 
+    /**.
+     * Function to check if a key was selected
+     * @return boolean saying if the move is valid
+     **/
+    public boolean doorSelected() {
+        for (int i = 0; i < size; i++) {
+            for (int j = 0; j < size; j++) {
+                if (currentBoard.getValue(i, j).getTileEnum()
+                        == TileData.TileEnum.DOOR) {
+                    if (currentBoard.getValue(i + 1, j).getPlayer()
+                            != TileData.Player.NONE) {
+                       //do door things
+                        return true;
+                    } else if (currentBoard.getValue(i - 1, j).getPlayer()
+                            != TileData.Player.NONE) {
+                        //do door things
+                        return true;
+                    } else if (currentBoard.getValue(i, j + 1).getPlayer()
+                            != TileData.Player.NONE) {
+                        //do door things
+                        return true;
+                    } else if (currentBoard.getValue(i, j - 1).getPlayer()
+                            != TileData.Player.NONE) {
+                        //do door things
+                        return true;
+                    }
+                }
+            }
+        }
+        return false;
     }
 
     /**.
      * Function to check if a chest is selected
-     * @param none
      * @return boolean saying if the move is valid
     **/
     public boolean chestSelected() {

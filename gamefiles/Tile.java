@@ -107,7 +107,6 @@ public class Tile extends JButton {
 
     /**.
      * Function to update a tiles icon
-     * @param none
     **/
     private void updateImage() {
         if (type.getPlayer() == TileData.Player.NONE) {
