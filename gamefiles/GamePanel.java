@@ -228,11 +228,11 @@ public class GamePanel extends JPanel {
 								playKey();
 								updateBoard();
 							}
-					//checks to see if the chest was clicked
+					//checks to see if the door was clicked
 	} else if (tileMatrix[row][col].getType().getTileEnum()
 			== TileData.TileEnum.DOOR) {
 		if (myGameModel.doorSelected()) {
-				playKey();
+				playChest();
 			updateBoard();
 		}
 		//checks to see if the chest was clicked
@@ -240,7 +240,7 @@ public class GamePanel extends JPanel {
 			== TileData.TileEnum.CHEST_CLOSED) {
 					if (myGameModel.chestSelected()) {
 								updateBoard();
-								playChest();
+								playKey();
 				JOptionPane.showMessageDialog(null, "You Won");
 						myGameModel.levelWon();
 								updateBoard();
@@ -256,7 +256,7 @@ public class GamePanel extends JPanel {
 	/**
 	 * public method to reset the game
 	 */
-	public void resetGame() {
+	protected void resetGame() {
 		myGameModel.resetBoard();
 		updateBoard();
 	}
